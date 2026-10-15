@@ -8,57 +8,90 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="bg" aria-hidden="true"></div>
+
   <main class="wrap">
 
     <header class="hero">
+      <p class="eyebrow"><span class="dot"></span>портфолио</p>
       <h1>Brave Maggot</h1>
       <p class="lead">Студент медвуза. Строю карьеру в нейросетях и low-code.</p>
+      <ul class="pills">
+        <li>нейросети</li>
+        <li>low-code</li>
+        <li>n8n</li>
+      </ul>
     </header>
 
     <section class="block">
       <h2>В работе</h2>
-      <ul class="list">
-        <li>
-          Личный AI-ассистент в n8n —
-          <span class="tag">финансы ✅</span>
-          <span class="tag">напоминания ✅</span>
-          <span class="tag">knowledge base ✅</span>
-          <span class="tag tag-wip">календарь 🚧</span>
-        </li>
-      </ul>
+      <div class="card">
+        <ul class="list">
+          <li>
+            <span class="item-title">Личный AI-ассистент в n8n</span>
+            <span class="tags">
+              <span class="tag ok">финансы</span>
+              <span class="tag ok">напоминания</span>
+              <span class="tag ok">knowledge base</span>
+              <span class="tag wip">календарь</span>
+            </span>
+          </li>
+        </ul>
+      </div>
     </section>
 
     <section class="block">
       <h2>Готовые кейсы</h2>
-      <ul class="list">
-        <li>
-          AI-ассистент в n8n —
-          <a href="https://www.tiktok.com/@brave.maggot/video/7696995304922483974" target="_blank" rel="noopener noreferrer">tiktok.com/@brave.maggot</a>
-        </li>
-      </ul>
+      <div class="card">
+        <ul class="list">
+          <li>
+            <span class="item-title">AI-ассистент в n8n</span>
+            <a class="row-link" href="https://www.tiktok.com/@brave.maggot/video/7696995304922483974" target="_blank" rel="noopener noreferrer">
+              <span>смотреть в TikTok</span>
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </div>
       <p class="note">Остальные кейсы появятся позже.</p>
     </section>
 
     <section class="block">
       <h2>Медиа</h2>
-      <ul class="list">
-        <li>
-          TikTok:
-          <a href="https://www.tiktok.com/@brave.maggot" target="_blank" rel="noopener noreferrer">@brave.maggot</a>
-        </li>
-        <li>
-          Telegram:
-          <span class="placeholder">скоро</span>
-        </li>
-      </ul>
+      <div class="card">
+        <ul class="list">
+          <li>
+            <span class="item-title">TikTok</span>
+            <a class="row-link" href="https://www.tiktok.com/@brave.maggot" target="_blank" rel="noopener noreferrer">
+              <span>@brave.maggot</span>
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <span class="item-title">Telegram</span>
+            <span class="placeholder">скоро</span>
+          </li>
+        </ul>
+      </div>
     </section>
 
     <section class="block">
       <h2>Контакты <span class="muted">(пока нет)</span></h2>
-      <ul class="list">
-        <li>Telegram: <span class="muted">пока нет</span></li>
-        <li>Email: <a href="mailto:maggotbrave@gmail.com">maggotbrave@gmail.com</a></li>
-      </ul>
+      <div class="card">
+        <ul class="list">
+          <li>
+            <span class="item-title">Telegram</span>
+            <span class="muted">пока нет</span>
+          </li>
+          <li>
+            <span class="item-title">Email</span>
+            <a class="row-link" href="mailto:maggotbrave@gmail.com">
+              <span>maggotbrave@gmail.com</span>
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </section>
 
     <footer class="footer">
