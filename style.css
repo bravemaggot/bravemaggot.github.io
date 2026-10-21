@@ -107,6 +107,28 @@ img { max-width: 100%; height: auto; }
   margin-bottom: var(--s-3);
 }
 
+/* ============ Фон: свечение + зерно ============ */
+.bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.glow { position: absolute; border-radius: 50%; }
+.glow-a {
+  top: -25%; left: -12%;
+  width: 62vw; height: 62vw;
+  background: radial-gradient(circle, rgb(45 212 191 / .11), transparent 65%);
+  animation: drift-a 48s ease-in-out infinite alternate;
+}
+.glow-b {
+  bottom: -35%; right: -18%;
+  width: 72vw; height: 72vw;
+  background: radial-gradient(circle, rgb(94 234 212 / .06), transparent 65%);
+  animation: drift-b 64s ease-in-out infinite alternate;
+}
+@keyframes drift-a { to { transform: translate(9vw, 7vh) scale(1.1); } }
+@keyframes drift-b { to { transform: translate(-7vw, -9vh) scale(1.06); } }
+.noise {
+  position: absolute; inset: 0; opacity: .05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
 /* ============ Hero ============ */
 .hero { padding-block: clamp(4rem, 2rem + 8vw, 6rem) var(--s-16); }
 .hero h1 {
@@ -187,9 +209,9 @@ img { max-width: 100%; height: auto; }
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
   padding: var(--s-6);
-  transition: transform 300ms var(--ease), border-color 300ms var(--ease);
+  transition: transform 200ms var(--ease), border-color 200ms var(--ease), box-shadow 200ms var(--ease);
 }
-.card:hover { transform: translateY(-2px); border-color: var(--t-low); }
+.card:hover { transform: translateY(-2px); border-color: var(--t-low); box-shadow: var(--shadow-1); }
 .card h3 { margin-bottom: var(--s-2); }
 .card p { margin-bottom: 0; font-size: var(--fs-sm); color: var(--t-mid); }
 
@@ -211,6 +233,8 @@ img { max-width: 100%; height: auto; }
   transition: transform 300ms var(--ease);
 }
 .work-link:hover { text-decoration: underline; }
+.work-link span { display: inline-block; transition: transform 200ms var(--ease); }
+.work-link:hover span { transform: translateX(4px); }
 .work-link:active { transform: scale(0.98); }
 
 /* ============ Tagline reveal (B11) ============ */
@@ -283,6 +307,11 @@ img { max-width: 100%; height: auto; }
   transition: transform 300ms var(--ease);
 }
 .faq[open] summary::after { content: '–'; }
+.faq[open] p { animation: faq-in 300ms var(--ease); }
+@keyframes faq-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}
 .faq p { margin-top: var(--s-3); margin-bottom: 0; color: var(--t-mid); }
 
 /* ============ Финальный CTA ============ */
@@ -305,17 +334,18 @@ img { max-width: 100%; height: auto; }
 .footer a { font-size: var(--fs-sm); text-decoration: none; padding: var(--s-3) 0; display: inline-block; }
 .footer a:hover { text-decoration: underline; }
 
-/* ============ Reveal (B7): 64px + blur, 800ms, кривая --ease ============ */
+/* ============ Reveal (landing-motion): 20px + opacity, 550ms ============ */
 .reveal {
   opacity: 0;
-  transform: translateY(64px);
-  filter: blur(12px);
+  transform: translateY(20px);
   transition:
-    opacity 800ms var(--ease),
-    transform 800ms var(--ease),
-    filter 800ms var(--ease);
+    opacity 550ms var(--ease),
+    transform 550ms var(--ease);
 }
-.reveal[data-visible='true'] { opacity: 1; transform: none; filter: none; }
+.reveal[data-visible='true'] { opacity: 1; transform: none; }
+
+/* ============ Финальный CTA: подпись ============ */
+.cta-note { font-size: var(--fs-sm); color: var(--t-low); margin-top: var(--s-4); }
 
 /* ============ Адаптив ============ */
 @media (max-width: 900px) {

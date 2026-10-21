@@ -1,7 +1,10 @@
-/* Один reveal-паттерн: opacity + translateY, стаггер только между соседями. */
+/* Reveal: 20px + opacity, стаггер только между соседями (по родителю), cap 300ms. */
 (function () {
-  var groups = ['.grid-3 > li', '.grid-2 > li', '.steps > li', '.faq'];
-  var cap = 280; // мс — суммарный стаггер не растёт бесконечно
+  var groups = [
+    '.grid-3 > li', '.grid-2 > li', '.steps > li', '.faq',
+    '.band-item', '.section h2', '.section .eyebrow', '.section-sub'
+  ];
+  var cap = 300; // мс — суммарный стаггер не растёт бесконечно
 
   function mark(el, delay) {
     el.classList.add('reveal');
@@ -9,7 +12,15 @@
   }
 
   groups.forEach(function (sel) {
-    document.querySelectorAll(sel).forEach(function (el, i) { mark(el, i * 55); });
+    // индекс внутри одного родителя: соседние карточки каскадом,
+    // разрозненные заголовки — без накопленной задержки
+    var byParent = new Map();
+    document.querySelectorAll(sel).forEach(function (el) {
+      var p = el.parentElement;
+      var i = byParent.get(p) || 0;
+      byParent.set(p, i + 1);
+      mark(el, i * 55);
+    });
   });
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -70,5 +81,32 @@
       { rootMargin: '0px 0px -35% 0px', threshold: 0.5 }
     );
     spans.forEach(function (s) { wio.observe(s); });
+  }
+
+  // Count-up в полосе показателей: 1200ms, один раз, только целые числа.
+  // Без JS текст показывает финальное значение — анимация не прячет контент.
+  var nums = document.querySelectorAll('.band-num[data-count]');
+  if (nums.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var nio = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          nio.unobserve(entry.target);
+          var el = entry.target;
+          var target = parseInt(el.dataset.count, 10);
+          var t0 = null;
+          var tick = function (ts) {
+            if (t0 === null) t0 = ts;
+            var p = Math.min((ts - t0) / 1200, 1);
+            var eased = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.round(target * eased);
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        });
+      },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.3 }
+    );
+    nums.forEach(function (el) { nio.observe(el); });
   }
 })();
