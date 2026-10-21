@@ -42,4 +42,33 @@
     nodes.forEach(function (el) { el.dataset.visible = 'true'; });
     io.disconnect();
   }, 1500);
+
+  // Tagline reveal (B11): слова включаются по одному на триггер-линии.
+  // Без JS текст остаётся полноцветным — спаны создаёт только скрипт.
+  var tp = document.querySelector('[data-words]');
+  if (tp && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var words = tp.textContent.trim().split(/\s+/);
+    tp.textContent = '';
+    var spans = words.map(function (w) {
+      var s = document.createElement('span');
+      s.className = 'word';
+      s.textContent = w;
+      tp.appendChild(s);
+      tp.appendChild(document.createTextNode(' '));
+      return s;
+    });
+    var wio = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry, k) {
+          if (!entry.isIntersecting) return;
+          // несколько слов пересекли линию одновременно — каскад внутри батча
+          entry.target.style.transitionDelay = (k * 60) + 'ms';
+          entry.target.classList.add('on');
+          wio.unobserve(entry.target);
+        });
+      },
+      { rootMargin: '0px 0px -35% 0px', threshold: 0.5 }
+    );
+    spans.forEach(function (s) { wio.observe(s); });
+  }
 })();

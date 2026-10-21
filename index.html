@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Автоматизация на n8n и Telegram-ботах под задачу</title>
 <meta name="description" content="Собираю Telegram-ботов и n8n-автоматизации под вашу рутину: приём заявок, дайджесты, парсинг, уведомления. Прототип за 3–7 дней, запуск за 1–2 недели. Каждый бот на странице — живой.">
-<meta name="theme-color" content="#0c1210">
+<meta name="theme-color" content="#181818">
 <meta name="color-scheme" content="dark">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f766e'/%3E%3Ctext x='16' y='23' font-family='Inter,sans-serif' font-size='18' font-weight='700' fill='%23fff' text-anchor='middle'%3EИ%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f766e'/%3E%3Ctext x='16' y='23' font-family='sans-serif' font-size='18' font-weight='700' fill='%23fff' text-anchor='middle'%3EИ%3C/text%3E%3C/svg%3E">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bravemaggot.github.io/">
@@ -22,7 +22,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="style.css">
 
 <script type="application/ld+json">
@@ -41,9 +41,11 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "Сколько это стоит?", "acceptedAnswer": {"@type": "Answer", "text": "Точечный сценарий в n8n — от 5 000 ₽, бот под ключ — от 15 000 ₽, сопровождение — от 5 000 ₽ в месяц. Точную цену называю после 15-минутного разговора о задаче."}},
+    {"@type": "Question", "name": "Сколько это стоит?", "acceptedAnswer": {"@type": "Answer", "text": "Точечный сценарий в n8n — от 5 000 ₽, бот под ключ — от 15 000 ₽, сопровождение — от 5 000 ₽ в месяц. Точную цену называю после разговора на 15 минут о задаче."}},
     {"@type": "Question", "name": "Что нужно от меня на старте?", "acceptedAnswer": {"@type": "Answer", "text": "Описать процесс своими словами и показать, где живут данные: таблицы, каналы, почта, чаты. Техническую часть беру на себя."}},
-    {"@type": "Question", "name": "Где всё это работает?", "acceptedAnswer": {"@type": "Answer", "text": "На self-hosted n8n — на вашем сервере или моём VPS. Данные и ключи остаются у вас, я настраиваю и передаю доступ."}},
+    {"@type": "Question", "name": "Где всё это работает?", "acceptedAnswer": {"@type": "Answer", "text": "На n8n на вашем сервере или на моём VPS. Данные и ключи остаются у вас, я настраиваю и передаю доступ."}},
+    {"@type": "Question", "name": "Я не технарь. Справлюсь?", "acceptedAnswer": {"@type": "Answer", "text": "Да. От вас нужно описание задачи своими словами, всё остальное — на мне. Инструкцию пишу человеческим языком, без жаргона."}},
+    {"@type": "Question", "name": "А если процесс нестандартный?", "acceptedAnswer": {"@type": "Answer", "text": "Нестандартные процессы — основной случай. Сначала прототип на ваших данных: по нему сразу видно, что работает, а что нет."}},
     {"@type": "Question", "name": "А если что-то сломается?", "acceptedAnswer": {"@type": "Answer", "text": "В воркфлоу встроены повторы и алерты об ошибках. На сопровождении слежу за исполнениями и чиню до того, как вы заметите."}},
     {"@type": "Question", "name": "Сколько времени займёт запуск?", "acceptedAnswer": {"@type": "Answer", "text": "Прототип на ваших данных — 3–7 дней. Боевой запуск с тестами — 1–2 недели."}}
   ]
@@ -54,12 +56,10 @@
 
 <a class="skip" href="#main">К основному содержанию</a>
 
-<div class="bg" aria-hidden="true"><span class="glow"></span></div>
-
 <header class="hero">
   <div class="container">
     <p class="eyebrow">Автоматизация на n8n и Telegram-ботах</p>
-    <h1>Забираю рутину в ботов — за&nbsp;1–2&nbsp;недели</h1>
+    <h1>Забираю рутину в ботов —<br>за&nbsp;1–2&nbsp;недели</h1>
     <p class="sub">Приём заявок, дайджесты из каналов, парсинг, уведомления и отчёты.
     Каждый бот на этой странице — живой: можно открыть и потыкать прямо сейчас.</p>
     <div class="cta-row">
@@ -71,7 +71,7 @@
       <p class="visually-hidden">Пример диалога с ботом-приёмной заказов:</p>
       <div class="chat">
         <p class="chat-line chat-client">Нужен бот, который собирает заявки с сайта и присылает мне в Telegram</p>
-        <p class="chat-line chat-bot">📋 Заявка #12 принята!<br>Сайт-форма → карточка в вашем Telegram, статус и история в очереди</p>
+        <p class="chat-line chat-bot">📋 Заявка #12 принята.<br>Сайт-форма → карточка в вашем Telegram, статус и история в очереди</p>
         <p class="chat-line chat-client">а если клиент напишет криво и без бюджета?</p>
         <p class="chat-line chat-bot">AI задаст уточняющий вопрос и дополнит бриф — заявка не потеряется</p>
       </div>
@@ -110,6 +110,12 @@
     </div>
   </section>
 
+  <section class="tagline" aria-label="Ключевая мысль">
+    <div class="container">
+      <p data-words>Любая рутина — это сценарий, который ещё никто не написал. Я пишу такие сценарии на n8n и Telegram-ботах.</p>
+    </div>
+  </section>
+
   <section class="section" id="works">
     <div class="container">
       <p class="eyebrow">Живые демо</p>
@@ -117,25 +123,25 @@
       <p class="section-sub">Это не макеты — каждый сервис работает прямо сейчас. Напишите боту и посмотрите, как он отвечает.</p>
       <ul class="grid grid-2">
         <li class="card work">
-          <div class="work-head"><span class="work-icon" aria-hidden="true">📰</span><h3>Парсер TG-каналов</h3></div>
+          <div class="work-head"><span class="work-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h13a1 1 0 0 1 1 1v12a2 2 0 0 0 2 2H6a2 2 0 0 1-2-2V5Z"/><path d="M4 5a1 1 0 0 0-1 1v10h3"/><path d="M18 15h3V6a1 1 0 0 0-1-1h-2"/><path d="M7 9h7M7 13h7M7 17h4"/></svg></span><h3>Парсер TG-каналов</h3></div>
           <p>Подписываетесь на публичные каналы — бот присылает AI-дайджест новых постов по расписанию. Команды: /add, /list, /now.</p>
           <p class="stack">n8n · Telegram API · OpenRouter · HTML-парсинг</p>
           <a class="work-link" href="https://t.me/PARSER_BOT_PLACEHOLDER" data-swap="parser-bot">Открыть бота<span aria-hidden="true"> →</span></a>
         </li>
         <li class="card work">
-          <div class="work-head"><span class="work-icon" aria-hidden="true">📥</span><h3>Приёмная заказов</h3></div>
+          <div class="work-head"><span class="work-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h5l2 3h4l2-3h5"/><path d="M5 5h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/></svg></span><h3>Приёмная заказов</h3></div>
           <p>Клиенты пишут боту — AI структурирует бриф (задача, бюджет, срок), задаёт уточняющий вопрос, а владелец получает карточку заявки в очередь.</p>
           <p class="stack">n8n · Telegram API · OpenRouter · AI-структурирование</p>
           <a class="work-link" href="https://t.me/ORDERS_BOT_PLACEHOLDER" data-swap="orders-bot">Открыть бота<span aria-hidden="true"> →</span></a>
         </li>
         <li class="card work">
-          <div class="work-head"><span class="work-icon" aria-hidden="true">😈</span><h3>Адвокат дьявола</h3></div>
+          <div class="work-head"><span class="work-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3Z"/><path d="M12 8v4"/><path d="M12 15.5v.5"/></svg></span><h3>Адвокат дьявола</h3></div>
           <p>Стресс-тест решения: сильные стороны, риски, слепые пятна, а потом — атака, защита и вердикт «делать / не делать».</p>
           <p class="stack">Node.js · grammY · OpenRouter</p>
           <a class="work-link" href="https://t.me/ADVOCATE_BOT_PLACEHOLDER" data-swap="advocate-bot">Открыть бота<span aria-hidden="true"> →</span></a>
         </li>
         <li class="card work">
-          <div class="work-head"><span class="work-icon" aria-hidden="true">🎤</span><h3>Собеседатор</h3></div>
+          <div class="work-head"><span class="work-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg></span><h3>Собеседатор</h3></div>
           <p>Тренировочное собеседование: 5 вопросов по выбранной роли, разбор каждого ответа, оценка и список тем, которые подтянуть.</p>
           <p class="stack">Node.js · grammY · OpenRouter</p>
           <a class="work-link" href="https://t.me/INTERVIEWER_BOT_PLACEHOLDER" data-swap="interviewer-bot">Открыть бота<span aria-hidden="true"> →</span></a>
@@ -188,7 +194,7 @@
           <p class="price-term">ежемесячно</p>
         </li>
       </ul>
-      <p class="fineprint">Точная цена — после 15-минутного разговора о задаче. Оплата по этапам: прототип → запуск.</p>
+      <p class="fineprint">Точная цена — после разговора на 15 минут о задаче. Оплата по этапам: прототип → запуск.</p>
       <a class="btn btn-primary" href="https://t.me/ORDERS_BOT_PLACEHOLDER" data-swap="orders-bot">Обсудить задачу в Telegram</a>
     </div>
   </section>
@@ -198,7 +204,7 @@
       <h2>Частые вопросы</h2>
       <details class="faq">
         <summary>Сколько это стоит?</summary>
-        <p>Точечный сценарий в n8n — от 5 000 ₽, бот под ключ — от 15 000 ₽, сопровождение — от 5 000 ₽ в месяц. Точную цену называю после 15-минутного разговора о задаче.</p>
+        <p>Точечный сценарий в n8n — от 5 000 ₽, бот под ключ — от 15 000 ₽, сопровождение — от 5 000 ₽ в месяц. Точную цену называю после разговора на 15 минут о задаче.</p>
       </details>
       <details class="faq">
         <summary>Что нужно от меня на старте?</summary>
@@ -206,7 +212,15 @@
       </details>
       <details class="faq">
         <summary>Где всё это работает?</summary>
-        <p>На self-hosted n8n — на вашем сервере или моём VPS. Данные и ключи остаются у вас, я настраиваю и передаю доступ.</p>
+        <p>На n8n на вашем сервере или на моём VPS. Данные и ключи остаются у вас, я настраиваю и передаю доступ.</p>
+      </details>
+      <details class="faq">
+        <summary>Я не технарь. Справлюсь?</summary>
+        <p>Да. От вас нужно описание задачи своими словами, всё остальное — на мне. Инструкцию пишу человеческим языком, без жаргона.</p>
+      </details>
+      <details class="faq">
+        <summary>А если процесс нестандартный?</summary>
+        <p>Нестандартные процессы — основной случай. Сначала прототип на ваших данных: по нему сразу видно, что работает, а что нет.</p>
       </details>
       <details class="faq">
         <summary>А если что-то сломается?</summary>
@@ -235,6 +249,7 @@
     <nav aria-label="Контакты">
       <a href="https://t.me/ORDERS_BOT_PLACEHOLDER" data-swap="orders-bot">Telegram</a>
       <a href="https://github.com/bravemaggot">GitHub</a>
+      <a href="privacy.html">Конфиденциальность</a>
     </nav>
   </div>
 </footer>
