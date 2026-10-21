@@ -4,27 +4,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Автоматизация на n8n и Telegram-ботах под задачу</title>
-<meta name="description" content="Собираю Telegram-ботов и n8n-автоматизации под вашу рутину: приём заявок, дайджесты, парсинг, уведомления. Прототип за 3–7 дней, запуск за 1–2 недели. Каждый бот на странице — живой.">
+<meta name="description" content="Собираю Telegram-ботов и n8n-автоматизации под вашу рутину: приём заявок, дайджесты, парсинг, уведомления. Прототип за 3–7 дней, запуск за 1–2 недели. Оплата по этапам.">
 <meta name="theme-color" content="#0b0e0d">
 <meta name="color-scheme" content="dark">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233fd0b6'/%3E%3Ctext x='16' y='23' font-family='sans-serif' font-size='18' font-weight='700' fill='%2306231d' text-anchor='middle'%3EИ%3C/text%3E%3C/svg%3E">
 
+<link rel="canonical" href="https://bravemaggot.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bravemaggot.github.io/">
 <meta property="og:title" content="Автоматизация на n8n и Telegram-ботах под задачу">
-<meta property="og:description" content="Боты и n8n-автоматизации, которые забирают рутину: заявки, дайджесты, парсинг, уведомления. Прототип за 3–7 дней.">
+<meta property="og:description" content="Приём заявок, дайджесты из каналов, парсинг, уведомления и отчёты. Прототип — за 3–7 дней, боевой запуск — за 1–2 недели.">
 <meta property="og:image" content="https://bravemaggot.github.io/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Иван — автоматизации на n8n и Telegram-ботах">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Автоматизация на n8n и Telegram-ботах под задачу">
+<meta name="twitter:description" content="Прототип автоматизации — за 3–7 дней, боевой запуск — за 1–2 недели. Оплата по этапам.">
 <meta name="twitter:image" content="https://bravemaggot.github.io/og.png">
 
-<script>document.documentElement.classList.add('js');</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="preload" as="font" type="font/woff2" href="fonts/manrope-cyrillic.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/manrope-latin.woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
+
+<!-- Класс .js ставится только если app.js реально загрузился: иначе контент останется видимым -->
+<script>
+  document.documentElement.classList.add('js');
+  window.__rvFallback = setTimeout(function () {
+    document.documentElement.classList.remove('js');
+  }, 2500);
+</script>
+<noscript><style>.js .rv{opacity:1!important;transform:none!important}</style></noscript>
 
 <script type="application/ld+json">
 {
@@ -43,7 +54,7 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "Сколько это стоит?", "acceptedAnswer": {"@type": "Answer", "text": "Точечный сценарий в n8n — от 5 000 ₽, бот под ключ — от 15 000 ₽, сопровождение — от 5 000 ₽ в месяц. Точную цену называю после разговора на 15 минут о задаче."}},
+    {"@type": "Question", "name": "Сколько это стоит?", "acceptedAnswer": {"@type": "Answer", "text": "Точечный сценарий в n8n — от 15 000 ₽, бот под ключ — от 50 000 ₽, сопровождение — от 10 000 ₽ в месяц. Точную цену называю после разговора на 15 минут о задаче."}},
     {"@type": "Question", "name": "Что нужно от меня на старте?", "acceptedAnswer": {"@type": "Answer", "text": "Описать процесс своими словами и показать, где живут данные: таблицы, каналы, почта, чаты. Техническую часть беру на себя."}},
     {"@type": "Question", "name": "Где всё это работает?", "acceptedAnswer": {"@type": "Answer", "text": "На n8n на вашем сервере или на моём VPS. Данные и ключи остаются у вас, я настраиваю и передаю доступ."}},
     {"@type": "Question", "name": "Я не технарь. Справлюсь?", "acceptedAnswer": {"@type": "Answer", "text": "Да. От вас нужно описание задачи своими словами, всё остальное — на мне. Инструкцию пишу человеческим языком, без жаргона."}},
@@ -72,6 +83,7 @@
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 7"/></symbol>
   <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12"/><path d="M18 6 6 18"/></symbol>
   <symbol id="i-replay" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.6v.6"/></symbol>
   <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.55v-2.17c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.05.78 2.13v3.16c0 .3.21.66.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></symbol>
 </svg>
 
@@ -79,9 +91,9 @@
 
 <header class="topbar">
   <div class="wrap topbar-row">
-    <a class="brand" href="#main">
+    <a class="brand" href="#main" aria-label="Иван — в начало страницы">
       <span class="logo"><svg class="ic ic-sm"><use href="#i-bot"/></svg></span>
-      Иван<span class="brand-spec"> · n8n и Telegram-боты</span>
+      <span class="brand-name">Иван</span><span class="brand-spec"> · n8n и Telegram-боты</span>
     </a>
     <nav class="topnav" aria-label="Разделы страницы">
       <a href="#works">Демо</a>
@@ -99,29 +111,47 @@
     <div class="wrap hero-grid">
       <div>
         <p class="kicker rv">Иван · n8n-сценарии и Telegram-боты</p>
-        <h1 class="rv" style="--d:.06s">Забираю рутину в ботов — за&nbsp;1–2&nbsp;недели</h1>
-        <p class="lead rv" style="--d:.12s">Приём заявок, дайджесты из каналов, парсинг, уведомления и отчёты. Каждый бот на этой странице живой — можно открыть и проверить.</p>
+        <h1 class="rv" style="--d:.06s">Забираю рутину<br>в&nbsp;ботов <span class="nb">за&nbsp;1–2&nbsp;недели</span></h1>
+        <p class="lead rv" style="--d:.12s">Приём заявок, дайджесты из каналов, парсинг, уведомления и отчёты. Прототип собираю на ваших данных за 3–7 дней, в бой — за 1–2 недели.</p>
         <div class="btn-row rv" style="--d:.18s">
           <a class="btn btn-primary" href="https://t.me/bravemaggot" target="_blank" rel="noopener">Обсудить задачу в Telegram<svg class="ic"><use href="#i-send"/></svg></a>
-          <a class="btn btn-ghost" href="#works">Потыкать живых ботов<svg class="ic"><use href="#i-arrow-dn"/></svg></a>
+          <a class="btn btn-ghost" href="#works">Что уже работает<svg class="ic"><use href="#i-arrow-dn"/></svg></a>
         </div>
-        <p class="hero-note rv" style="--d:.24s">Отвечаю лично. Обычно — в тот же день.</p>
+        <p class="hero-note rv" style="--d:.24s"><span class="dot pulse" aria-hidden="true"></span>Отвечаю лично. Обычно — в тот же день.</p>
       </div>
 
-      <!-- живой пример переписки -->
+      <!-- диалог с ботом-приёмной -->
       <div class="chat rv" style="--d:.15s">
         <div class="chat-head">
           <span class="chat-ava"><svg class="ic"><use href="#i-bot"/></svg></span>
           <div>
             <div class="chat-name">Приёмная заявок</div>
-            <div class="chat-sub"><span class="dot"></span>бот · отвечает сразу</div>
+            <div class="chat-sub"><span class="dot" aria-hidden="true"></span>бот · отвечает сразу</div>
           </div>
           <button class="chat-replay" id="chatReplay" title="Проиграть диалог ещё раз" aria-label="Проиграть диалог ещё раз">
             <svg class="ic ic-sm"><use href="#i-replay"/></svg>
           </button>
         </div>
-        <div class="chat-body" id="chatBody" aria-live="polite"></div>
-        <div class="chat-note">пример переписки с реальным ботом-приёмной</div>
+        <div class="chat-body" id="chatBody">
+          <div class="msg msg--client">
+            <div class="bubble show">Нужен бот, который собирает заявки с сайта и присылает мне в Telegram</div>
+            <span class="chip">/start</span>
+            <div class="msg-meta">10:41</div>
+          </div>
+          <div class="msg msg--bot">
+            <div class="bubble show">Заявка #12 принята. Дальше сама: форма → карточка в вашем Telegram → очередь со статусами</div>
+            <div class="msg-meta">10:41</div>
+          </div>
+          <div class="msg msg--client">
+            <div class="bubble show">а если клиент напишет криво и без бюджета?</div>
+            <div class="msg-meta">10:42</div>
+          </div>
+          <div class="msg msg--bot">
+            <div class="bubble show">Уточню недостающее встречным вопросом и дополню бриф. Заявка не потеряется</div>
+            <div class="msg-meta">10:42</div>
+          </div>
+        </div>
+        <div class="chat-note"><svg class="ic" aria-hidden="true"><use href="#i-info"/></svg>сценарий с ботом-приёмной: ответ за секунду</div>
       </div>
     </div>
   </section>
@@ -130,20 +160,20 @@
   <section class="stats" aria-label="Показатели">
     <div class="wrap stats-grid">
       <div class="stat rv">
-        <div class="stat-num" role="img" aria-label="4"><span class="od" data-v="4"></span></div>
-        <div class="stat-label">живых демо на странице</div>
+        <div class="stat-num" role="img" aria-label="4"><span class="od" data-v="4">4</span></div>
+        <div class="stat-label">демо-бота на странице</div>
       </div>
       <div class="stat rv" style="--d:.08s">
-        <div class="stat-num" role="img" aria-label="2"><span class="od" data-v="2"></span></div>
-        <div class="stat-label">n8n-сервиса уже работают</div>
-      </div>
-      <div class="stat rv" style="--d:.16s">
-        <div class="stat-num" role="img" aria-label="от 3 до 7"><span class="od" data-v="3"></span><span>–</span><span class="od" data-v="7"></span></div>
+        <div class="stat-num" role="img" aria-label="от 3 до 7"><span class="od" data-v="3">3</span><span>–</span><span class="od" data-v="7">7</span></div>
         <div class="stat-label">дней до прототипа</div>
       </div>
+      <div class="stat rv" style="--d:.16s">
+        <div class="stat-num" role="img" aria-label="от 1 до 2"><span class="od" data-v="1">1</span><span>–</span><span class="od" data-v="2">2</span></div>
+        <div class="stat-label">недели до запуска</div>
+      </div>
       <div class="stat rv" style="--d:.24s">
-        <div class="stat-num" role="img" aria-label="от 1 до 2"><span class="od" data-v="1"></span><span>–</span><span class="od" data-v="2"></span></div>
-        <div class="stat-label">недель до запуска</div>
+        <div class="stat-num is-money"><small>от</small> 15&nbsp;000&nbsp;₽</div>
+        <div class="stat-label">за один сценарий в n8n</div>
       </div>
     </div>
   </section>
@@ -191,54 +221,95 @@
   <section class="sec" id="works">
     <div class="wrap">
       <div class="sec-head">
-        <p class="kicker rv">02 · живые демо</p>
+        <p class="kicker rv">02 · что уже работает</p>
         <h2 class="rv" style="--d:.05s">Откройте и попробуйте сами</h2>
-        <p class="lead rv" style="--d:.1s">Это не макеты — каждый сервис работает прямо сейчас. Напишите боту и посмотрите, как он отвечает.</p>
+        <p class="lead rv" style="--d:.1s">Четыре бота. Первый развёрнут на рабочем n8n — ему можно написать прямо сейчас.</p>
       </div>
 
       <ul class="grid grid-2">
         <li class="card work rv">
           <div class="work-top">
             <span class="icon-box" aria-hidden="true"><svg class="ic ic-lg"><use href="#i-rss"/></svg></span>
-            <span class="st st-live"><span class="dot"></span>работает на сервере</span>
+            <span class="st st-live"><span class="dot" aria-hidden="true"></span>на сервере</span>
           </div>
           <h3>Парсер TG-каналов</h3>
-          <p>Подписываетесь на публичные каналы — бот присылает AI-дайджест новых постов по расписанию. Команды: /add, /list, /now.</p>
+          <p>Подписываетесь на публичные каналы — бот присылает AI-дайджест новых постов по расписанию.</p>
+          <div class="term" aria-hidden="true">
+            <div class="term-bar"><span class="dot"></span>пример вывода · /add, /list, /now</div>
+            <div class="term-body">
+              <p class="term-line"><span class="term-cmd">/add durov</span></p>
+              <p class="term-line term-out">Ок, слежу за каналом. Дайджест — по расписанию.</p>
+              <p class="term-line"><span class="term-cmd">/now durov</span></p>
+              <p class="term-line term-out">Найдено <b>N</b> новых постов · <b>дайджест готов</b></p>
+            </div>
+          </div>
           <p class="stack">n8n · Telegram API · OpenRouter · HTML-парсинг</p>
-          <a class="work-link" href="https://t.me/bravemaggot" target="_blank" rel="noopener">Открыть бота<svg class="ic ic-sm"><use href="#i-arrow-ur"/></svg></a>
+          <a class="work-link" href="https://t.me/BraveMaggot_Bot" target="_blank" rel="noopener">Открыть бота<svg class="ic ic-sm"><use href="#i-arrow-ur"/></svg><span class="tag">@BraveMaggot_Bot</span></a>
         </li>
+
         <li class="card work rv" style="--d:.08s">
           <div class="work-top">
             <span class="icon-box" aria-hidden="true"><svg class="ic ic-lg"><use href="#i-inbox"/></svg></span>
-            <span class="st st-live"><span class="dot"></span>работает на сервере</span>
+            <span class="st st-wait"><span class="dot" aria-hidden="true"></span>ждёт токена</span>
           </div>
           <h3>Приёмная заказов</h3>
-          <p>Клиенты пишут боту — AI структурирует бриф (задача, бюджет, срок), задаёт уточняющий вопрос, а владелец получает карточку заявки в очередь.</p>
+          <p>Клиенты пишут боту — AI структурирует бриф, задаёт уточняющий вопрос, а владелец получает карточку заявки в очередь.</p>
+          <div class="term" aria-hidden="true">
+            <div class="term-bar"><span class="dot"></span>пример вывода · карточка заявки</div>
+            <div class="term-body">
+              <p class="term-line"><b>Заявка #12</b></p>
+              <p class="term-line term-out">задача → <b>структурирована</b></p>
+              <p class="term-line term-out">бюджет → <b>уточняется</b></p>
+              <p class="term-line term-out">срок → <b>уточняется</b></p>
+            </div>
+          </div>
           <p class="stack">n8n · Telegram API · OpenRouter · AI-структурирование</p>
-          <a class="work-link" href="https://t.me/bravemaggot" target="_blank" rel="noopener">Открыть бота<svg class="ic ic-sm"><use href="#i-arrow-ur"/></svg></a>
+          <a class="work-link" href="https://t.me/bravemaggot" target="_blank" rel="noopener">Спросить про этого бота<svg class="ic ic-sm"><use href="#i-arrow-ur"/></svg></a>
         </li>
+
         <li class="card work rv" style="--d:.16s">
           <div class="work-top">
             <span class="icon-box" aria-hidden="true"><svg class="ic ic-lg"><use href="#i-shield"/></svg></span>
-            <span class="st st-soon"><span class="dot"></span>ждёт подключения</span>
+            <span class="st st-soon"><span class="dot" aria-hidden="true"></span>код готов</span>
           </div>
           <h3>Адвокат дьявола</h3>
           <p>Стресс-тест решения: сильные стороны, риски, слепые пятна, а потом — атака, защита и вердикт «делать / не делать».</p>
+          <div class="term" aria-hidden="true">
+            <div class="term-bar"><span class="dot"></span>пример вывода · разбор и вердикт</div>
+            <div class="term-body">
+              <p class="term-line term-out">Разбор: <b>3 риска</b>, <b>2 слепых пятна</b></p>
+              <div class="term-btns">
+                <span class="term-btn">Атака</span>
+                <span class="term-btn">Защита</span>
+                <span class="term-btn is-on">Вердикт</span>
+              </div>
+            </div>
+          </div>
           <p class="stack">Node.js · grammY · OpenRouter</p>
-          <a class="work-link" href="https://t.me/bravemaggot" target="_blank" rel="noopener">Открыть бота<svg class="ic ic-sm"><use href="#i-arrow-ur"/></svg></a>
+          <a class="work-link" href="https://t.me/bravemaggot" target="_blank" rel="noopener">Спросить про этого бота<svg class="ic ic-sm"><use href="#i-arrow-ur"/></svg></a>
         </li>
+
         <li class="card work rv" style="--d:.24s">
           <div class="work-top">
             <span class="icon-box" aria-hidden="true"><svg class="ic ic-lg"><use href="#i-cap"/></svg></span>
-            <span class="st st-soon"><span class="dot"></span>ждёт подключения</span>
+            <span class="st st-soon"><span class="dot" aria-hidden="true"></span>код готов</span>
           </div>
           <h3>Собеседатор</h3>
-          <p>Тренировочное собеседование: 5 вопросов по выбранной роли, разбор каждого ответа, оценка и список тем, которые подтянуть.</p>
+          <p>Тренировочное собеседование: вопросы по выбранной роли, разбор каждого ответа, оценка и список тем, которые подтянуть.</p>
+          <div class="term" aria-hidden="true">
+            <div class="term-bar"><span class="dot"></span>пример вывода · разбор ответа</div>
+            <div class="term-body">
+              <p class="term-line term-out">Вопрос <b>3/5</b> · роль: <b>frontend</b></p>
+              <p class="term-line term-out">Оценка <b>7/10</b></p>
+              <p class="term-line term-out">Подтянуть: <b>React, тесты</b></p>
+            </div>
+          </div>
           <p class="stack">Node.js · grammY · OpenRouter</p>
-          <a class="work-link" href="https://t.me/bravemaggot" target="_blank" rel="noopener">Открыть бота<svg class="ic ic-sm"><use href="#i-arrow-ur"/></svg></a>
+          <a class="work-link" href="https://t.me/bravemaggot" target="_blank" rel="noopener">Спросить про этого бота<svg class="ic ic-sm"><use href="#i-arrow-ur"/></svg></a>
         </li>
       </ul>
-      <p class="demo-foot rv">Честный статус: парсер и приёмная уже развёрнуты на рабочем сервере n8n. Код-боты собраны и ждут подключения — ссылки встанут сюда, как только будут готовы.</p>
+
+      <p class="demo-foot rv"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-info"/></svg><span>Парсер развёрнут на рабочем n8n и отвечает в Telegram — ссылка выше ведёт прямо в него. Приёмная ждёт токена бота, два код-бота собраны и ждут подключения. Как только они заработают, ссылки встанут здесь же.</span></p>
     </div>
   </section>
 
@@ -250,23 +321,35 @@
         <h2 class="rv" style="--d:.05s">Как это будет работать у вас</h2>
         <p class="lead rv" style="--d:.1s">Путь от разговора до работающего решения — короткий, с понятными контрольными точками.</p>
       </div>
-      <ol class="steps">
-        <li class="step rv">
-          <p class="step-meta">шаг 1 · 15 минут</p>
-          <h3>Формулируем результат</h3>
-          <p>Пишете задачу в Telegram. 15 минут разговора — и у нас есть описание того, что автоматизация должна делать на выходе.</p>
-        </li>
-        <li class="step rv" style="--d:.08s">
-          <p class="step-meta">шаг 2 · 3–7 дней</p>
-          <h3>Прототип на ваших данных</h3>
-          <p>Собираю рабочую версию не на выдуманном примере, а на ваших реальных данных. Смотрим вместе и правлю, пока не совпадёт с ожиданием.</p>
-        </li>
-        <li class="step rv" style="--d:.16s">
-          <p class="step-meta">шаг 3 · 1–2 недели</p>
-          <h3>Запуск и передача</h3>
-          <p>Решение уходит в бой: повторы при сбоях, алерты об ошибках. Инструкция и доступы остаются у вас — никакой пожизненной привязки ко мне.</p>
-        </li>
-      </ol>
+      <div>
+        <ol class="steps">
+          <li class="step rv">
+            <p class="step-meta">шаг 1 · 15 минут</p>
+            <h3>Формулируем результат</h3>
+            <p>Пишете задачу в Telegram. 15 минут разговора — и у нас есть описание того, что автоматизация должна делать на выходе.</p>
+          </li>
+          <li class="step rv" style="--d:.08s">
+            <p class="step-meta">шаг 2 · 3–7 дней</p>
+            <h3>Прототип на ваших данных</h3>
+            <p>Собираю рабочую версию не на выдуманном примере, а на ваших реальных данных. Смотрим вместе и правлю, пока не совпадёт с ожиданием.</p>
+          </li>
+          <li class="step rv" style="--d:.16s">
+            <p class="step-meta">шаг 3 · 1–2 недели</p>
+            <h3>Запуск и передача</h3>
+            <p>Решение уходит в бой: повторы при сбоях, алерты об ошибках. Инструкция и доступы остаются у вас — никакой пожизненной привязки ко мне.</p>
+          </li>
+        </ol>
+
+        <div class="handover rv" style="--d:.1s">
+          <p class="handover-head">на руки вы получаете</p>
+          <ul class="handover-grid">
+            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg><span><b>Прототип на ваших данных</b>Показываю на реальных примерах, а не на выдуманных.</span></li>
+            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg><span><b>Повторы и алерты</b>В каждом сценарии есть повтор при сбое и уведомление об ошибке.</span></li>
+            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg><span><b>Инструкция человеческим языком</b>Без жаргона: что нажать, что проверить, куда смотреть.</span></li>
+            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg><span><b>Доступы и данные у вас</b>Ключи и таблицы остаются у вас — я настраиваю и передаю.</span></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -282,39 +365,39 @@
       <ul class="grid grid-3 pricing">
         <li class="card price rv">
           <h3>Точечная автоматизация</h3>
-          <p class="price-num"><small>от</small> 5 000 ₽</p>
+          <p class="price-num"><small>от</small> 15&nbsp;000&nbsp;₽</p>
           <p>Один сценарий в n8n: парсер, уведомление, интеграция, отчёт по расписанию.</p>
           <ul class="price-list">
-            <li><svg class="ic ic-sm"><use href="#i-check"/></svg>один сценарий под вашу задачу</li>
-            <li><svg class="ic ic-sm"><use href="#i-check"/></svg>повторы при сбоях и алерты внутри</li>
+            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg>один сценарий под вашу задачу</li>
+            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg>повторы при сбоях и алерты внутри</li>
           </ul>
           <p class="price-term">срок · 3–7 дней</p>
         </li>
         <li class="card price price-featured rv" style="--d:.08s">
           <p class="badge">Чаще всего берут</p>
           <h3>Бот под ключ</h3>
-          <p class="price-num"><small>от</small> 15 000 ₽</p>
+          <p class="price-num"><small>от</small> 50&nbsp;000&nbsp;₽</p>
           <p>Telegram-бот со сценариями и AI: приём заявок, дайджесты, диалоги.</p>
           <ul class="price-list">
-            <li><svg class="ic ic-sm"><use href="#i-check"/></svg>сценарии и AI-логика под ваш процесс</li>
-            <li><svg class="ic ic-sm"><use href="#i-check"/></svg>хостинг и запуск входят в цену</li>
-            <li><svg class="ic ic-sm"><use href="#i-check"/></svg>инструкция человеческим языком</li>
+            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg>сценарии и AI-логика под ваш процесс</li>
+            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg>хостинг и запуск входят в цену</li>
+            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg>инструкция человеческим языком</li>
           </ul>
           <p class="price-term">срок · 1–2 недели</p>
         </li>
         <li class="card price rv" style="--d:.16s">
           <h3>Сопровождение</h3>
-          <p class="price-num"><small>от</small> 5 000 ₽<small> / мес</small></p>
+          <p class="price-num"><small>от</small> 10&nbsp;000&nbsp;₽<small> / мес</small></p>
           <p>Бот работает — я слежу за ним и развиваю под ваши задачи.</p>
           <ul class="price-list">
-            <li><svg class="ic ic-sm"><use href="#i-check"/></svg>мониторинг исполнений</li>
-            <li><svg class="ic ic-sm"><use href="#i-check"/></svg>доработка существующей логики</li>
-            <li><svg class="ic ic-sm"><use href="#i-check"/></svg>новые задачи по ходу месяца</li>
+            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg>мониторинг исполнений</li>
+            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg>доработка существующей логики</li>
+            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg>новые задачи по ходу месяца</li>
           </ul>
           <p class="price-term">ежемесячно</p>
         </li>
       </ul>
-      <p class="fineprint">Это ориентиры. Точную цену назову после разговора на 15 минут о задаче. Оплата по этапам: прототип → запуск.</p>
+      <p class="fineprint">Это ориентиры по нижней границе рынка фриланса. Точную цену назову после разговора на 15 минут о задаче. Оплата по этапам: прототип → запуск.</p>
       <div class="price-cta rv">
         <a class="btn btn-primary" href="https://t.me/bravemaggot" target="_blank" rel="noopener">Обсудить задачу в Telegram<svg class="ic"><use href="#i-send"/></svg></a>
       </div>
@@ -331,32 +414,32 @@
       </div>
       <div>
         <div class="qa rv">
-          <button class="qa-q" aria-expanded="false">Сколько это стоит?<svg class="ic"><use href="#i-chev"/></svg></button>
-          <div class="qa-a"><div class="qa-inner"><p>Точечный сценарий в n8n — от 5 000 ₽, бот под ключ — от 15 000 ₽, сопровождение — от 5 000 ₽ в месяц. Точную цену называю после разговора на 15 минут о задаче.</p></div></div>
+          <button class="qa-q" aria-expanded="false" aria-controls="qa-a-1" id="qa-b-1">Сколько это стоит?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="qa-a" id="qa-a-1" role="region" aria-labelledby="qa-b-1"><div class="qa-inner"><p>Точечный сценарий в n8n — от 15 000 ₽, бот под ключ — от 50 000 ₽, сопровождение — от 10 000 ₽ в месяц. Точную цену называю после разговора на 15 минут о задаче.</p></div></div>
         </div>
         <div class="qa rv" style="--d:.05s">
-          <button class="qa-q" aria-expanded="false">Что нужно от меня на старте?<svg class="ic"><use href="#i-chev"/></svg></button>
-          <div class="qa-a"><div class="qa-inner"><p>Описать процесс своими словами и показать, где живут данные: таблицы, каналы, почта, чаты. Техническую часть беру на себя.</p></div></div>
+          <button class="qa-q" aria-expanded="false" aria-controls="qa-a-2" id="qa-b-2">Что нужно от меня на старте?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="qa-a" id="qa-a-2" role="region" aria-labelledby="qa-b-2"><div class="qa-inner"><p>Описать процесс своими словами и показать, где живут данные: таблицы, каналы, почта, чаты. Техническую часть беру на себя.</p></div></div>
         </div>
         <div class="qa rv" style="--d:.1s">
-          <button class="qa-q" aria-expanded="false">Где всё это работает?<svg class="ic"><use href="#i-chev"/></svg></button>
-          <div class="qa-a"><div class="qa-inner"><p>На n8n на вашем сервере или на моём VPS. Данные и ключи остаются у вас, я настраиваю и передаю доступ.</p></div></div>
+          <button class="qa-q" aria-expanded="false" aria-controls="qa-a-3" id="qa-b-3">Где всё это работает?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="qa-a" id="qa-a-3" role="region" aria-labelledby="qa-b-3"><div class="qa-inner"><p>На n8n на вашем сервере или на моём VPS. Данные и ключи остаются у вас, я настраиваю и передаю доступ.</p></div></div>
         </div>
         <div class="qa rv" style="--d:.15s">
-          <button class="qa-q" aria-expanded="false">Я не технарь. Справлюсь?<svg class="ic"><use href="#i-chev"/></svg></button>
-          <div class="qa-a"><div class="qa-inner"><p>Да. От вас нужно описание задачи своими словами, всё остальное — на мне. Инструкцию пишу человеческим языком, без жаргона.</p></div></div>
+          <button class="qa-q" aria-expanded="false" aria-controls="qa-a-4" id="qa-b-4">Я не технарь. Справлюсь?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="qa-a" id="qa-a-4" role="region" aria-labelledby="qa-b-4"><div class="qa-inner"><p>Да. От вас нужно описание задачи своими словами, всё остальное — на мне. Инструкцию пишу человеческим языком, без жаргона.</p></div></div>
         </div>
         <div class="qa rv" style="--d:.2s">
-          <button class="qa-q" aria-expanded="false">А если процесс нестандартный?<svg class="ic"><use href="#i-chev"/></svg></button>
-          <div class="qa-a"><div class="qa-inner"><p>Нестандартные процессы — основной случай. Сначала прототип на ваших данных: по нему сразу видно, что работает, а что нет.</p></div></div>
+          <button class="qa-q" aria-expanded="false" aria-controls="qa-a-5" id="qa-b-5">А если процесс нестандартный?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="qa-a" id="qa-a-5" role="region" aria-labelledby="qa-b-5"><div class="qa-inner"><p>Нестандартные процессы — основной случай. Сначала прототип на ваших данных: по нему сразу видно, что работает, а что нет.</p></div></div>
         </div>
         <div class="qa rv" style="--d:.25s">
-          <button class="qa-q" aria-expanded="false">А если что-то сломается?<svg class="ic"><use href="#i-chev"/></svg></button>
-          <div class="qa-a"><div class="qa-inner"><p>В воркфлоу встроены повторы и алерты об ошибках. На сопровождении слежу за исполнениями и чиню до того, как вы заметите.</p></div></div>
+          <button class="qa-q" aria-expanded="false" aria-controls="qa-a-6" id="qa-b-6">А если что-то сломается?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="qa-a" id="qa-a-6" role="region" aria-labelledby="qa-b-6"><div class="qa-inner"><p>В воркфлоу встроены повторы и алерты об ошибках. На сопровождении слежу за исполнениями и чиню до того, как вы заметите.</p></div></div>
         </div>
         <div class="qa rv" style="--d:.3s">
-          <button class="qa-q" aria-expanded="false">Сколько времени займёт запуск?<svg class="ic"><use href="#i-chev"/></svg></button>
-          <div class="qa-a"><div class="qa-inner"><p>Прототип на ваших данных — 3–7 дней. Боевой запуск с тестами — 1–2 недели.</p></div></div>
+          <button class="qa-q" aria-expanded="false" aria-controls="qa-a-7" id="qa-b-7">Сколько времени займёт запуск?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="qa-a" id="qa-a-7" role="region" aria-labelledby="qa-b-7"><div class="qa-inner"><p>Прототип на ваших данных — 3–7 дней. Боевой запуск с тестами — 1–2 недели.</p></div></div>
         </div>
       </div>
     </div>
@@ -385,10 +468,10 @@
         <p class="foot-name">Иван — автоматизации на n8n и Telegram-ботах</p>
         <p class="foot-desc">Работаю удалённо с русскоязычными заказчиками. Проекты беру на одну-четыре недели, ставки гибкие.</p>
       </div>
-      <nav class="foot-nav" aria-label="Контакты">
-        <a href="https://t.me/bravemaggot" target="_blank" rel="noopener"><svg class="ic ic-sm"><use href="#i-send"/></svg>Telegram</a>
-        <a href="https://github.com/bravemaggot" target="_blank" rel="noopener"><svg class="ic ic-sm"><use href="#i-github"/></svg>GitHub · bravemaggot</a>
-        <a href="#" data-privacy><svg class="ic ic-sm"><use href="#i-shield"/></svg>Конфиденциальность</a>
+      <nav class="foot-nav" aria-label="Контакты и документы">
+        <a href="https://t.me/bravemaggot" target="_blank" rel="noopener"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-send"/></svg>Telegram</a>
+        <a href="https://github.com/bravemaggot" target="_blank" rel="noopener"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-github"/></svg>GitHub · bravemaggot</a>
+        <a href="/privacy.html" data-privacy><svg class="ic ic-sm" aria-hidden="true"><use href="#i-shield"/></svg>Конфиденциальность</a>
       </nav>
     </div>
     <div class="foot-bottom">
@@ -399,13 +482,14 @@
 </footer>
 
 <!-- модалка конфиденциальности -->
-<div class="modal-ov" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privTitle">
+<div class="modal-ov" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privTitle" inert>
   <div class="modal">
-    <button class="modal-close" id="privacyClose" aria-label="Закрыть"><svg class="ic ic-sm"><use href="#i-close"/></svg></button>
+    <button class="modal-close" id="privacyClose" aria-label="Закрыть"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-close"/></svg></button>
     <h3 id="privTitle">Конфиденциальность</h3>
     <p>Этот сайт ничего не собирает: нет аналитики, cookies и форм. Я физически не вижу, кто и зачем сюда заходил.</p>
     <p>Данные, которые проходят через автоматизации, хранятся на вашем сервере или на заранее оговорённом сервере. Ключи доступа — у вас.</p>
     <p>Переписка с ботами хранится ровно столько, сколько нужно для работы. Скажете — удалю.</p>
+    <a class="modal-more" href="/privacy.html">Полная страница конфиденциальности →</a>
     <button class="btn btn-ghost" id="privacyOk">Понятно</button>
   </div>
 </div>
