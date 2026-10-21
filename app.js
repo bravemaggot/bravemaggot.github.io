@@ -1,18 +1,15 @@
-/* Один reveal-паттерн: opacity + translate, стаггер только между соседями. */
+/* Один reveal-паттерн: opacity + translateY, стаггер только между соседями. */
 (function () {
-  var groups = ['.grid > li', '.feats > li', '.steps > li'];
-  var blocks = ['.block > .case', '.block > .contact'];
+  var groups = ['.grid-3 > li', '.grid-2 > li', '.steps > li', '.faq'];
+  var cap = 280; // мс — суммарный стаггер не растёт бесконечно
 
   function mark(el, delay) {
     el.classList.add('reveal');
-    if (delay) el.style.transitionDelay = Math.min(delay, 280) + 'ms';
+    el.style.transitionDelay = Math.min(delay, cap) + 'ms';
   }
 
   groups.forEach(function (sel) {
     document.querySelectorAll(sel).forEach(function (el, i) { mark(el, i * 55); });
-  });
-  blocks.forEach(function (sel) {
-    document.querySelectorAll(sel).forEach(function (el) { mark(el, 0); });
   });
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -38,4 +35,11 @@
   );
 
   nodes.forEach(function (el) { io.observe(el); });
+
+  // Страховка: печать, краулеры без JS-рендера, медленные устройства —
+  // всё скрытое проявляется через 1.5 с в любом случае.
+  setTimeout(function () {
+    nodes.forEach(function (el) { el.dataset.visible = 'true'; });
+    io.disconnect();
+  }, 1500);
 })();

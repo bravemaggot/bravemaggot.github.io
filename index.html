@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Иван Михайлович — ИИ-агенты и автоматизация на n8n</title>
-<meta name="description" content="Фриланс: собираю ИИ-агентов на n8n под задачу — контекст, инструменты, расписания. Пример: агент, персонализированный на владельца, считает финансы и напоминает о съёмке видео.">
-<meta name="theme-color" content="#0b0b14">
+<title>Автоматизация на n8n и Telegram-ботах под задачу</title>
+<meta name="description" content="Собираю Telegram-ботов и n8n-автоматизации под вашу рутину: приём заявок, дайджесты, парсинг, уведомления. Прототип за 3–7 дней, запуск за 1–2 недели. Каждый бот на странице — живой.">
+<meta name="theme-color" content="#0c1210">
 <meta name="color-scheme" content="dark">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c3aed'/%3E%3Ctext x='16' y='23' font-family='Inter,sans-serif' font-size='18' font-weight='700' fill='%23fff' text-anchor='middle'%3EИ%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f766e'/%3E%3Ctext x='16' y='23' font-family='Inter,sans-serif' font-size='18' font-weight='700' fill='%23fff' text-anchor='middle'%3EИ%3C/text%3E%3C/svg%3E">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bravemaggot.github.io/">
-<meta property="og:title" content="Иван Михайлович — ИИ-агенты и автоматизация на n8n">
-<meta property="og:description" content="Собираю ИИ-агентов на n8n под задачу: контекст, инструменты, расписания.">
+<meta property="og:title" content="Автоматизация на n8n и Telegram-ботах под задачу">
+<meta property="og:description" content="Боты и n8n-автоматизации, которые забирают рутину: заявки, дайджесты, парсинг, уведомления. Прототип за 3–7 дней.">
 <meta property="og:image" content="https://bravemaggot.github.io/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -24,231 +24,221 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<div class="bg" aria-hidden="true">
-  <span class="blob blob-1"></span>
-  <span class="blob blob-2"></span>
-  <span class="blob blob-3"></span>
-  <span class="blob blob-4"></span>
-  <span class="blob blob-5"></span>
-  <span class="veil"></span>
-</div>
-
-<a class="skip" href="#main">К основному содержанию</a>
-
-<div class="wrap">
-
-  <header class="hero">
-   <div class="hero-top">
-    <div>
-    <p class="status"><span class="status-dot" aria-hidden="true"></span>Открыт к заказам</p>
-
-    <h1>Иван&nbsp;Михайлович</h1>
-
-    <p class="role">Low-code разработчик · ИИ-агенты на n8n</p>
-
-    <p class="ident"><a href="https://www.tiktok.com/@brave.maggot" target="_blank" rel="noopener noreferrer">@brave.maggot</a> · фриланс</p>
-
-    <p class="lead">
-      Собираю ИИ-агентов на n8n под задачу: агент знает свой контекст,
-      считает, отвечает в мессенджере и работает по расписанию.
-    </p>
-
-    <div class="cta">
-      <a class="btn btn-primary" href="mailto:maggotbrave@gmail.com?subject=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D1%83">
-        Обсудить задачу
-        <span class="arrow" aria-hidden="true">→</span>
-      </a>
-      <a class="btn btn-ghost" href="https://www.tiktok.com/@brave.maggot/video/7696995304922483974" target="_blank" rel="noopener noreferrer">
-        Смотреть пример
-      </a>
-    </div>
-
-    <ul class="pills">
-      <li>n8n</li>
-      <li>AI-агенты</li>
-      <li>LLM</li>
-      <li>Vision</li>
-      <li>Telegram</li>
-      <li>Python</li>
-    </ul>
-    </div>
-
-    <div class="flow" role="group" aria-labelledby="h-flow">
-      <p class="flow-title" id="h-flow">Из чего состоит агент</p>
-      <ol class="flow-list">
-        <li>
-          <span class="flow-n" aria-hidden="true">01</span>
-          <span class="flow-body"><b>Контекст</b> — агенту задано, кого он знает и о ком говорит</span>
-        </li>
-        <li>
-          <span class="flow-n" aria-hidden="true">02</span>
-          <span class="flow-body"><b>Инструменты</b> — что он умеет делать: считать, искать, записывать</span>
-        </li>
-        <li>
-          <span class="flow-n" aria-hidden="true">03</span>
-          <span class="flow-body"><b>Расписание</b> — когда срабатывает без участия человека</span>
-        </li>
-        <li>
-          <span class="flow-n" aria-hidden="true">04</span>
-          <span class="flow-body"><b>Канал</b> — где агент отвечает и куда пишет</span>
-        </li>
-      </ol>
-    </div>
-   </div>
-  </header>
-
-  <main id="main">
-
-    <section class="block" aria-labelledby="h-do">
-      <p class="kicker">01 — Что беру на себя</p>
-      <h2 id="h-do">Три вида задач</h2>
-
-      <ul class="grid grid-3">
-        <li class="card">
-          <h3>Сборка по заказу</h3>
-          <p>Агент или автоматизация под вашу задачу целиком: контекст, инструменты, расписание, подключение к мессенджеру или вашему сервису.</p>
-        </li>
-        <li class="card">
-          <h3>Разработка с ИИ</h3>
-          <p>Встраиваю модель в процесс, который уже есть: разбор входящих документов, ответы по вашим данным, черновики вместо ручного заполнения.</p>
-        </li>
-        <li class="card">
-          <h3>Где нужен опыт</h3>
-          <p>Беру то, что не закрывается одним промптом: интеграции, расписания, работа с данными, поведение при сбоях и отсутствии интернета.</p>
-        </li>
-      </ul>
-    </section>
-
-    <section class="block" aria-labelledby="h-case">
-      <p class="kicker">02 — Пример</p>
-      <h2 id="h-case">Агент, который знает обо мне всё</h2>
-
-      <div class="case">
-        <div class="case-main">
-          <p class="case-lede">
-            Первое, что я собрал, — не заказ, а инструмент для себя. Загрузил в агента
-            всю информацию о себе, подключил подсчёт финансов и еженедельные напоминания
-            о съёмке видео и постах в Telegram. Пользуюсь этим каждый день.
-          </p>
-
-          <ul class="tags">
-            <li class="tag ok">работает</li>
-            <li class="tag ok">персонализирован</li>
-            <li class="tag ok">финансы</li>
-            <li class="tag ok">напоминания</li>
-          </ul>
-
-          <p>
-            <a class="row-link" href="https://www.tiktok.com/@brave.maggot/video/7696995304922483974" target="_blank" rel="noopener noreferrer">
-              <span>демонстрация в TikTok</span>
-              <span class="arrow" aria-hidden="true">→</span>
-            </a>
-          </p>
-
-          <h3 class="case-sub">Чем собрано</h3>
-          <ul class="stack">
-            <li>n8n — механика ИИ-агентов</li>
-            <li>LLM — модель и промпты</li>
-            <li>Telegram — канал общения</li>
-            <li>Расписания — еженедельные триггеры</li>
-          </ul>
-        </div>
-
-        <ul class="feats">
-          <li>
-            <span class="feat-title">Вся информация обо мне</span>
-            <span class="feat-text">агент отвечает в моём контексте — работа, планы, обстоятельства, а не по общей энциклопедии</span>
-          </li>
-          <li>
-            <span class="feat-title">Подсчёт финансов</span>
-            <span class="feat-text">считает траты и отвечает на вопросы по ним без ручного разбора</span>
-          </li>
-          <li>
-            <span class="feat-title">Еженедельные напоминания</span>
-            <span class="feat-text">сам напоминает о съёмке видео и о постах в Telegram — без будильника и самодисциплины</span>
-          </li>
-          <li>
-            <span class="feat-title">Собран на механике агентов n8n</span>
-            <span class="feat-text">контекст и инструменты задаются в одном месте, а не собираются вручную из узлов</span>
-          </li>
-        </ul>
-      </div>
-
-      <p class="mid-cta">
-        Нужен такой же агент под вашу задачу —
-        <a class="row-link" href="mailto:maggotbrave@gmail.com?subject=%D0%90%D0%B3%D0%B5%D0%BD%D1%82%20%D0%BF%D0%BE%D0%B4%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D1%83">
-          <span>напишите мне</span><span class="arrow" aria-hidden="true">→</span>
-        </a>
-      </p>
-    </section>
-
-    <section class="block" aria-labelledby="h-how">
-      <p class="kicker">03 — Подход</p>
-      <h2 id="h-how">Как я это собираю</h2>
-
-      <ol class="steps">
-        <li>
-          <span class="step-n" aria-hidden="true">01</span>
-          <h3>Сначала контекст</h3>
-          <p>Прежде чем подключать инструменты, определяю, что агент должен знать и о ком говорить. Без этого он отвечает обезличенно.</p>
-        </li>
-        <li>
-          <span class="step-n" aria-hidden="true">02</span>
-          <h3>Инструменты по задаче</h3>
-          <p>Финансы, напоминания, внешние API — агенту достаются ровно те действия, которые нужны, без лишних.</p>
-        </li>
-        <li>
-          <span class="step-n" aria-hidden="true">03</span>
-          <h3>Сначала на себе</h3>
-          <p>Собираю и проверяю на своих данных. Если агент не работает на мне, на клиентских он тоже не заработает.</p>
-        </li>
-      </ol>
-    </section>
-
-    <section class="block" aria-labelledby="h-contact">
-      <p class="kicker">04 — Контакты</p>
-      <h2 id="h-contact">Расскажите задачу</h2>
-
-      <div class="contact">
-        <p class="contact-lede">
-          Пришлите, что нужно автоматизировать или где бот не справляется.
-          Разберу, что реально можно собрать, и скажу, сколько это займёт и чего не получится.
-        </p>
-        <div class="cta">
-          <a class="btn btn-primary" href="mailto:maggotbrave@gmail.com?subject=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D1%83">
-            Написать мне
-            <span class="arrow" aria-hidden="true">→</span>
-          </a>
-        </div>
-        <p class="contact-mail">maggotbrave@gmail.com</p>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="footer">
-    <p>© 2026 Иван Михайлович</p>
-    <p><a href="mailto:maggotbrave@gmail.com">maggotbrave@gmail.com</a></p>
-  </footer>
-
-</div>
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Иван Михайлович",
-  "alternateName": "Brave Maggot",
+  "name": "Иван",
   "url": "https://bravemaggot.github.io/",
-  "email": "mailto:maggotbrave@gmail.com",
-  "jobTitle": "Фрилансер: low-code разработка, ИИ-агенты на n8n",
-  "sameAs": ["https://www.tiktok.com/@brave.maggot"],
-  "knowsAbout": ["n8n", "AI-агенты", "LLM", "Computer Vision", "Telegram-боты", "Python"]
+  "jobTitle": "Разработчик автоматизаций на n8n и Telegram-ботах",
+  "knowsAbout": ["n8n", "Telegram Bot API", "OpenRouter", "Node.js", "автоматизация бизнес-процессов"],
+  "sameAs": ["https://github.com/bravemaggot"]
 }
 </script>
-<script src="app.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Сколько это стоит?", "acceptedAnswer": {"@type": "Answer", "text": "Точечный сценарий в n8n — от 5 000 ₽, бот под ключ — от 15 000 ₽, сопровождение — от 5 000 ₽ в месяц. Точную цену называю после 15-минутного разговора о задаче."}},
+    {"@type": "Question", "name": "Что нужно от меня на старте?", "acceptedAnswer": {"@type": "Answer", "text": "Описать процесс своими словами и показать, где живут данные: таблицы, каналы, почта, чаты. Техническую часть беру на себя."}},
+    {"@type": "Question", "name": "Где всё это работает?", "acceptedAnswer": {"@type": "Answer", "text": "На self-hosted n8n — на вашем сервере или моём VPS. Данные и ключи остаются у вас, я настраиваю и передаю доступ."}},
+    {"@type": "Question", "name": "А если что-то сломается?", "acceptedAnswer": {"@type": "Answer", "text": "В воркфлоу встроены повторы и алерты об ошибках. На сопровождении слежу за исполнениями и чиню до того, как вы заметите."}},
+    {"@type": "Question", "name": "Сколько времени займёт запуск?", "acceptedAnswer": {"@type": "Answer", "text": "Прототип на ваших данных — 3–7 дней. Боевой запуск с тестами — 1–2 недели."}}
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">К основному содержанию</a>
+
+<div class="bg" aria-hidden="true"><span class="glow"></span></div>
+
+<header class="hero">
+  <div class="container">
+    <p class="eyebrow">Автоматизация на n8n и Telegram-ботах</p>
+    <h1>Забираю рутину в ботов — за&nbsp;1–2&nbsp;недели</h1>
+    <p class="sub">Приём заявок, дайджесты из каналов, парсинг, уведомления и отчёты.
+    Каждый бот на этой странице — живой: можно открыть и потыкать прямо сейчас.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://t.me/ORDERS_BOT_PLACEHOLDER" data-swap="orders-bot">Обсудить задачу в Telegram</a>
+      <a class="btn btn-ghost" href="#works">Потыкать ботов</a>
+    </div>
+
+    <div class="hero-proof">
+      <p class="visually-hidden">Пример диалога с ботом-приёмной заказов:</p>
+      <div class="chat">
+        <p class="chat-line chat-client">Нужен бот, который собирает заявки с сайта и присылает мне в Telegram</p>
+        <p class="chat-line chat-bot">📋 Заявка #12 принята!<br>Сайт-форма → карточка в вашем Telegram, статус и история в очереди</p>
+        <p class="chat-line chat-client">а если клиент напишет криво и без бюджета?</p>
+        <p class="chat-line chat-bot">AI задаст уточняющий вопрос и дополнит бриф — заявка не потеряется</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="band" aria-label="Показатели">
+    <div class="container band-row">
+      <div class="band-item"><span class="band-num">4</span><span class="band-label">живых демо-бота</span></div>
+      <div class="band-item"><span class="band-num">2</span><span class="band-label">n8n-сервиса в бою</span></div>
+      <div class="band-item"><span class="band-num">3–7</span><span class="band-label">дней до прототипа</span></div>
+      <div class="band-item"><span class="band-num">1–2</span><span class="band-label">недели до запуска</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="problem">
+    <div class="container">
+      <h2>Что обычно съедает время</h2>
+      <ul class="grid grid-3">
+        <li class="card">
+          <h3>Заявки теряются в личке</h3>
+          <p>Клиенты пишут в директ, сообщения тонут, бриф приходится вытягивать вопросами по десять раз.</p>
+        </li>
+        <li class="card">
+          <h3>Ручные отчёты и рассылки</h3>
+          <p>Каждый день одно и то же: скопировать, свести, отправить. Час-два в день на то, что делает скрипт за минуту.</p>
+        </li>
+        <li class="card">
+          <h3>Информация разбросана</h3>
+          <p>Важное тонет в каналах и чатах. Утром нужно полчаса, чтобы просто понять, что произошло.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="works">
+    <div class="container">
+      <p class="eyebrow">Живые демо</p>
+      <h2>Откройте и попробуйте сами</h2>
+      <p class="section-sub">Это не макеты — каждый сервис работает прямо сейчас. Напишите боту и посмотрите, как он отвечает.</p>
+      <ul class="grid grid-2">
+        <li class="card work">
+          <div class="work-head"><span class="work-icon" aria-hidden="true">📰</span><h3>Парсер TG-каналов</h3></div>
+          <p>Подписываетесь на публичные каналы — бот присылает AI-дайджест новых постов по расписанию. Команды: /add, /list, /now.</p>
+          <p class="stack">n8n · Telegram API · OpenRouter · HTML-парсинг</p>
+          <a class="work-link" href="https://t.me/PARSER_BOT_PLACEHOLDER" data-swap="parser-bot">Открыть бота<span aria-hidden="true"> →</span></a>
+        </li>
+        <li class="card work">
+          <div class="work-head"><span class="work-icon" aria-hidden="true">📥</span><h3>Приёмная заказов</h3></div>
+          <p>Клиенты пишут боту — AI структурирует бриф (задача, бюджет, срок), задаёт уточняющий вопрос, а владелец получает карточку заявки в очередь.</p>
+          <p class="stack">n8n · Telegram API · OpenRouter · AI-структурирование</p>
+          <a class="work-link" href="https://t.me/ORDERS_BOT_PLACEHOLDER" data-swap="orders-bot">Открыть бота<span aria-hidden="true"> →</span></a>
+        </li>
+        <li class="card work">
+          <div class="work-head"><span class="work-icon" aria-hidden="true">😈</span><h3>Адвокат дьявола</h3></div>
+          <p>Стресс-тест решения: сильные стороны, риски, слепые пятна, а потом — атака, защита и вердикт «делать / не делать».</p>
+          <p class="stack">Node.js · grammY · OpenRouter</p>
+          <a class="work-link" href="https://t.me/ADVOCATE_BOT_PLACEHOLDER" data-swap="advocate-bot">Открыть бота<span aria-hidden="true"> →</span></a>
+        </li>
+        <li class="card work">
+          <div class="work-head"><span class="work-icon" aria-hidden="true">🎤</span><h3>Собеседатор</h3></div>
+          <p>Тренировочное собеседование: 5 вопросов по выбранной роли, разбор каждого ответа, оценка и список тем, которые подтянуть.</p>
+          <p class="stack">Node.js · grammY · OpenRouter</p>
+          <a class="work-link" href="https://t.me/INTERVIEWER_BOT_PLACEHOLDER" data-swap="interviewer-bot">Открыть бота<span aria-hidden="true"> →</span></a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="how">
+    <div class="container">
+      <h2>Как это будет работать у вас</h2>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-num" aria-hidden="true">1</span>
+          <div><h3>Формулируем результат</h3><p>Пишете задачу в Telegram. 15 минут разговора — и у нас есть описание того, что автоматизация должна делать на выходе.</p></div>
+        </li>
+        <li class="step">
+          <span class="step-num" aria-hidden="true">2</span>
+          <div><h3>Прототип на ваших данных</h3><p>За 3–7 дней собираю рабочий прототип и показываю на реальных данных. Правим, пока не совпадёт с ожиданием.</p></div>
+        </li>
+        <li class="step">
+          <span class="step-num" aria-hidden="true">3</span>
+          <div><h3>Запуск и передача</h3><p>Через 1–2 недели автоматизация работает сама: повторы при сбоях, алерты об ошибках, инструкция и доступы — ваши.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="pricing">
+    <div class="container">
+      <h2>Сколько это стоит</h2>
+      <ul class="grid grid-3 pricing">
+        <li class="card price">
+          <h3>Точечная автоматизация</h3>
+          <p class="price-num">от 5 000 ₽</p>
+          <p>Один сценарий в n8n: парсер, уведомление, интеграция, отчёт по расписанию.</p>
+          <p class="price-term">3–7 дней</p>
+        </li>
+        <li class="card price price-featured">
+          <p class="badge">Чаще всего берут</p>
+          <h3>Бот под ключ</h3>
+          <p class="price-num">от 15 000 ₽</p>
+          <p>Telegram-бот со сценариями и AI: приём заявок, дайджесты, диалоги. Хостинг, запуск, инструкция.</p>
+          <p class="price-term">1–2 недели</p>
+        </li>
+        <li class="card price">
+          <h3>Сопровождение</h3>
+          <p class="price-num">от 5 000 ₽/мес</p>
+          <p>Мониторинг исполнений, доработки сценариев, новые задачи по ходу.</p>
+          <p class="price-term">ежемесячно</p>
+        </li>
+      </ul>
+      <p class="fineprint">Точная цена — после 15-минутного разговора о задаче. Оплата по этапам: прототип → запуск.</p>
+      <a class="btn btn-primary" href="https://t.me/ORDERS_BOT_PLACEHOLDER" data-swap="orders-bot">Обсудить задачу в Telegram</a>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="container container-narrow">
+      <h2>Частые вопросы</h2>
+      <details class="faq">
+        <summary>Сколько это стоит?</summary>
+        <p>Точечный сценарий в n8n — от 5 000 ₽, бот под ключ — от 15 000 ₽, сопровождение — от 5 000 ₽ в месяц. Точную цену называю после 15-минутного разговора о задаче.</p>
+      </details>
+      <details class="faq">
+        <summary>Что нужно от меня на старте?</summary>
+        <p>Описать процесс своими словами и показать, где живут данные: таблицы, каналы, почта, чаты. Техническую часть беру на себя.</p>
+      </details>
+      <details class="faq">
+        <summary>Где всё это работает?</summary>
+        <p>На self-hosted n8n — на вашем сервере или моём VPS. Данные и ключи остаются у вас, я настраиваю и передаю доступ.</p>
+      </details>
+      <details class="faq">
+        <summary>А если что-то сломается?</summary>
+        <p>В воркфлоу встроены повторы и алерты об ошибках. На сопровождении слежу за исполнениями и чиню до того, как вы заметите.</p>
+      </details>
+      <details class="faq">
+        <summary>Сколько времени займёт запуск?</summary>
+        <p>Прототип на ваших данных — 3–7 дней. Боевой запуск с тестами — 1–2 недели.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="section final-cta">
+    <div class="container container-narrow">
+      <h2>Опишите рутину — вернусь с планом автоматизации за один день</h2>
+      <p class="section-sub">Достаточно двух-трёх предложений о том, что вы делаете руками каждый день.</p>
+      <a class="btn btn-primary btn-lg" href="https://t.me/ORDERS_BOT_PLACEHOLDER" data-swap="orders-bot">Написать в Telegram</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-row">
+    <p>Иван — автоматизации на n8n и Telegram-ботах</p>
+    <nav aria-label="Контакты">
+      <a href="https://t.me/ORDERS_BOT_PLACEHOLDER" data-swap="orders-bot">Telegram</a>
+      <a href="https://github.com/bravemaggot">GitHub</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="app.js"></script>
 </body>
 </html>
