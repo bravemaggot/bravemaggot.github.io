@@ -4,49 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Автоматизация на n8n и Telegram-ботах под задачу</title>
-<meta name="description" content="Собираю Telegram-ботов и n8n-автоматизации под вашу рутину: приём заявок, дайджесты, парсинг, уведомления. Прототип за 3–7 дней, запуск за 1–2 недели. Оплата по этапам.">
-<meta name="theme-color" content="#0b0e0d">
-<meta name="color-scheme" content="dark">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233fd0b6'/%3E%3Ctext x='16' y='23' font-family='sans-serif' font-size='18' font-weight='700' fill='%2306231d' text-anchor='middle'%3EИ%3C/text%3E%3C/svg%3E">
-
-<link rel="canonical" href="https://bravemaggot.github.io/">
+<meta name="description" content="Собираю Telegram-ботов и n8n-сценарии под вашу рутину: приём заявок, дайджесты каналов, парсинг, отчёты и уведомления. Прототип за 3–7 дней, запуск за 1–2 недели. Каждый бот на странице живой — можно открыть и проверить.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0c0a08">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://bravemaggot.github.io/">
+<meta property="og:site_name" content="Автоматизации Ивана">
+<meta property="og:locale" content="ru_RU">
 <meta property="og:title" content="Автоматизация на n8n и Telegram-ботах под задачу">
-<meta property="og:description" content="Приём заявок, дайджесты из каналов, парсинг, уведомления и отчёты. Прототип — за 3–7 дней, боевой запуск — за 1–2 недели.">
+<meta property="og:description" content="Рутину — ботам: заявки, дайджесты, парсинг, отчёты. Прототип за 3–7 дней, запуск за 1–2 недели. Каждый бот на странице живой.">
+<link rel="canonical" href="https://bravemaggot.github.io/">
+<meta property="og:url" content="https://bravemaggot.github.io/">
 <meta property="og:image" content="https://bravemaggot.github.io/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Иван — автоматизации на n8n и Telegram-ботах">
-<meta property="og:locale" content="ru_RU">
+<meta property="og:image:alt" content="Лендинг автоматизаций: тёмное небо, оранжевый акцент, живые боты">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Автоматизация на n8n и Telegram-ботах под задачу">
-<meta name="twitter:description" content="Прототип автоматизации — за 3–7 дней, боевой запуск — за 1–2 недели. Оплата по этапам.">
+<meta name="twitter:description" content="Рутину — ботам: заявки, дайджесты, парсинг, отчёты. Каждый бот на странице живой.">
 <meta name="twitter:image" content="https://bravemaggot.github.io/og.png">
-
-<link rel="preload" as="font" type="font/woff2" href="fonts/manrope-cyrillic.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="fonts/manrope-latin.woff2" crossorigin>
-<link rel="stylesheet" href="style.css">
-
-<!-- Класс .js ставится только если app.js реально загрузился: иначе контент останется видимым -->
-<script>
-  document.documentElement.classList.add('js');
-  window.__rvFallback = setTimeout(function () {
-    document.documentElement.classList.remove('js');
-  }, 2500);
-</script>
-<noscript><style>.js .rv{opacity:1!important;transform:none!important}</style></noscript>
-
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230c0a08'/%3E%3Cpath d='M16 5l2.4 8.6L27 16l-8.6 2.4L16 27l-2.4-8.6L5 16l8.6-2.4z' fill='%23ff5a1f'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preload" href="fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Иван",
   "alternateName": "bravemaggot",
-  "url": "https://bravemaggot.github.io/",
-  "jobTitle": "Разработчик автоматизаций на n8n и Telegram-ботах",
-  "knowsAbout": ["n8n", "Telegram Bot API", "OpenRouter", "Node.js", "автоматизация бизнес-процессов"],
-  "sameAs": ["https://github.com/bravemaggot"]
+  "jobTitle": "Разработчик автоматизаций на n8n и Telegram-ботов",
+  "url": "https://github.com/bravemaggot",
+  "sameAs": ["https://github.com/bravemaggot"],
+  "knowsAbout": ["n8n", "Telegram bots", "Node.js", "grammY", "OpenRouter"]
 }
 </script>
 <script type="application/ld+json">
@@ -54,26 +44,672 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "Сколько это стоит?", "acceptedAnswer": {"@type": "Answer", "text": "Точечный сценарий в n8n — от 15 000 ₽, бот под ключ — от 50 000 ₽, сопровождение — от 10 000 ₽ в месяц. Точную цену называю после разговора на 15 минут о задаче."}},
-    {"@type": "Question", "name": "Что нужно от меня на старте?", "acceptedAnswer": {"@type": "Answer", "text": "Описать процесс своими словами и показать, где живут данные: таблицы, каналы, почта, чаты. Техническую часть беру на себя."}},
-    {"@type": "Question", "name": "Где всё это работает?", "acceptedAnswer": {"@type": "Answer", "text": "На n8n на вашем сервере или на моём VPS. Данные и ключи остаются у вас, я настраиваю и передаю доступ."}},
-    {"@type": "Question", "name": "Я не технарь. Справлюсь?", "acceptedAnswer": {"@type": "Answer", "text": "Да. От вас нужно описание задачи своими словами, всё остальное — на мне. Инструкцию пишу человеческим языком, без жаргона."}},
-    {"@type": "Question", "name": "А если процесс нестандартный?", "acceptedAnswer": {"@type": "Answer", "text": "Нестандартные процессы — основной случай. Сначала прототип на ваших данных: по нему сразу видно, что работает, а что нет."}},
-    {"@type": "Question", "name": "А если что-то сломается?", "acceptedAnswer": {"@type": "Answer", "text": "В воркфлоу встроены повторы и алерты об ошибках. На сопровождении слежу за исполнениями и чиню до того, как вы заметите."}},
-    {"@type": "Question", "name": "Сколько времени займёт запуск?", "acceptedAnswer": {"@type": "Answer", "text": "Прототип на ваших данных — 3–7 дней. Боевой запуск с тестами — 1–2 недели."}}
+    {"@type":"Question","name":"Сколько это стоит?","acceptedAnswer":{"@type":"Answer","text":"Ориентиры: от 15 000 ₽ за одиночный сценарий, от 50 000 ₽ за бота целиком, от 10 000 ₽ в месяц за сопровождение. Точная цена появляется после короткого разговора о задаче — обычно хватает 15 минут."}},
+    {"@type":"Question","name":"Что нужно от меня на старте?","acceptedAnswer":{"@type":"Answer","text":"Рассказать про процесс своими словами и показать, где живут данные: таблицы, каналы, почта, чаты. Техническую часть исполнитель берёт на себя."}},
+    {"@type":"Question","name":"Где всё это будет работать?","acceptedAnswer":{"@type":"Answer","text":"На n8n: либо на вашем сервере, либо на сервере исполнителя, как договоритесь. Данные и ключи остаются у заказчика, исполнитель настраивает решение и передаёт доступ."}},
+    {"@type":"Question","name":"Я не технарь. Справлюсь?","acceptedAnswer":{"@type":"Answer","text":"Да. От заказчика нужно описание задачи обычными словами, остальное — работа исполнителя. Инструкция пишется человеческим языком, без жаргона."}},
+    {"@type":"Question","name":"А если процесс нестандартный?","acceptedAnswer":{"@type":"Answer","text":"Нестандартные процессы — основной случай. Сначала делается прототип на реальных данных заказчика: по нему сразу видно, что работает, а что стоит переделать."}},
+    {"@type":"Question","name":"А если что-то сломается?","acceptedAnswer":{"@type":"Answer","text":"Повторы при сбоях и алерты об ошибках встроены в каждое решение. На сопровождении исполнитель замечает проблему и чинит её до того, как она заметна заказчику."}},
+    {"@type":"Question","name":"Сколько времени займёт запуск?","acceptedAnswer":{"@type":"Answer","text":"Прототип — 3–7 дней. Боевой запуск с проверками — одна-две недели."}}
   ]
 }
 </script>
+<style>
+/* ================= база: ночное небо, звёзды, оранжевый акцент ================= */
+:root{
+  --bg:#0c0a08;
+  --panel:rgba(22,18,15,.88);
+  --panel-2:#191512;
+  --line:rgba(255,244,230,.1);
+  --line-soft:rgba(255,244,230,.06);
+  --text:#f1ede6;
+  --muted:#a8a196;
+  --dim:#7e766b;
+  --orange:#ff5a1f;
+  --orange-text:#ff8352;
+  --orange-soft:rgba(255,90,31,.1);
+  --orange-line:rgba(255,120,50,.4);
+  --ink:#1a0d05;
+  --spring:cubic-bezier(.22,1,.36,1);
+  --f-disp:'Unbounded',sans-serif;
+  --f-body:'Manrope',sans-serif;
+  --f-mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px;
+  scrollbar-color:#2b2620 #0c0a08;scrollbar-width:thin}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:#0c0a08}
+::-webkit-scrollbar-thumb{background:#2b2620;border-radius:8px;border:2px solid #0c0a08}
+::-webkit-scrollbar-thumb:hover{background:#3a332b}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:var(--f-body);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body.lock{overflow:hidden}
+::selection{background:var(--orange);color:var(--ink)}
+a{color:var(--orange-text);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:4px}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+h1,h2,h3{font-weight:700}
+.mono{font-family:var(--f-mono)}
+.skip{position:absolute;left:-9999px;top:0;background:var(--orange);color:var(--ink);
+  padding:10px 18px;border-radius:0 0 10px 0;z-index:400;font-weight:700}
+.skip:focus{left:0}
+
+/* зерно */
+body::after{
+  content:"";position:fixed;inset:-60px;z-index:210;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='0.6'/></svg>");
+  animation:grain 9s steps(8) infinite;
+}
+@keyframes grain{
+  0%,100%{transform:translate(0,0)}12.5%{transform:translate(-3%,2%)}25%{transform:translate(2%,-3%)}
+  37.5%{transform:translate(-2%,-2%)}50%{transform:translate(3%,2%)}62.5%{transform:translate(-3%,1%)}
+  75%{transform:translate(2%,3%)}87.5%{transform:translate(-1%,-3%)}
+}
+
+/* ================= слои неба ================= */
+.neb{position:fixed;inset:0;z-index:0;pointer-events:none}
+.neb i{position:absolute;border-radius:50%}
+.neb .n1{top:-22%;left:-12%;width:62vw;height:62vw;
+  background:radial-gradient(circle,rgba(255,120,50,.055),transparent 65%);
+  animation:breath 26s ease-in-out infinite alternate}
+.neb .n2{bottom:-26%;right:-14%;width:56vw;height:56vw;
+  background:radial-gradient(circle,rgba(255,170,90,.04),transparent 65%);
+  animation:breath 32s ease-in-out infinite alternate -14s}
+@keyframes breath{from{transform:scale(1) translate(0,0)}to{transform:scale(1.12) translate(2vw,-2vh)}}
+.mw{position:fixed;left:50%;top:40%;width:160vw;height:32vh;z-index:0;pointer-events:none;
+  transform:translateX(-50%) rotate(-14deg);
+  background:linear-gradient(90deg,transparent,rgba(255,240,225,.05) 28%,rgba(255,200,150,.06) 50%,rgba(255,240,225,.045) 72%,transparent)}
+.vig{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(120% 95% at 50% 38%,transparent 52%,rgba(0,0,0,.42))}
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+main{position:relative;z-index:1}
+
+/* ================= boot-экран ================= */
+#boot{position:fixed;inset:0;z-index:300;background:#0b0908;display:grid;place-items:center;
+  transition:opacity .5s ease,visibility .5s}
+#boot.done{opacity:0;visibility:hidden}
+.boot-in{font-family:var(--f-mono);font-size:.82rem;color:#7e766b;display:flex;flex-direction:column;gap:9px;letter-spacing:.03em}
+.bline{opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s var(--spring)}
+.bline.on{opacity:1;transform:none}
+.bline b{color:var(--orange);font-weight:500}
+html:not(.js) #boot{display:none}
+
+/* ================= курсор ================= */
+#cursor{position:fixed;top:0;left:0;width:36px;height:36px;border-radius:50%;
+  border:1.5px solid rgba(255,140,70,.6);pointer-events:none;z-index:250;opacity:0;
+  box-shadow:0 0 20px rgba(255,90,31,.22),inset 0 0 12px rgba(255,90,31,.08);
+  transition:opacity .3s ease,background .25s,border-color .25s}
+#cursor.vis{opacity:1}
+#cursor.act{background:rgba(255,90,31,.1);border-color:var(--orange)}
+@media (hover:none){#cursor{display:none}}
+
+/* ================= прогресс-бар ================= */
+#progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:160;
+  background:var(--orange);transform:scaleX(0);transform-origin:0 50%;
+  box-shadow:0 0 12px rgba(255,90,31,.5)}
+
+/* ================= шапка ================= */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:150;height:66px;
+  background:rgba(12,10,8,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line-soft);transition:transform .5s var(--spring)}
+.topbar.hide{transform:translateY(-103%)}
+.topbar .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;color:var(--text);font-weight:700;font-size:.95rem}
+.brand:hover{text-decoration:none}
+.brand .logo{width:32px;height:32px;border-radius:10px;background:var(--orange);
+  display:grid;place-items:center;color:var(--ink);
+  box-shadow:0 0 18px rgba(255,90,31,.35)}
+.topnav{display:flex;gap:26px}
+.topnav a{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--dim);transition:color .25s}
+.topnav a:hover{color:var(--text);text-decoration:none}
+.mbtn{display:none;width:44px;height:44px;border-radius:12px;background:var(--panel-2);
+  border:1px solid var(--line);cursor:pointer;flex-direction:column;
+  align-items:center;justify-content:center;gap:5px}
+.mbtn span{display:block;width:18px;height:2px;background:var(--text);border-radius:2px;
+  transition:transform .4s var(--spring),opacity .3s}
+body.nav-open .mbtn span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+body.nav-open .mbtn span:nth-child(2){opacity:0}
+body.nav-open .mbtn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* без JS: меню-кнопка мертва — показываем ссылки прямо в шапке */
+@media (max-width:860px){
+  html:not(.js) .topnav{display:flex;flex-wrap:wrap;gap:14px}
+  html:not(.js) .mbtn{display:none}
+  html:not(.js) .topbar{height:auto;padding:12px 0}
+  html:not(.js) .topbar .wrap{flex-wrap:wrap}
+}
+
+/* мобильное меню */
+.mnav{position:fixed;inset:0;z-index:140;background:rgba(10,8,7,.94);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  opacity:0;pointer-events:none;transition:opacity .4s ease}
+body.nav-open .mnav{opacity:1;pointer-events:auto}
+.mnav a.mlink{font-family:var(--f-disp);font-size:1.3rem;color:var(--text);padding:11px;
+  opacity:0;transform:translateY(16px);transition:opacity .4s ease,transform .5s var(--spring)}
+.mnav a.mlink:hover{color:var(--orange-text);text-decoration:none}
+body.nav-open .mnav a.mlink{opacity:1;transform:none}
+.mnav a.mlink:nth-child(2){transition-delay:.04s}
+.mnav a.mlink:nth-child(3){transition-delay:.08s}
+.mnav a.mlink:nth-child(4){transition-delay:.12s}
+.mnav a.mlink:nth-child(5){transition-delay:.16s}
+.mnav .btn{margin-top:24px;opacity:0;transform:translateY(16px);
+  transition:opacity .4s ease .22s,transform .5s var(--spring) .22s,background .25s}
+body.nav-open .mnav .btn{opacity:1;transform:none}
+
+/* ================= кнопки ================= */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:15px 28px;border-radius:999px;font-weight:700;font-size:.98rem;cursor:pointer;
+  border:1px solid transparent;font-family:var(--f-body);will-change:transform;
+  transition:transform .45s var(--spring),background .25s,border-color .25s,color .25s,box-shadow .35s}
+.btn-primary{background:var(--orange);color:var(--ink)}
+.btn-primary:hover{background:#ff6c35;text-decoration:none;box-shadow:0 10px 34px rgba(255,90,31,.35)}
+.btn-ghost{background:rgba(255,255,255,.02);color:var(--text);border-color:rgba(255,244,230,.22)}
+.btn-ghost:hover{background:rgba(255,255,255,.06);border-color:rgba(255,244,230,.4);text-decoration:none}
+
+/* ================= reveal: только opacity + сдвиг, без blur — текст всегда чёткий ================= */
+.js .rv{opacity:0;transform:translateY(30px);
+  transition:opacity .9s ease var(--d,0s),transform .9s var(--spring) var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+
+/* ================= герой ================= */
+.hero{padding:176px 0 90px}
+.hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:72px;align-items:center}
+.kicker{font-family:var(--f-mono);font-size:.73rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--dim);margin-bottom:24px;
+  display:flex;align-items:center;gap:12px}
+.kicker::before{content:"";width:26px;height:2px;background:var(--orange);flex-shrink:0;
+  box-shadow:0 0 8px rgba(255,90,31,.6)}
+.hero h1{font-family:var(--f-disp);font-weight:700;
+  font-size:clamp(1.9rem,4.6vw,3.55rem);line-height:1.14;letter-spacing:-.01em;
+  background:linear-gradient(94deg,#ffffff 0%,#f3efe8 45%,#8f877b 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:26px}
+.h1-acc{color:var(--orange);-webkit-text-fill-color:var(--orange);
+  text-shadow:0 0 34px rgba(255,90,31,.35)}
+.hero .lead{color:var(--muted);font-size:1.09rem;max-width:500px;margin-bottom:36px}
+.btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+.hero-note{color:var(--dim);font-size:.86rem;font-family:var(--f-mono);letter-spacing:.02em}
+
+/* мини-чат */
+.chat{background:rgba(20,16,13,.92);border:1px solid var(--line);border-radius:22px;overflow:hidden;
+  box-shadow:0 40px 90px rgba(0,0,0,.5)}
+.chat-head{display:flex;align-items:center;gap:12px;padding:15px 18px;border-bottom:1px solid var(--line-soft)}
+.chat-ava{width:40px;height:40px;border-radius:50%;background:var(--orange-soft);
+  border:1px solid var(--orange-line);display:grid;place-items:center;color:var(--orange);flex-shrink:0}
+.chat-name{font-weight:700;font-size:.94rem;line-height:1.25;color:var(--text)}
+.chat-sub{font-family:var(--f-mono);font-size:.7rem;color:var(--dim);display:flex;align-items:center;gap:7px}
+.chat-sub .dot{width:6px;height:6px;border-radius:50%;background:var(--orange);
+  animation:pulse 2.2s ease-in-out infinite}
+.chat-replay{margin-left:auto;background:none;border:1px solid var(--line);color:var(--dim);
+  width:34px;height:34px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
+  transition:color .25s,border-color .25s}
+.chat-replay:hover{color:var(--text);border-color:rgba(255,244,230,.3)}
+.chat-body{padding:18px;display:flex;flex-direction:column;gap:10px}
+.bubble{max-width:88%;padding:11px 15px;border-radius:16px;font-size:.9rem;line-height:1.5;
+  opacity:0;transform:translateY(12px);transition:opacity .45s ease,transform .45s var(--spring)}
+.bubble.show{opacity:1;transform:none}
+.bubble.bot{align-self:flex-start;background:var(--panel-2);border:1px solid var(--line);
+  border-bottom-left-radius:6px;color:#e9e5de}
+.bubble.client{align-self:flex-end;background:var(--orange);border:1px solid var(--orange);
+  border-bottom-right-radius:6px;color:var(--ink);font-weight:600}
+.bubble.typing{display:flex;gap:5px;padding:14px 16px}
+.bubble.typing span{width:6px;height:6px;border-radius:50%;background:var(--dim);
+  animation:tdot 1s ease-in-out infinite}
+.bubble.typing span:nth-child(2){animation-delay:.15s}
+.bubble.typing span:nth-child(3){animation-delay:.3s}
+@keyframes tdot{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(-4px);opacity:1}}
+.cardmsg{min-width:min(300px,100%)}
+.cardmsg-top{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  font-weight:800;font-size:.9rem;margin-bottom:10px;color:var(--text)}
+.cardmsg-top .tag{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--orange);background:var(--orange-soft);
+  border:1px solid var(--orange-line);padding:3px 9px;border-radius:999px}
+.crow{display:flex;justify-content:space-between;gap:14px;font-size:.82rem;
+  padding:5px 0;border-top:1px dashed rgba(255,244,230,.13)}
+.crow span{color:var(--dim)}
+.crow b{font-weight:600;text-align:right;color:#e9e5de}
+.cardmsg-btns{display:flex;gap:8px;margin-top:12px}
+.cardmsg-btns span{flex:1;text-align:center;font-size:.78rem;font-weight:700;
+  padding:7px 0;border-radius:9px;border:1px solid var(--line);color:var(--muted)}
+.cardmsg-btns span:first-child{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.chat-note{padding:12px 18px;border-top:1px solid var(--line-soft);
+  font-family:var(--f-mono);font-size:.68rem;color:var(--dim);letter-spacing:.07em}
+
+/* ================= полоса: бегущая строка + показатели ================= */
+.band{border-bottom:1px solid var(--line-soft);background:rgba(255,244,230,.012)}
+.ticker{overflow:hidden;border-bottom:1px solid var(--line-soft);padding:15px 0}
+.ticker-track{display:flex;width:max-content;animation:tick 30s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-group{display:flex;align-items:center;gap:0;padding-right:24px}
+.ticker-group span{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.22em;
+  text-transform:uppercase;color:rgba(241,237,230,.5);white-space:nowrap}
+.ticker-group i{font-style:normal;color:var(--orange);margin:0 22px;font-size:.6rem}
+@keyframes tick{to{transform:translateX(-50%)}}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);padding:52px 0}
+.stat{padding:6px 32px}
+.stat + .stat{border-left:1px solid var(--line-soft)}
+.stat-num{display:flex;align-items:flex-start;font-family:var(--f-mono);
+  font-weight:600;font-size:clamp(2.1rem,3.8vw,3rem);line-height:1;color:#f7f2ea;
+  text-shadow:0 0 26px rgba(255,244,230,.14)}
+.stat-label{color:var(--muted);font-size:.92rem;margin-top:13px}
+
+/* ================= секции ================= */
+.sec{padding:122px 0}
+.sec-head{max-width:660px;margin-bottom:64px}
+.sec-head h2{font-family:var(--f-disp);font-weight:600;font-size:clamp(1.55rem,2.9vw,2.35rem);
+  line-height:1.2;margin-bottom:18px;color:var(--text)}
+.sec-head .lead{color:var(--muted)}
+
+/* проблема */
+.prob{display:grid;grid-template-columns:110px 1fr;gap:26px;padding:40px 0;border-top:1px solid var(--line)}
+.prob:last-of-type{border-bottom:1px solid var(--line)}
+.prob-num{font-family:var(--f-mono);color:var(--dim);font-size:.95rem;padding-top:7px;transition:color .3s}
+.prob:hover .prob-num{color:var(--orange)}
+.prob h3{font-size:1.42rem;font-weight:800;margin-bottom:11px;letter-spacing:-.01em;color:var(--text)}
+.prob p{color:var(--muted);max-width:580px}
+
+/* калькулятор рутины */
+.calc{margin-top:72px;background:rgba(20,16,13,.82);border:1px solid var(--line);border-radius:22px;
+  padding:44px;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.calc h3{font-family:var(--f-disp);font-weight:600;font-size:1.3rem;line-height:1.3;margin-bottom:10px}
+.calc .cl{color:var(--muted);font-size:.95rem;margin-bottom:28px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.chip{font-family:var(--f-body);font-size:.88rem;font-weight:600;color:var(--muted);
+  background:transparent;border:1px solid rgba(255,244,230,.18);border-radius:999px;padding:9px 17px;
+  cursor:pointer;transition:all .3s var(--spring)}
+.chip:hover{border-color:rgba(255,244,230,.4);color:var(--text)}
+.chip:active{transform:scale(.97)}
+.chip.on,.chip[aria-pressed="true"]{background:var(--orange);border-color:var(--orange);color:var(--ink);
+  box-shadow:0 4px 18px rgba(255,90,31,.25)}
+.range-row{display:flex;align-items:center;gap:18px}
+.range-row label{font-size:.88rem;color:var(--muted);white-space:nowrap}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:3px;border-radius:3px;
+  background:linear-gradient(to right,var(--orange) var(--fill,30%),rgba(255,244,230,.15) var(--fill,30%));
+  outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;
+  background:var(--orange);border:4px solid var(--bg);box-shadow:0 0 0 1.5px var(--orange-line),0 0 14px rgba(255,90,31,.4);cursor:grab}
+input[type=range]:active::-webkit-slider-thumb{cursor:grabbing}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--orange);
+  border:3px solid var(--bg);box-shadow:0 0 0 1.5px var(--orange-line),0 0 14px rgba(255,90,31,.4);cursor:grab}
+.calc-note{margin-top:22px;font-family:var(--f-mono);font-size:.7rem;color:var(--dim);letter-spacing:.04em}
+.calc-out{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-soft);
+  border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.co{background:var(--panel-2);padding:26px 24px}
+.co:first-child{grid-column:1/-1}
+.co-num{font-family:var(--f-mono);font-weight:600;font-size:2rem;line-height:1;color:#f7f2ea}
+.co:first-child .co-num{font-size:2.7rem;color:var(--orange);text-shadow:0 0 28px rgba(255,90,31,.35)}
+.co-num small{font-size:.55em;color:var(--dim);font-weight:400;margin-left:4px}
+.co-label{color:var(--muted);font-size:.85rem;margin-top:9px}
+.calc-cta{margin-top:22px;display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.93rem;color:var(--orange-text)}
+
+/* ================================================================
+   КОНСТРУКТОР СЦЕНАРИЯ — мастер из трёх шагов, только HTML:
+   ничего не может вылезти за поля, текст переносится сам
+   ================================================================ */
+.builder{background:rgba(20,16,13,.82);border:1px solid var(--line);border-radius:22px;
+  padding:44px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.b-step + .b-step{margin-top:44px;padding-top:44px;border-top:1px solid var(--line-soft)}
+.b-step-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.b-step-num{width:32px;height:32px;border-radius:50%;background:var(--orange-soft);
+  border:1px solid var(--orange-line);color:var(--orange);font-family:var(--f-mono);
+  font-size:.88rem;font-weight:600;display:grid;place-items:center;flex-shrink:0}
+.b-step-head h3{font-family:var(--f-disp);font-weight:600;font-size:1.08rem;margin:0;color:var(--text)}
+.b-counter{margin-left:auto;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;color:var(--muted)}
+.b-hint{font-family:var(--f-mono);font-size:.7rem;color:var(--dim);letter-spacing:.04em;margin-top:16px}
+
+/* шаг 1: карточки задач */
+.task-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.task{display:flex;flex-direction:column;align-items:flex-start;gap:10px;text-align:left;
+  background:transparent;border:1px solid var(--line);border-radius:16px;padding:18px;
+  cursor:pointer;position:relative;font-family:var(--f-body);
+  transition:border-color .3s,background .3s,transform .35s var(--spring),box-shadow .3s}
+.task:hover{border-color:rgba(255,244,230,.3);transform:translateY(-2px)}
+.task:active{transform:scale(.98)}
+.task .t-ic{width:38px;height:38px;border-radius:11px;background:var(--orange-soft);
+  border:1px solid var(--orange-line);display:grid;place-items:center;color:var(--orange);flex-shrink:0}
+.task .t-name{font-weight:800;font-size:.97rem;line-height:1.3;color:var(--text)}
+.task .t-sub{font-size:.79rem;line-height:1.45;color:var(--muted)}
+.task .t-badge{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.04em;color:var(--dim);
+  border:1px solid var(--line);padding:3px 9px;border-radius:999px;margin-top:2px}
+.task.on{border-color:rgba(255,120,50,.55);background:rgba(255,90,31,.07);
+  box-shadow:0 8px 26px rgba(255,90,31,.08)}
+.task.on::after{content:"✓";position:absolute;top:12px;right:14px;color:var(--orange);
+  font-weight:800;font-size:.95rem}
+.task.on .t-badge{color:var(--orange-text);border-color:var(--orange-line)}
+
+/* шаг 2: конвейер источники → ядро → результат */
+.pipe{display:grid;grid-template-columns:1fr auto 1.12fr auto 1fr;gap:12px;align-items:stretch}
+.p-stage{border:1px solid var(--line);border-radius:16px;background:var(--panel-2);
+  padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.p-hub{background:linear-gradient(180deg,rgba(255,90,31,.12),rgba(255,90,31,.03));
+  border-color:rgba(255,120,50,.45)}
+.p-tag{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.p-hub .p-tag{color:var(--orange-text)}
+.p-hub-title{font-family:var(--f-disp);font-weight:600;font-size:1.12rem;line-height:1.25;color:#ffe3d0}
+.p-hub-sub{font-size:.8rem;line-height:1.5;color:var(--muted)}
+.p-pills,.p-list{list-style:none}
+.p-pills{display:flex;flex-wrap:wrap;gap:8px}
+.p-pill{display:inline-flex;align-items:center;gap:7px;font-size:.78rem;font-weight:600;
+  color:var(--text);background:rgba(255,255,255,.04);border:1px solid var(--line);
+  padding:5px 11px;border-radius:999px;max-width:100%}
+.p-pill svg{color:var(--orange)}
+.p-list{display:flex;flex-direction:column;gap:9px}
+.p-out-item{display:flex;gap:9px;font-size:.83rem;line-height:1.5;color:var(--muted)}
+.p-out-item svg{color:var(--orange);margin-top:2px}
+.p-empty{font-size:.82rem;color:var(--dim)}
+.p-link{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;min-width:58px}
+.p-arrow{color:var(--orange);font-size:1.15rem;line-height:1}
+.p-wire{width:100%;height:2px;border-radius:2px;position:relative;overflow:hidden;
+  background:repeating-linear-gradient(90deg,rgba(255,120,50,.35) 0 6px,transparent 6px 12px)}
+.p-wire::after{content:"";position:absolute;top:50%;left:-10px;width:6px;height:6px;margin-top:-3px;
+  border-radius:50%;background:var(--orange);box-shadow:0 0 10px rgba(255,90,31,.9);
+  animation:wire 1.7s linear infinite}
+@keyframes wire{to{left:calc(100% + 4px)}}
+.pipe > .p-link:nth-child(4) .p-wire::after{animation-delay:-.85s}
+
+/* метрики под конвейером */
+.b-metrics{margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--line-soft);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.b-m{background:var(--panel-2);padding:20px 22px}
+.b-m-num{font-family:var(--f-mono);font-weight:600;font-size:clamp(1.15rem,2.6vw,1.5rem);
+  line-height:1.15;color:#f7f2ea}
+.b-m:first-child .b-m-num{color:var(--orange);text-shadow:0 0 16px rgba(255,90,31,.3)}
+.b-m-label{font-size:.76rem;color:var(--muted);margin-top:7px}
+
+/* шаг 3: черновик — тёмная карточка, светлый текст, контраст ~13:1 */
+.draft{background:#171310;border:1px solid var(--orange-line);border-radius:16px;padding:24px 26px}
+.draft-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+  margin-bottom:14px;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted)}
+.draft-text{font-size:.97rem;line-height:1.75;color:var(--text);white-space:pre-wrap;
+  overflow-wrap:break-word}
+.draft-foot{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+  margin-top:18px;padding-top:16px;border-top:1px solid var(--line-soft)}
+.draft-count{font-family:var(--f-mono);font-size:.7rem;color:var(--muted)}
+.draft-actions{display:flex;gap:12px;flex-wrap:wrap}
+.draft-actions .btn{padding:11px 20px;font-size:.88rem}
+.b-note{margin-top:20px;font-size:.87rem;color:var(--dim)}
+
+/* ================= манифест: проявление только цветом, без blur ================= */
+.manifesto{padding:150px 0}
+.manifesto-text{font-family:var(--f-disp);font-weight:600;
+  font-size:clamp(1.45rem,3.4vw,2.7rem);line-height:1.42;letter-spacing:-.01em;max-width:960px}
+.js .mword{color:rgba(241,237,230,.14);transition:color .5s ease}
+.js .mword.on{color:#f1ede6}
+.js .mword.macc.on{color:var(--orange);text-shadow:0 0 26px rgba(255,90,31,.3)}
+
+/* ================= демо ================= */
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:32px;
+  position:relative;transform-style:preserve-3d;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.045);
+  transform:perspective(950px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--lift,0px));
+  transition:transform .45s var(--spring),box-shadow .45s,border-color .45s}
+.card:hover{--lift:-6px;box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 26px 60px rgba(0,0,0,.55);
+  border-color:rgba(255,244,230,.18)}
+[data-tilt]::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:radial-gradient(420px circle at var(--gx,50%) var(--gy,50%),rgba(255,220,180,.06),transparent 55%);
+  opacity:0;transition:opacity .4s}
+[data-tilt]:hover::after{opacity:1}
+.demo-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:22px}
+.icon-box{width:48px;height:48px;border-radius:14px;background:var(--orange-soft);
+  border:1px solid var(--orange-line);display:grid;place-items:center;color:var(--orange);flex-shrink:0}
+.st{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--dim);display:inline-flex;align-items:center;gap:8px;white-space:nowrap;padding-top:5px}
+.st .dot{width:7px;height:7px;border-radius:50%}
+.st-live .dot{background:var(--orange);animation:pulse 2.2s ease-in-out infinite}
+.st-soon .dot{background:#5a544b}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,90,31,.4)}50%{box-shadow:0 0 0 7px rgba(255,90,31,0)}}
+.demo h3{font-size:1.32rem;font-weight:800;margin-bottom:11px;letter-spacing:-.01em}
+.demo p{color:var(--muted);font-size:.94rem;margin-bottom:20px}
+.console{background:#0d0b09;border:1px solid var(--line-soft);border-radius:12px;
+  padding:15px 17px;margin-bottom:20px;min-height:96px}
+.cline{font-family:var(--f-mono);font-size:.73rem;line-height:1.9;color:var(--dim);letter-spacing:.02em;
+  opacity:0;transform:translateX(-8px);transition:opacity .35s ease,transform .35s var(--spring)}
+.cline.show{opacity:1;transform:none}
+.cline.hot{color:#ff8352}
+.cline.show:last-child::after{content:"▍";margin-left:5px;color:var(--orange);animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.demo-tech{font-family:var(--f-mono);font-size:.73rem;color:var(--dim);margin-bottom:20px;letter-spacing:.04em}
+.demo-link{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.93rem}
+.demo-link .ic{transition:transform .35s var(--spring)}
+.demo-link:hover .ic{transform:translate(3px,-3px)}
+.demo-soon{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.93rem;color:var(--dim)}
+.demo-foot{margin-top:30px;color:var(--dim);font-size:.88rem;max-width:680px}
+
+/* ================= этапы ================= */
+.split{display:grid;grid-template-columns:.92fr 1.08fr;gap:80px;align-items:start}
+.split-left{position:sticky;top:110px}
+.split-left h2{font-family:var(--f-disp);font-weight:600;font-size:clamp(1.55rem,2.9vw,2.35rem);
+  line-height:1.2;margin-bottom:18px}
+.split-left .lead{color:var(--muted);max-width:420px}
+.steps{position:relative}
+.track{position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:rgba(255,244,230,.12);border-radius:2px}
+.track-fill{position:absolute;left:0;top:0;width:2px;height:0;background:var(--orange);
+  border-radius:2px;box-shadow:0 0 14px rgba(255,90,31,.55);transition:height .1s linear}
+.step{position:relative;padding:0 0 56px 46px}
+.step:last-child{padding-bottom:0}
+.step-dot{position:absolute;left:0;top:5px;width:12px;height:12px;border-radius:50%;
+  background:var(--bg);border:2px solid #5a544b;transition:all .4s ease}
+.step.lit .step-dot{border-color:var(--orange);background:var(--orange);
+  box-shadow:0 0 18px rgba(255,90,31,.6)}
+.step-meta{font-family:var(--f-mono);font-size:.71rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--dim);margin-bottom:11px}
+.step h3{font-size:1.36rem;font-weight:800;margin-bottom:11px;letter-spacing:-.01em}
+.step p{color:var(--muted);max-width:470px}
+
+/* ================= прайс ================= */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch;margin-bottom:60px}
+.price-card{display:flex;flex-direction:column}
+.price-card.featured{background:linear-gradient(180deg,rgba(255,90,31,.13),rgba(255,90,31,.03));
+  border-color:rgba(255,120,50,.5);
+  box-shadow:0 24px 64px rgba(0,0,0,.45),0 0 44px rgba(255,90,31,.12)}
+.badge{position:absolute;top:-13px;left:30px;background:var(--orange);color:var(--ink);
+  font-family:var(--f-mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:5px 13px;border-radius:999px;font-weight:600;
+  box-shadow:0 4px 16px rgba(255,90,31,.4)}
+.price-name{font-size:1.16rem;font-weight:800;margin-bottom:8px;letter-spacing:-.01em}
+.price-value{font-family:var(--f-mono);font-size:1.85rem;font-weight:600;margin-bottom:8px}
+.price-value small{font-size:.82rem;color:var(--dim);font-weight:400}
+.price-desc{color:var(--muted);font-size:.93rem;margin-bottom:24px}
+.price-list{list-style:none;margin-bottom:26px}
+.price-list li{display:flex;gap:11px;color:var(--muted);font-size:.92rem;padding:5px 0}
+.price-list .ic{color:var(--orange);flex-shrink:0;margin-top:5px}
+.price-term{margin-top:auto;font-family:var(--f-mono);font-size:.73rem;color:var(--dim);
+  letter-spacing:.07em;padding-top:20px;border-top:1px solid var(--line-soft)}
+.price-note{text-align:center;max-width:580px;margin:0 auto 34px;color:var(--muted);font-size:.95rem}
+.price-cta{text-align:center}
+
+/* ================= FAQ ================= */
+.qa{border-top:1px solid var(--line)}
+.qa:last-child{border-bottom:1px solid var(--line)}
+.qa-q{width:100%;background:none;border:none;color:var(--text);cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:22px;
+  padding:25px 4px;text-align:left;font-family:var(--f-body);font-size:1.08rem;font-weight:700;
+  transition:color .25s}
+.qa-q:hover{color:#fff}
+.qa-q .ic{color:var(--dim);flex-shrink:0;transition:transform .45s var(--spring),color .3s}
+.qa.open .qa-q .ic{transform:rotate(180deg);color:var(--orange)}
+.qa-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--spring)}
+.qa.open .qa-a{grid-template-rows:1fr}
+/* без JS: ответы раскрыты всегда */
+html:not(.js) .qa-a{grid-template-rows:1fr}
+.qa-inner{overflow:hidden}
+.qa-inner p{color:var(--muted);padding:0 4px 27px;max-width:570px}
+
+/* ================= финальный призыв ================= */
+.cta{position:relative;padding:160px 0;text-align:center;overflow:hidden}
+.cta-glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:720px;height:720px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,110,45,.12),transparent 62%);
+  animation:breath 14s ease-in-out infinite alternate}
+.cta h2{font-family:var(--f-disp);font-weight:600;font-size:clamp(1.7rem,3.6vw,2.9rem);
+  line-height:1.25;max-width:800px;margin:0 auto 22px;letter-spacing:-.01em;color:#f7f2ea}
+.cta .lead{color:var(--muted);max-width:500px;margin:0 auto 40px}
+.cta-sign{margin-top:24px;color:var(--dim);font-size:.88rem;font-family:var(--f-mono);letter-spacing:.03em}
+
+/* ================= футер ================= */
+footer{border-top:1px solid var(--line);padding:64px 0 46px;position:relative;z-index:1}
+.foot-grid{display:flex;justify-content:space-between;gap:52px;flex-wrap:wrap;margin-bottom:48px}
+.foot-name{font-weight:800;margin-bottom:9px;font-size:1.05rem;color:var(--text)}
+.foot-desc{color:var(--dim);font-size:.9rem;max-width:400px}
+.foot-nav{display:flex;flex-direction:column;gap:13px}
+.foot-nav a{display:inline-flex;align-items:center;gap:10px;color:var(--muted);font-size:.93rem;
+  transition:color .25s;background:none;border:none;cursor:pointer;font-family:var(--f-body);text-align:left;padding:0}
+.foot-nav a:hover{color:var(--text);text-decoration:none}
+.foot-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  padding-top:30px;border-top:1px solid var(--line-soft);
+  font-family:var(--f-mono);font-size:.71rem;color:var(--dim);letter-spacing:.05em}
+
+/* ================= модалка ================= */
+.modal-ov{position:fixed;inset:0;z-index:170;background:rgba(6,4,3,.72);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;padding:24px;
+  opacity:0;pointer-events:none;transition:opacity .35s ease}
+.modal-ov.open{opacity:1;pointer-events:auto}
+.modal{background:#17130f;border:1px solid var(--line);border-radius:22px;
+  max-width:560px;width:100%;padding:40px;position:relative;
+  box-shadow:0 40px 100px rgba(0,0,0,.6);
+  transform:translateY(18px) scale(.98);transition:transform .45s var(--spring)}
+.modal-ov.open .modal{transform:none}
+.modal h3{font-family:var(--f-disp);font-weight:600;font-size:1.25rem;margin-bottom:22px}
+.modal p{color:var(--muted);font-size:.94rem;margin-bottom:15px}
+.modal-close{position:absolute;top:20px;right:20px;width:36px;height:36px;border-radius:50%;
+  background:none;border:1px solid var(--line);color:var(--dim);cursor:pointer;
+  display:grid;place-items:center;transition:color .25s,border-color .25s}
+.modal-close:hover{color:var(--text);border-color:rgba(255,244,230,.3)}
+.modal .btn{margin-top:12px}
+
+/* ================= тост ================= */
+#toast{position:fixed;left:50%;bottom:30px;z-index:190;transform:translate(-50%,16px);
+  background:var(--panel-2);border:1px solid var(--orange-line);color:var(--text);
+  padding:12px 24px;border-radius:999px;font-size:.9rem;font-weight:600;
+  box-shadow:0 14px 40px rgba(0,0,0,.5),0 0 24px rgba(255,90,31,.12);
+  opacity:0;pointer-events:none;transition:opacity .35s ease,transform .45s var(--spring);max-width:calc(100vw - 40px);text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ================= наверх ================= */
+#toTop{position:fixed;bottom:26px;right:26px;z-index:130;width:48px;height:48px;
+  border-radius:50%;background:var(--panel-2);border:1px solid var(--line);color:var(--muted);
+  display:grid;place-items:center;cursor:pointer;opacity:0;pointer-events:none;
+  transform:translateY(12px);transition:opacity .4s,transform .45s var(--spring),background .25s,color .25s,border-color .25s}
+#toTop.show{opacity:1;pointer-events:auto;transform:none}
+#toTop:hover{background:var(--orange);color:var(--ink);border-color:var(--orange)}
+
+/* ================= иконки ================= */
+.ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.ic-lg{width:22px;height:22px}
+.ic-sm{width:15px;height:15px}
+
+/* ================= печать ================= */
+@media print{
+  #bg,.neb,.mw,.vig,#cursor,#progress,#boot,#toTop,#toast,.topbar,.mnav,.skip,
+  .btn-row,.draft-actions,.calc-cta,.price-cta,.chat-replay,
+  .p-wire{display:none!important}
+  body{background:#fff!important;color:#111!important}
+  body::after{display:none}
+  .hero h1,.h1-acc{-webkit-text-fill-color:initial!important;color:#000!important;text-shadow:none!important}
+  .card,.calc,.builder,.draft,.chat,.console,.modal{background:#fff!important;
+    border-color:#ccc!important;color:#111!important;box-shadow:none!important}
+  .prob p,.demo p,.price-desc,.co-label,.b-m-label,.draft-text,.cline{color:#444!important}
+  .co,.b-m,.bubble.bot{background:#fafafa!important}
+  .cline{opacity:1!important;transform:none!important}
+  .js .rv{opacity:1!important;transform:none!important}
+  .js .mword{color:#000!important}
+}
+
+/* ================= адаптив ================= */
+@media (max-width:1020px){
+  .hero{padding:150px 0 76px}
+  .hero-grid{grid-template-columns:1fr;gap:56px}
+  .hero .lead{max-width:580px}
+  .chat{max-width:540px}
+  .split{grid-template-columns:1fr;gap:52px}
+  .split-left{position:static}
+  .calc{grid-template-columns:1fr;gap:40px;padding:36px}
+}
+@media (max-width:860px){
+  .topnav{display:none}
+  .mbtn{display:flex}
+  .brand span{display:none}
+  .demo-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr;gap:40px 0;padding:44px 0}
+  .stat{padding:0 28px}
+  .stat:nth-child(3){border-left:none}
+  .stat:nth-child(n+3){border-top:1px solid var(--line-soft);padding-top:34px}
+  .price-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto 60px}
+}
+@media (max-width:640px){
+  /* тап-таргеты не меньше 44px (WCAG 2.5.5) */
+  .chip{min-height:44px;display:inline-flex;align-items:center}
+  .task{min-height:44px}
+  .chat-replay{width:44px;height:44px}
+  .modal-close{width:44px;height:44px}
+  .draft-actions .btn{min-height:44px}
+  .demo-link,.calc-cta,.contact-alt{min-height:44px;display:inline-flex;align-items:center}
+  .modal-close{width:46px;height:46px}
+  .qa-q{min-height:44px}
+  .foot-nav a{min-height:44px;align-items:center}
+  .btn{min-height:44px}
+  .sec{padding:86px 0}
+  .wrap{padding:0 20px}
+  .prob{grid-template-columns:1fr;gap:8px;padding:32px 0}
+  .btn-row .btn{width:100%}
+  .bubble{max-width:96%}
+  .manifesto{padding:110px 0}
+  .cta{padding:118px 0}
+  .calc{padding:28px 22px}
+  .calc-out{grid-template-columns:1fr}
+  .co:first-child{grid-column:auto}
+  .builder{padding:28px 20px}
+  .b-step + .b-step{margin-top:36px;padding-top:36px}
+  .pipe{grid-template-columns:1fr}
+  .p-link{flex-direction:row;min-height:36px}
+  .p-wire{display:none}
+  .p-arrow{transform:rotate(90deg)}
+  .b-metrics{grid-template-columns:1fr}
+  .draft{padding:20px 18px}
+  #toTop{bottom:18px;right:18px}
+}
+
+/* ================= reduced motion ================= */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  body::after{animation:none}
+  .neb .n1,.neb .n2{animation:none}
+  .js .rv{opacity:1;transform:none;transition:none}
+  .ticker-track{animation:none}
+  .js .mword{color:#f1ede6;transition:none}
+  .js .mword.macc{color:var(--orange)}
+  .bubble,.cline{transition:none}
+  .bubble.typing span{animation:none;opacity:.6}
+  .st-live .dot,.chat-sub .dot{animation:none}
+  .card,.btn,.chip,.task,.qa-a,.qa-q .ic,.demo-link .ic,.modal,.modal-ov,#toTop,.mnav,.topbar{transition:none}
+  .task:hover{transform:none}
+  .cline.show:last-child::after{animation:none}
+  .cta-glow{animation:none}
+  .bline{transition:none}
+  .p-wire::after{animation:none;display:none}
+  #toast{transition:none}
+}
+</style>
 </head>
 <body>
-
-<a class="skip" href="#main">К основному содержанию</a>
 
 <!-- набор иконок -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></symbol>
   <symbol id="i-arrow-dn" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12l7 7 7-7"/></symbol>
   <symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></symbol>
   <symbol id="i-bot" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 8V5"/><circle cx="12" cy="4" r="1.2"/><circle cx="9" cy="13.5" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="13.5" r="1.1" fill="currentColor" stroke="none"/></symbol>
   <symbol id="i-rss" viewBox="0 0 24 24"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1.4" fill="currentColor" stroke="none"/></symbol>
   <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M5 5h14l3 8v6H2v-6z"/><path d="M2 13h5l2 3h6l2-3h5"/></symbol>
@@ -83,395 +719,609 @@
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 7"/></symbol>
   <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12"/><path d="M18 6 6 18"/></symbol>
   <symbol id="i-replay" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></symbol>
-  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.6v.6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6"/><path d="M9 12h6"/><path d="M9 16h4"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="2.6"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 9v12"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 9a6 6 0 1 0-12 0c0 6-2.5 7-2.5 7h17S18 15 18 9z"/><path d="M10.3 20a2 2 0 0 0 3.4 0"/></symbol>
   <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.55v-2.17c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.05.78 2.13v3.16c0 .3.21.66.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></symbol>
 </svg>
 
-<div class="glow" aria-hidden="true"></div>
+<!-- boot-экран -->
+<div id="boot" aria-hidden="true">
+  <div class="boot-in">
+    <span class="bline">&gt; ядро n8n ········ <b>на связи</b></span>
+    <span class="bline">&gt; живые боты ······ <b>4 из 4 готовы</b></span>
+    <span class="bline">&gt; звёздная карта ··· <b>загружена</b></span>
+  </div>
+</div>
 
-<header class="topbar">
-  <div class="wrap topbar-row">
-    <a class="brand" href="#main" aria-label="Иван — в начало страницы">
+<div id="cursor" aria-hidden="true"></div>
+<div id="progress" aria-hidden="true"></div>
+
+<!-- слои неба -->
+<div class="neb" aria-hidden="true"><i class="n1"></i><i class="n2"></i></div>
+<div class="mw" aria-hidden="true"></div>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="vig" aria-hidden="true"></div>
+
+<a class="skip" href="#top">К содержанию</a>
+
+<!-- шапка -->
+<header class="topbar" id="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">
       <span class="logo"><svg class="ic ic-sm"><use href="#i-bot"/></svg></span>
-      <span class="brand-name">Иван</span><span class="brand-spec"> · n8n и Telegram-боты</span>
+      Иван<span> · n8n и Telegram-боты</span>
     </a>
-    <nav class="topnav" aria-label="Разделы страницы">
-      <a href="#works">Демо</a>
-      <a href="#how">Этапы</a>
-      <a href="#pricing">Прайс</a>
+    <nav class="topnav" aria-label="Основная навигация">
+      <a href="#builder">Сценарий</a>
+      <a href="#demo">Демо</a>
+      <a href="#process">Процесс</a>
+      <a href="#price">Прайс</a>
       <a href="#faq">Вопросы</a>
     </nav>
+    <button class="mbtn" id="menuBtn" aria-label="Меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
-<main id="main">
+<!-- мобильное меню -->
+<nav class="mnav" id="mnav" aria-label="Мобильная навигация">
+  <a class="mlink" href="#builder">Сценарий</a>
+  <a class="mlink" href="#demo">Демо</a>
+  <a class="mlink" href="#process">Процесс</a>
+  <a class="mlink" href="#price">Прайс</a>
+  <a class="mlink" href="#faq">Вопросы</a>
+  <a class="btn btn-primary" href="https://t.me/BraveMaggot_bot" target="_blank" rel="noopener">Описать задачу боту<svg class="ic"><use href="#i-send"/></svg></a>
+</nav>
 
-  <!-- герой -->
+<main id="top">
+
+  <!-- ======== герой ======== -->
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
         <p class="kicker rv">Иван · n8n-сценарии и Telegram-боты</p>
-        <h1 class="rv" style="--d:.06s">Забираю рутину<br>в&nbsp;ботов <span class="nb">за&nbsp;1–2&nbsp;недели</span></h1>
-        <p class="lead rv" style="--d:.12s">Приём заявок, дайджесты из каналов, парсинг, уведомления и отчёты. Прототип собираю на ваших данных за 3–7 дней, в бой — за 1–2 недели.</p>
-        <div class="btn-row rv" style="--d:.18s">
-          <a class="btn btn-primary" href="https://t.me/bravemaggot" target="_blank" rel="noopener">Обсудить задачу в Telegram<svg class="ic"><use href="#i-send"/></svg></a>
-          <a class="btn btn-ghost" href="#works">Что уже работает<svg class="ic"><use href="#i-arrow-dn"/></svg></a>
+        <h1 class="rv" style="--d:.07s">Рутина переезжает к ботам — <span class="h1-acc">за одну-две недели</span></h1>
+        <p class="lead rv" style="--d:.14s">Собираю то, что вы каждый день делаете руками: приём заявок, дайджесты из каналов, парсинг, отчёты и уведомления. Каждый бот на этой странице живой — откройте и убедитесь сами.</p>
+        <div class="btn-row rv" style="--d:.21s">
+          <a class="btn btn-primary" href="https://t.me/BraveMaggot_bot" target="_blank" rel="noopener">
+            Описать задачу боту<svg class="ic"><use href="#i-send"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#demo">Потыкать живых ботов<svg class="ic"><use href="#i-arrow-dn"/></svg></a>
         </div>
-        <p class="hero-note rv" style="--d:.24s"><span class="dot pulse" aria-hidden="true"></span>Отвечаю лично. Обычно — в тот же день.</p>
+        <p class="hero-note rv" style="--d:.28s">прототип на ваших данных за 3–7 дней · оплата по этапам · отвечаю лично</p>
       </div>
 
-      <!-- диалог с ботом-приёмной -->
-      <div class="chat rv" style="--d:.15s">
+      <div class="chat rv" style="--d:.18s">
         <div class="chat-head">
           <span class="chat-ava"><svg class="ic"><use href="#i-bot"/></svg></span>
           <div>
             <div class="chat-name">Приёмная заявок</div>
-            <div class="chat-sub"><span class="dot" aria-hidden="true"></span>бот · отвечает сразу</div>
+            <div class="chat-sub"><span class="dot"></span>бот · отвечает сразу</div>
           </div>
           <button class="chat-replay" id="chatReplay" title="Проиграть диалог ещё раз" aria-label="Проиграть диалог ещё раз">
             <svg class="ic ic-sm"><use href="#i-replay"/></svg>
           </button>
         </div>
-        <div class="chat-body" id="chatBody">
-          <div class="msg msg--client">
-            <div class="bubble show">Нужен бот, который собирает заявки с сайта и присылает мне в Telegram</div>
-            <span class="chip">/start</span>
-            <div class="msg-meta">10:41</div>
-          </div>
-          <div class="msg msg--bot">
-            <div class="bubble show">Заявка #12 принята. Дальше сама: форма → карточка в вашем Telegram → очередь со статусами</div>
-            <div class="msg-meta">10:41</div>
-          </div>
-          <div class="msg msg--client">
-            <div class="bubble show">а если клиент напишет криво и без бюджета?</div>
-            <div class="msg-meta">10:42</div>
-          </div>
-          <div class="msg msg--bot">
-            <div class="bubble show">Уточню недостающее встречным вопросом и дополню бриф. Заявка не потеряется</div>
-            <div class="msg-meta">10:42</div>
-          </div>
+        <div class="chat-body" id="chatBody" aria-live="polite"></div>
+        <div class="chat-note">реальный сценарий работы приёмной заявок</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== полоса: строка услуг + показатели ======== -->
+  <div class="band">
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track" id="tickerTrack">
+        <!-- две одинаковые группы: шов бесконечной ленты ровно на -50% -->
+        <div class="ticker-group">
+          <span>приём заявок</span><i>◆</i><span>дайджесты каналов</span><i>◆</i>
+          <span>парсинг</span><i>◆</i><span>отчёты по расписанию</span><i>◆</i>
+          <span>ai-разбор текста</span><i>◆</i><span>уведомления</span><i>◆</i>
+          <span>интеграции сервисов</span><i>◆</i>
         </div>
-        <div class="chat-note"><svg class="ic" aria-hidden="true"><use href="#i-info"/></svg>сценарий с ботом-приёмной: ответ за секунду</div>
+        <div class="ticker-group">
+          <span>приём заявок</span><i>◆</i><span>дайджесты каналов</span><i>◆</i>
+          <span>парсинг</span><i>◆</i><span>отчёты по расписанию</span><i>◆</i>
+          <span>ai-разбор текста</span><i>◆</i><span>уведомления</span><i>◆</i>
+          <span>интеграции сервисов</span><i>◆</i>
+        </div>
       </div>
     </div>
-  </section>
+    <section aria-label="Показатели">
+      <div class="wrap stats-grid">
+        <div class="stat rv">
+          <div class="stat-num"><span data-count="4">4</span></div>
+          <div class="stat-label">живых демо на странице</div>
+        </div>
+        <div class="stat rv" style="--d:.08s">
+          <div class="stat-num"><span data-count="2">2</span></div>
+          <div class="stat-label">n8n-сервиса прямо в бою</div>
+        </div>
+        <div class="stat rv" style="--d:.16s">
+          <div class="stat-num"><span data-count="3">3</span><span style="padding:0 4px">–</span><span data-count="7">7</span></div>
+          <div class="stat-label">дней до прототипа</div>
+        </div>
+        <div class="stat rv" style="--d:.24s">
+          <div class="stat-num"><span data-count="1">1</span><span style="padding:0 4px">–</span><span data-count="2">2</span></div>
+          <div class="stat-label">недель до запуска</div>
+        </div>
+      </div>
+    </section>
+  </div>
 
-  <!-- полоса показателей -->
-  <section class="stats" aria-label="Показатели">
-    <div class="wrap stats-grid">
-      <div class="stat rv">
-        <div class="stat-num" role="img" aria-label="4"><span class="od" data-v="4">4</span></div>
-        <div class="stat-label">демо-бота на странице</div>
-      </div>
-      <div class="stat rv" style="--d:.08s">
-        <div class="stat-num" role="img" aria-label="от 3 до 7"><span class="od" data-v="3">3</span><span>–</span><span class="od" data-v="7">7</span></div>
-        <div class="stat-label">дней до прототипа</div>
-      </div>
-      <div class="stat rv" style="--d:.16s">
-        <div class="stat-num" role="img" aria-label="от 1 до 2"><span class="od" data-v="1">1</span><span>–</span><span class="od" data-v="2">2</span></div>
-        <div class="stat-label">недели до запуска</div>
-      </div>
-      <div class="stat rv" style="--d:.24s">
-        <div class="stat-num is-money"><small>от</small> 15&nbsp;000&nbsp;₽</div>
-        <div class="stat-label">за один сценарий в n8n</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- проблема -->
-  <section class="sec">
+  <!-- ======== проблема ======== -->
+  <section class="sec" id="problem">
     <div class="wrap">
       <div class="sec-head">
         <p class="kicker rv">01 · рутина</p>
-        <h2 class="rv" style="--d:.05s">Что обычно съедает время</h2>
-        <p class="lead rv" style="--d:.1s">Три истории, которые я слышу почти в каждом разговоре.</p>
+        <h2 class="rv" style="--d:.05s">Что обычно съедает день</h2>
+        <p class="lead rv" style="--d:.1s">Три истории, которые звучат почти в каждом первом разговоре.</p>
       </div>
-      <div class="prob rv">
-        <span class="prob-num">01</span>
-        <div>
-          <h3>Заявки теряются в личке</h3>
-          <p>Клиенты пишут в директ, сообщения тонут, бриф приходится вытягивать вопросами по десять раз. Кто-то из написавших просто не дожидается ответа.</p>
+      <div>
+        <div class="prob rv">
+          <span class="prob-num">01</span>
+          <div>
+            <h3>Заявки тонут в переписке</h3>
+            <p>Клиенты пишут в личку, где всё перемешано с остальным. Бриф собирается по десять уточняющих вопросов, а часть людей не дожидается ответа и просто уходит.</p>
+          </div>
+        </div>
+        <div class="prob rv" style="--d:.08s">
+          <span class="prob-num">02</span>
+          <div>
+            <h3>Руки помнят отчётность</h3>
+            <p>Каждый день одно и то же: скопировать, свести, разослать. Час-два на то, с чем скрипт справляется за минуту — и не забывает сделать это в пятницу вечером.</p>
+          </div>
+        </div>
+        <div class="prob rv" style="--d:.16s">
+          <span class="prob-num">03</span>
+          <div>
+            <h3>Важное размазано по чатам</h3>
+            <p>Новости растворяются между каналами и группами. Утро начинается с получаса листания, чтобы понять, что вообще произошло, пока вас не было.</p>
+          </div>
         </div>
       </div>
-      <div class="prob rv" style="--d:.08s">
-        <span class="prob-num">02</span>
+
+      <div class="calc rv" data-tilt>
         <div>
-          <h3>Ручные отчёты и рассылки</h3>
-          <p>Каждый день одно и то же: скопировать, свести, отправить. Час-два в день на то, что делает скрипт за минуту — и не забудет в пятницу вечером.</p>
+          <h3>Прикиньте цену рутины в часах</h3>
+          <p class="cl">Отметьте, что делаете руками, — я подставлю типовые часы. Ползунком скорректируйте под себя. Это ваша арифметика, а не мои обещания.</p>
+          <div class="chips" id="chips">
+            <button class="chip on" type="button" data-h="4" aria-pressed="true">Приём и разбор заявок</button>
+            <button class="chip on" type="button" data-h="3" aria-pressed="true">Отчёты и сводки</button>
+            <button class="chip" type="button" data-h="2" aria-pressed="false">Рассылки клиентам</button>
+            <button class="chip" type="button" data-h="4" aria-pressed="false">Мониторинг каналов и чатов</button>
+            <button class="chip" type="button" data-h="3" aria-pressed="false">Перенос данных между таблицами</button>
+          </div>
+          <div class="range-row">
+            <label for="calcRange">часов в неделю на рутину:</label>
+            <input type="range" id="calcRange" min="1" max="25" value="7" aria-label="Часов в неделю на рутину">
+            <span class="mono" id="calcVal" style="font-weight:600;min-width:44px;text-align:right">7 ч</span>
+          </div>
+          <p class="calc-note">расчёт: 47 рабочих недель в году · 8-часовой день</p>
         </div>
-      </div>
-      <div class="prob rv" style="--d:.16s">
-        <span class="prob-num">03</span>
         <div>
-          <h3>Информация разбросана</h3>
-          <p>Важное тонет в каналах и чатах. Утро начинается с получаса листания, чтобы просто понять, что произошло.</p>
+          <div class="calc-out">
+            <div class="co">
+              <div class="co-num"><span id="outHours">0</span><small>ч / год</small></div>
+              <div class="co-label">столько забирает рутина за год</div>
+            </div>
+            <div class="co">
+              <div class="co-num"><span id="outDays">0</span><small>дней</small></div>
+              <div class="co-label">полных рабочих дней</div>
+            </div>
+            <div class="co">
+              <div class="co-num"><span id="outMonths">0</span><small>мес</small></div>
+              <div class="co-label">чистых рабочих месяцев</div>
+            </div>
+          </div>
+          <a class="calc-cta" href="#builder">Теперь соберите сценарий<svg class="ic ic-sm"><use href="#i-arrow-ur"/></svg></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- манифест -->
-  <section class="manifesto">
-    <div class="wrap">
-      <p class="manifesto-text" id="manifesto">Любая рутина — это сценарий, который ещё никто не написал. Я пишу такие сценарии на n8n и Telegram-ботах</p>
-    </div>
-  </section>
-
-  <!-- живые демо -->
-  <section class="sec" id="works">
+  <!-- ======== конструктор сценария ======== -->
+  <section class="sec" id="builder">
     <div class="wrap">
       <div class="sec-head">
-        <p class="kicker rv">02 · что уже работает</p>
-        <h2 class="rv" style="--d:.05s">Откройте и попробуйте сами</h2>
-        <p class="lead rv" style="--d:.1s">Четыре бота. Первый развёрнут на рабочем n8n — ему можно написать прямо сейчас.</p>
+        <p class="kicker rv">02 · конструктор</p>
+        <h2 class="rv" style="--d:.05s">Соберите сценарий за три шага</h2>
+        <p class="lead rv" style="--d:.1s">Отмечаете задачи — смотрите, как сложится конвейер — копируете готовый черновик. Пять минут, и первый шаг сделан.</p>
       </div>
 
-      <ul class="grid grid-2">
-        <li class="card work rv">
-          <div class="work-top">
-            <span class="icon-box" aria-hidden="true"><svg class="ic ic-lg"><use href="#i-rss"/></svg></span>
-            <span class="st st-live"><span class="dot" aria-hidden="true"></span>на сервере</span>
+      <div class="builder rv">
+
+        <!-- шаг 1: выбор задач -->
+        <div class="b-step" role="group" aria-labelledby="s1h">
+          <div class="b-step-head">
+            <span class="b-step-num" aria-hidden="true">1</span>
+            <h3 id="s1h">Выберите задачи</h3>
+            <span class="b-counter" id="bCounter" aria-live="polite">выбрано 2 задачи</span>
           </div>
-          <h3>Парсер TG-каналов</h3>
-          <p>Подписываетесь на публичные каналы — бот присылает AI-дайджест новых постов по расписанию.</p>
-          <div class="term" aria-hidden="true">
-            <div class="term-bar"><span class="dot"></span>пример вывода · /add, /list, /now</div>
-            <div class="term-body">
-              <p class="term-line"><span class="term-cmd">/add durov</span></p>
-              <p class="term-line term-out">Ок, слежу за каналом. Дайджест — по расписанию.</p>
-              <p class="term-line"><span class="term-cmd">/now durov</span></p>
-              <p class="term-line term-out">Найдено <b>N</b> новых постов · <b>дайджест готов</b></p>
+          <div class="task-grid" id="taskGrid">
+            <button class="task on" type="button" data-task="leads" aria-pressed="true">
+              <span class="t-ic"><svg class="ic"><use href="#i-inbox"/></svg></span>
+              <span class="t-name">Приём заявок</span>
+              <span class="t-sub">сайт, чаты и почта складываются в одну очередь</span>
+              <span class="t-badge">−4 ч/нед</span>
+            </button>
+            <button class="task on" type="button" data-task="digest" aria-pressed="true">
+              <span class="t-ic"><svg class="ic"><use href="#i-rss"/></svg></span>
+              <span class="t-name">Дайджест каналов</span>
+              <span class="t-sub">утренняя выжимка из публичных TG-каналов</span>
+              <span class="t-badge">−4 ч/нед</span>
+            </button>
+            <button class="task" type="button" data-task="reports" aria-pressed="false">
+              <span class="t-ic"><svg class="ic"><use href="#i-doc"/></svg></span>
+              <span class="t-name">Отчёты и сводки</span>
+              <span class="t-sub">сборка и отправка отчётов по расписанию</span>
+              <span class="t-badge">−3 ч/нед</span>
+            </button>
+            <button class="task" type="button" data-task="parse" aria-pressed="false">
+              <span class="t-ic"><svg class="ic"><use href="#i-eye"/></svg></span>
+              <span class="t-name">Парсинг и слежение</span>
+              <span class="t-sub">мониторинг страниц и мгновенные сигналы</span>
+              <span class="t-badge">−2 ч/нед</span>
+            </button>
+            <button class="task" type="button" data-task="mails" aria-pressed="false">
+              <span class="t-ic"><svg class="ic"><use href="#i-mail"/></svg></span>
+              <span class="t-name">Рассылки</span>
+              <span class="t-sub">письма клиентам уходят сами, по графику</span>
+              <span class="t-badge">−2 ч/нед</span>
+            </button>
+            <button class="task" type="button" data-task="tables" aria-pressed="false">
+              <span class="t-ic"><svg class="ic"><use href="#i-grid"/></svg></span>
+              <span class="t-name">Перенос данных</span>
+              <span class="t-sub">синхронизация таблиц и сервисов без рук</span>
+              <span class="t-badge">−3 ч/нед</span>
+            </button>
+            <button class="task" type="button" data-task="remind" aria-pressed="false">
+              <span class="t-ic"><svg class="ic"><use href="#i-bell"/></svg></span>
+              <span class="t-name">Напоминания</span>
+              <span class="t-sub">пинки в Telegram по делам и срокам</span>
+              <span class="t-badge">−1 ч/нед</span>
+            </button>
+          </div>
+          <p class="b-hint">до четырёх задач за раз — так сроки остаются честными</p>
+        </div>
+
+        <!-- шаг 2: конвейер -->
+        <div class="b-step" role="group" aria-labelledby="s2h">
+          <div class="b-step-head">
+            <span class="b-step-num" aria-hidden="true">2</span>
+            <h3 id="s2h">Как это будет работать</h3>
+          </div>
+          <div class="pipe">
+            <div class="p-stage">
+              <span class="p-tag">источники</span>
+              <ul class="p-pills" id="pipeSrc">
+                <li class="p-pill"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-inbox"/></svg>Приём заявок</li>
+                <li class="p-pill"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-rss"/></svg>Дайджест каналов</li>
+              </ul>
+            </div>
+            <div class="p-link" aria-hidden="true">
+              <span class="p-arrow">→</span>
+              <span class="p-wire"></span>
+            </div>
+            <div class="p-stage p-hub">
+              <span class="p-tag">ядро</span>
+              <span class="p-hub-title">n8n + AI</span>
+              <span class="p-hub-sub">разбор текста, расписание, повторы при сбоях и алерты — внутри каждого сценария</span>
+            </div>
+            <div class="p-link" aria-hidden="true">
+              <span class="p-arrow">→</span>
+              <span class="p-wire"></span>
+            </div>
+            <div class="p-stage">
+              <span class="p-tag">результат · вам в Telegram</span>
+              <ul class="p-list" id="pipeOut">
+                <li class="p-out-item"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-arrow-ur"/></svg>заявки — карточками в очередь</li>
+                <li class="p-out-item"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-arrow-ur"/></svg>сжатая выжимка постов каждое утро</li>
+              </ul>
             </div>
           </div>
-          <p class="stack">n8n · Telegram API · OpenRouter · HTML-парсинг</p>
-          <a class="work-link" href="https://t.me/BraveMaggot_Bot" target="_blank" rel="noopener">Открыть бота<svg class="ic ic-sm"><use href="#i-arrow-ur"/></svg><span class="tag">@BraveMaggot_Bot</span></a>
-        </li>
 
-        <li class="card work rv" style="--d:.08s">
-          <div class="work-top">
-            <span class="icon-box" aria-hidden="true"><svg class="ic ic-lg"><use href="#i-inbox"/></svg></span>
-            <span class="st st-wait"><span class="dot" aria-hidden="true"></span>ждёт токена</span>
-          </div>
-          <h3>Приёмная заказов</h3>
-          <p>Клиенты пишут боту — AI структурирует бриф, задаёт уточняющий вопрос, а владелец получает карточку заявки в очередь.</p>
-          <div class="term" aria-hidden="true">
-            <div class="term-bar"><span class="dot"></span>пример вывода · карточка заявки</div>
-            <div class="term-body">
-              <p class="term-line"><b>Заявка #12</b></p>
-              <p class="term-line term-out">задача → <b>структурирована</b></p>
-              <p class="term-line term-out">бюджет → <b>уточняется</b></p>
-              <p class="term-line term-out">срок → <b>уточняется</b></p>
+          <div class="b-metrics" role="group" aria-label="Ориентиры по выбранному сценарию">
+            <div class="b-m">
+              <div class="b-m-num" id="ffH">≈8 ч</div>
+              <div class="b-m-label">в неделю освободится</div>
+            </div>
+            <div class="b-m">
+              <div class="b-m-num" id="ffP">от 25 000 ₽</div>
+              <div class="b-m-label">ориентир бюджета</div>
+            </div>
+            <div class="b-m">
+              <div class="b-m-num" id="ffD">до 12 дн</div>
+              <div class="b-m-label">срок запуска</div>
             </div>
           </div>
-          <p class="stack">n8n · Telegram API · OpenRouter · AI-структурирование</p>
-          <a class="work-link" href="https://t.me/bravemaggot" target="_blank" rel="noopener">Спросить про этого бота<svg class="ic ic-sm"><use href="#i-arrow-ur"/></svg></a>
-        </li>
+        </div>
 
-        <li class="card work rv" style="--d:.16s">
-          <div class="work-top">
-            <span class="icon-box" aria-hidden="true"><svg class="ic ic-lg"><use href="#i-shield"/></svg></span>
-            <span class="st st-soon"><span class="dot" aria-hidden="true"></span>код готов</span>
+        <!-- шаг 3: черновик -->
+        <div class="b-step" role="group" aria-labelledby="s3h">
+          <div class="b-step-head">
+            <span class="b-step-num" aria-hidden="true">3</span>
+            <h3 id="s3h">Черновик первого сообщения</h3>
           </div>
-          <h3>Адвокат дьявола</h3>
-          <p>Стресс-тест решения: сильные стороны, риски, слепые пятна, а потом — атака, защита и вердикт «делать / не делать».</p>
-          <div class="term" aria-hidden="true">
-            <div class="term-bar"><span class="dot"></span>пример вывода · разбор и вердикт</div>
-            <div class="term-body">
-              <p class="term-line term-out">Разбор: <b>3 риска</b>, <b>2 слепых пятна</b></p>
-              <div class="term-btns">
-                <span class="term-btn">Атака</span>
-                <span class="term-btn">Защита</span>
-                <span class="term-btn is-on">Вердикт</span>
+          <div class="draft">
+            <div class="draft-head">
+              <span>сообщение для @BraveMaggot_bot</span>
+              <span id="draftTime"></span>
+            </div>
+            <div class="draft-text" id="draftText">Привет, Иван!
+
+Рутина, которую хочу отдать ботам:
+— приём заявок
+— дайджест каналов
+
+Уходит на неё примерно 8 часов в неделю.
+
+На выходе жду:
+— заявки — карточками в очередь
+— сжатая выжимка постов каждое утро
+
+С чего начнём?</div>
+            <div class="draft-foot">
+              <span class="draft-count" id="draftCount"></span>
+              <div class="draft-actions">
+                <button class="btn btn-primary" id="copyMsg" type="button">Скопировать текст<svg class="ic ic-sm"><use href="#i-copy"/></svg></button>
+                <a class="btn btn-ghost" href="https://t.me/BraveMaggot_bot" target="_blank" rel="noopener">Открыть Telegram<svg class="ic"><use href="#i-send"/></svg></a>
               </div>
             </div>
           </div>
-          <p class="stack">Node.js · grammY · OpenRouter</p>
-          <a class="work-link" href="https://t.me/bravemaggot" target="_blank" rel="noopener">Спросить про этого бота<svg class="ic ic-sm"><use href="#i-arrow-ur"/></svg></a>
-        </li>
+        </div>
 
-        <li class="card work rv" style="--d:.24s">
-          <div class="work-top">
-            <span class="icon-box" aria-hidden="true"><svg class="ic ic-lg"><use href="#i-cap"/></svg></span>
-            <span class="st st-soon"><span class="dot" aria-hidden="true"></span>код готов</span>
-          </div>
-          <h3>Собеседатор</h3>
-          <p>Тренировочное собеседование: вопросы по выбранной роли, разбор каждого ответа, оценка и список тем, которые подтянуть.</p>
-          <div class="term" aria-hidden="true">
-            <div class="term-bar"><span class="dot"></span>пример вывода · разбор ответа</div>
-            <div class="term-body">
-              <p class="term-line term-out">Вопрос <b>3/5</b> · роль: <b>frontend</b></p>
-              <p class="term-line term-out">Оценка <b>7/10</b></p>
-              <p class="term-line term-out">Подтянуть: <b>React, тесты</b></p>
-            </div>
-          </div>
-          <p class="stack">Node.js · grammY · OpenRouter</p>
-          <a class="work-link" href="https://t.me/bravemaggot" target="_blank" rel="noopener">Спросить про этого бота<svg class="ic ic-sm"><use href="#i-arrow-ur"/></svg></a>
-        </li>
-      </ul>
-
-      <p class="demo-foot rv"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-info"/></svg><span>Парсер развёрнут на рабочем n8n и отвечает в Telegram — ссылка выше ведёт прямо в него. Приёмная ждёт токена бота, два код-бота собраны и ждут подключения. Как только они заработают, ссылки встанут здесь же.</span></p>
+        <p class="b-note">Ориентиры — нижняя граница по рынку: 15 000 ₽ за один сценарий, 50 000 ₽ за бота целиком, 10 000 ₽ в месяц за сопровождение. Финальную цену и срок назову после короткого разговора: обычно хватает 15 минут.</p>
+      </div>
     </div>
   </section>
 
-  <!-- этапы -->
-  <section class="sec" id="how">
+  <!-- ======== манифест ======== -->
+  <section class="manifesto">
+    <div class="wrap">
+      <p class="manifesto-text" id="manifesto">Любая рутина — это просто сценарий, который пока никто не написал. Я пишу такие сценарии: на n8n и в Telegram-ботах</p>
+    </div>
+  </section>
+
+  <!-- ======== живые демо ======== -->
+  <section class="sec" id="demo">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker rv">03 · живые демо</p>
+        <h2 class="rv" style="--d:.05s">Каждый бот здесь — живой</h2>
+        <p class="lead rv" style="--d:.1s">Это не макеты и не скринкасты. Открывайте, пишите, смотрите, как отвечают — прямо сейчас.</p>
+      </div>
+
+      <div class="demo-grid">
+        <article class="card demo rv" data-tilt>
+          <div class="demo-top">
+            <span class="icon-box"><svg class="ic ic-lg"><use href="#i-rss"/></svg></span>
+            <span class="st st-live"><span class="dot"></span>в бою</span>
+          </div>
+          <h3>Дайджест каналов</h3>
+          <p>Подписываетесь на любые публичные каналы — по расписанию бот обходит их сам и присылает сжатый AI-конспект новых постов. Внутри: добавить канал, список подписок, дайджест по требованию, отписка.</p>
+          <div class="console" aria-hidden="true">
+            <div class="cline">» подписка добавлена: @durov · раз в 1 ч</div>
+            <div class="cline">» обход по расписанию · постов собрано: 20</div>
+            <div class="cline hot">» дайджест собран → отправлен в чат</div>
+          </div>
+          <div class="demo-tech">n8n · 37 узлов · Telegram API · OpenRouter</div>
+          <a class="demo-link" href="https://t.me/ProTGParserBot" target="_blank" rel="noopener">Открыть @ProTGParserBot<svg class="ic ic-sm"><use href="#i-arrow-ur"/></svg></a>
+        </article>
+
+        <article class="card demo rv" style="--d:.08s" data-tilt>
+          <div class="demo-top">
+            <span class="icon-box"><svg class="ic ic-lg"><use href="#i-inbox"/></svg></span>
+            <span class="st st-live"><span class="dot"></span>в бою</span>
+          </div>
+          <h3>Приёмная заявок</h3>
+          <p>Клиенты пишут боту, AI вытягивает задачу, бюджет и срок. Сумбурный текст — задаст уточняющий вопрос. Вам падает готовая карточка в очередь со статусами: взять, выполнено, отклонить.</p>
+          <div class="console" aria-hidden="true">
+            <div class="cline">» заявка принята · ai вытащил бюджет и срок</div>
+            <div class="cline">» карточка в очереди · /take, /done, /reject</div>
+            <div class="cline hot">» статус: новая · жду исполнителя</div>
+          </div>
+          <div class="demo-tech">n8n · 44 узла · Telegram API · OpenRouter</div>
+          <a class="demo-link" href="https://t.me/BraveMaggot_bot" target="_blank" rel="noopener">Открыть @BraveMaggot_bot<svg class="ic ic-sm"><use href="#i-arrow-ur"/></svg></a>
+        </article>
+
+        <article class="card demo rv" style="--d:.16s" data-tilt>
+          <div class="demo-top">
+            <span class="icon-box"><svg class="ic ic-lg"><use href="#i-shield"/></svg></span>
+            <span class="st st-live"><span class="dot"></span>в бою</span>
+          </div>
+          <h3>Критик офферов</h3>
+          <p>Бьёт по вашему коммерческому тексту раньше, чем это сделает клиент. Даёт пять возражений холодного покупателя, слабые места, чего не хватает — и переписанный вариант, который можно отправлять сразу.</p>
+          <div class="console" aria-hidden="true">
+            <div class="cline">» разбор: холодное коммерческое предложение</div>
+            <div class="cline">» оценка 15/100 · 5 возражений</div>
+            <div class="cline hot">» переписанный вариант готов</div>
+          </div>
+          <div class="demo-tech">Node.js · grammY · SQLite · OpenRouter</div>
+          <a class="demo-link" href="https://t.me/DiaboloLawyerBot" target="_blank" rel="noopener">Открыть @DiaboloLawyerBot<svg class="ic ic-sm"><use href="#i-arrow-ur"/></svg></a>
+        </article>
+
+        <article class="card demo rv" style="--d:.24s" data-tilt>
+          <div class="demo-top">
+            <span class="icon-box"><svg class="ic ic-lg"><use href="#i-cap"/></svg></span>
+            <span class="st st-live"><span class="dot"></span>в бою</span>
+          </div>
+          <h3>Поиск работы</h3>
+          <p>Описываете навыки и требования — он ищет вакансии в семи открытых источниках и честно говорит, что нашлось, а что нет. Ни одной выдуманной ссылки: сводка проверяется, чужая — отбрасывается.</p>
+          <div class="console" aria-hidden="true">
+            <div class="cline">» профиль: Python-разработчик, 3 года</div>
+            <div class="cline">» 240 вакансий из 7 источников</div>
+            <div class="cline hot">» hh.ru недоступен — честно сказано</div>
+          </div>
+          <div class="demo-tech">Node.js · grammY · SQLite · OpenRouter</div>
+          <a class="demo-link" href="https://t.me/Interviewfastbot_bot" target="_blank" rel="noopener">Открыть @Interviewfastbot_bot<svg class="ic ic-sm"><use href="#i-arrow-ur"/></svg></a>
+        </article>
+      </div>
+
+      <p class="demo-foot rv">Честно о статусе: все четыре бота живые и отвечают прямо сейчас. Дайджест и приёмная крутятся на рабочем сервере n8n, два код-бота — на systemd с автозапуском. Ни один из приведённых ответов не выдуман: это реальные выводы из живых запусков.</p>
+    </div>
+  </section>
+
+  <!-- ======== этапы ======== -->
+  <section class="sec" id="process">
     <div class="wrap split">
       <div class="split-left">
-        <p class="kicker rv">03 · как работаем</p>
-        <h2 class="rv" style="--d:.05s">Как это будет работать у вас</h2>
-        <p class="lead rv" style="--d:.1s">Путь от разговора до работающего решения — короткий, с понятными контрольными точками.</p>
+        <p class="kicker rv">04 · процесс</p>
+        <h2 class="rv" style="--d:.05s">Путь до работающего бота</h2>
+        <p class="lead rv" style="--d:.1s">Три шага и две контрольные точки оплаты: за прототип и за запуск. Предоплата всей суммы не нужна.</p>
       </div>
-      <div>
-        <ol class="steps">
-          <li class="step rv">
-            <p class="step-meta">шаг 1 · 15 минут</p>
-            <h3>Формулируем результат</h3>
-            <p>Пишете задачу в Telegram. 15 минут разговора — и у нас есть описание того, что автоматизация должна делать на выходе.</p>
-          </li>
-          <li class="step rv" style="--d:.08s">
-            <p class="step-meta">шаг 2 · 3–7 дней</p>
-            <h3>Прототип на ваших данных</h3>
-            <p>Собираю рабочую версию не на выдуманном примере, а на ваших реальных данных. Смотрим вместе и правлю, пока не совпадёт с ожиданием.</p>
-          </li>
-          <li class="step rv" style="--d:.16s">
-            <p class="step-meta">шаг 3 · 1–2 недели</p>
-            <h3>Запуск и передача</h3>
-            <p>Решение уходит в бой: повторы при сбоях, алерты об ошибках. Инструкция и доступы остаются у вас — никакой пожизненной привязки ко мне.</p>
-          </li>
-        </ol>
-
-        <div class="handover rv" style="--d:.1s">
-          <p class="handover-head">на руки вы получаете</p>
-          <ul class="handover-grid">
-            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg><span><b>Прототип на ваших данных</b>Показываю на реальных примерах, а не на выдуманных.</span></li>
-            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg><span><b>Повторы и алерты</b>В каждом сценарии есть повтор при сбое и уведомление об ошибке.</span></li>
-            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg><span><b>Инструкция человеческим языком</b>Без жаргона: что нажать, что проверить, куда смотреть.</span></li>
-            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg><span><b>Доступы и данные у вас</b>Ключи и таблицы остаются у вас — я настраиваю и передаю.</span></li>
-          </ul>
+      <div class="steps" id="stepsTrack">
+        <div class="track" aria-hidden="true"><div class="track-fill" id="stepsFill"></div></div>
+        <div class="step rv">
+          <span class="step-dot" aria-hidden="true"></span>
+          <p class="step-meta">шаг 1 · 15 минут</p>
+          <h3>Формулируем результат</h3>
+          <p>Разговор на четверть часа: что должно получаться на выходе, откуда данные, куда падает результат. Этого хватает, чтобы начать.</p>
+        </div>
+        <div class="step rv" style="--d:.08s">
+          <span class="step-dot" aria-hidden="true"></span>
+          <p class="step-meta">шаг 2 · 3–7 дней</p>
+          <h3>Прототип на ваших данных</h3>
+          <p>Собираю рабочую версию на реальных данных, не на выдуманных примерах. Смотрим вместе и правлю, пока результат не совпадёт с ожиданием.</p>
+        </div>
+        <div class="step rv" style="--d:.16s">
+          <span class="step-dot" aria-hidden="true"></span>
+          <p class="step-meta">шаг 3 · 1–2 недели</p>
+          <h3>Запуск и передача</h3>
+          <p>Решение уходит в бой: повторы при сбоях, алерты об ошибках. Инструкция человеческим языком, доступы остаются у вас — без пожизненной привязки ко мне.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- прайс -->
-  <section class="sec" id="pricing">
+  <!-- ======== прайс ======== -->
+  <section class="sec" id="price">
     <div class="wrap">
       <div class="sec-head">
-        <p class="kicker rv">04 · прайс</p>
-        <h2 class="rv" style="--d:.05s">Спокойные цены, без сюрпризов</h2>
-        <p class="lead rv" style="--d:.1s">Оплата по этапам: сначала прототип, потом запуск. Предоплата всей суммы не нужна.</p>
+        <p class="kicker rv">05 · прайс</p>
+        <h2 class="rv" style="--d:.05s">Спокойные ориентиры по деньгам</h2>
+        <p class="lead rv" style="--d:.1s">Демо и процесс — до цен, потому что сначала важно понять, что именно автоматизируем.</p>
       </div>
 
-      <ul class="grid grid-3 pricing">
-        <li class="card price rv">
-          <h3>Точечная автоматизация</h3>
-          <p class="price-num"><small>от</small> 15&nbsp;000&nbsp;₽</p>
-          <p>Один сценарий в n8n: парсер, уведомление, интеграция, отчёт по расписанию.</p>
+      <!-- ВНИМАНИЕ: все три цены — заглушки из брифа, подтвердить или изменить до публикации -->
+      <div class="price-grid">
+        <div class="card price-card rv" data-tilt>
+          <p class="price-name">Точечный сценарий</p>
+          <p class="price-value"><small>от</small> 15 000 ₽</p>
+          <p class="price-desc">Одна конкретная задача: парсер, уведомление, интеграция или отчёт по расписанию.</p>
           <ul class="price-list">
-            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg>один сценарий под вашу задачу</li>
-            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg>повторы при сбоях и алерты внутри</li>
+            <li><svg class="ic ic-sm"><use href="#i-check"/></svg>один n8n-сценарий под задачу</li>
+            <li><svg class="ic ic-sm"><use href="#i-check"/></svg>повторы при сбоях и алерты внутри</li>
           </ul>
           <p class="price-term">срок · 3–7 дней</p>
-        </li>
-        <li class="card price price-featured rv" style="--d:.08s">
-          <p class="badge">Чаще всего берут</p>
-          <h3>Бот под ключ</h3>
-          <p class="price-num"><small>от</small> 50&nbsp;000&nbsp;₽</p>
-          <p>Telegram-бот со сценариями и AI: приём заявок, дайджесты, диалоги.</p>
+        </div>
+
+        <div class="card price-card featured rv" style="--d:.08s" data-tilt>
+          <span class="badge">чаще всего берут</span>
+          <p class="price-name">Бот целиком</p>
+          <p class="price-value"><small>от</small> 50 000 ₽</p>
+          <p class="price-desc">Telegram-бот со сценариями и AI: приём заявок, дайджесты, живые диалоги.</p>
           <ul class="price-list">
-            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg>сценарии и AI-логика под ваш процесс</li>
-            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg>хостинг и запуск входят в цену</li>
-            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg>инструкция человеческим языком</li>
+            <li><svg class="ic ic-sm"><use href="#i-check"/></svg>сценарии и AI-логика под ваш процесс</li>
+            <li><svg class="ic ic-sm"><use href="#i-check"/></svg>хостинг и запуск входят в цену</li>
+            <li><svg class="ic ic-sm"><use href="#i-check"/></svg>инструкция без жаргона</li>
           </ul>
           <p class="price-term">срок · 1–2 недели</p>
-        </li>
-        <li class="card price rv" style="--d:.16s">
-          <h3>Сопровождение</h3>
-          <p class="price-num"><small>от</small> 10&nbsp;000&nbsp;₽<small> / мес</small></p>
-          <p>Бот работает — я слежу за ним и развиваю под ваши задачи.</p>
+        </div>
+
+        <div class="card price-card rv" style="--d:.16s" data-tilt>
+          <p class="price-name">Сопровождение</p>
+          <p class="price-value"><small>от</small> 10 000 ₽<small> / мес</small></p>
+          <p class="price-desc">Бот работает — я слежу за ним и развиваю под ваши задачи.</p>
           <ul class="price-list">
-            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg>мониторинг исполнений</li>
-            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg>доработка существующей логики</li>
-            <li><svg class="ic ic-sm" aria-hidden="true"><use href="#i-check"/></svg>новые задачи по ходу месяца</li>
+            <li><svg class="ic ic-sm"><use href="#i-check"/></svg>мониторинг исполнений</li>
+            <li><svg class="ic ic-sm"><use href="#i-check"/></svg>доработка сценариев</li>
+            <li><svg class="ic ic-sm"><use href="#i-check"/></svg>новые задачи по ходу месяца</li>
           </ul>
           <p class="price-term">ежемесячно</p>
-        </li>
-      </ul>
-      <p class="fineprint">Это ориентиры по нижней границе рынка фриланса. Точную цену назову после разговора на 15 минут о задаче. Оплата по этапам: прототип → запуск.</p>
+        </div>
+      </div>
+
+      <p class="price-note rv">Точную цену назову после короткого разговора о задаче — обычно хватает 15 минут. Оплата по этапам: прототип, потом запуск.</p>
       <div class="price-cta rv">
-        <a class="btn btn-primary" href="https://t.me/bravemaggot" target="_blank" rel="noopener">Обсудить задачу в Telegram<svg class="ic"><use href="#i-send"/></svg></a>
+        <a class="btn btn-primary" href="https://t.me/BraveMaggot_bot" target="_blank" rel="noopener">Описать задачу боту<svg class="ic"><use href="#i-send"/></svg></a>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
+  <!-- ======== FAQ ================= -->
   <section class="sec" id="faq">
     <div class="wrap split">
       <div class="split-left">
-        <p class="kicker rv">05 · вопросы</p>
+        <p class="kicker rv">06 · вопросы</p>
         <h2 class="rv" style="--d:.05s">Частые вопросы</h2>
         <p class="lead rv" style="--d:.1s">Коротко и по делу. Если чего-то не хватило — спросите в Telegram.</p>
       </div>
       <div>
         <div class="qa rv">
-          <button class="qa-q" aria-expanded="false" aria-controls="qa-a-1" id="qa-b-1">Сколько это стоит?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></button>
-          <div class="qa-a" id="qa-a-1" role="region" aria-labelledby="qa-b-1"><div class="qa-inner"><p>Точечный сценарий в n8n — от 15 000 ₽, бот под ключ — от 50 000 ₽, сопровождение — от 10 000 ₽ в месяц. Точную цену называю после разговора на 15 минут о задаче.</p></div></div>
+          <button class="qa-q" aria-expanded="false">Сколько это стоит?<svg class="ic"><use href="#i-chev"/></svg></button>
+          <div class="qa-a"><div class="qa-inner"><p>Ориентиры — в прайсе выше: от 15 000 ₽ за одиночный сценарий, от 50 000 ₽ за бота целиком, от 10 000 ₽ в месяц за сопровождение. Точная цифра появляется после короткого разговора — обычно хватает 15 минут.</p></div></div>
         </div>
         <div class="qa rv" style="--d:.05s">
-          <button class="qa-q" aria-expanded="false" aria-controls="qa-a-2" id="qa-b-2">Что нужно от меня на старте?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></button>
-          <div class="qa-a" id="qa-a-2" role="region" aria-labelledby="qa-b-2"><div class="qa-inner"><p>Описать процесс своими словами и показать, где живут данные: таблицы, каналы, почта, чаты. Техническую часть беру на себя.</p></div></div>
+          <button class="qa-q" aria-expanded="false">Что нужно от меня на старте?<svg class="ic"><use href="#i-chev"/></svg></button>
+          <div class="qa-a"><div class="qa-inner"><p>Расскажите про процесс своими словами и покажите, где живут данные: таблицы, каналы, почта, чаты. Техническую часть беру на себя.</p></div></div>
         </div>
         <div class="qa rv" style="--d:.1s">
-          <button class="qa-q" aria-expanded="false" aria-controls="qa-a-3" id="qa-b-3">Где всё это работает?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></button>
-          <div class="qa-a" id="qa-a-3" role="region" aria-labelledby="qa-b-3"><div class="qa-inner"><p>На n8n на вашем сервере или на моём VPS. Данные и ключи остаются у вас, я настраиваю и передаю доступ.</p></div></div>
+          <button class="qa-q" aria-expanded="false">Где всё это будет работать?<svg class="ic"><use href="#i-chev"/></svg></button>
+          <div class="qa-a"><div class="qa-inner"><p>На n8n: либо на вашем сервере, либо на моём — как договоримся. Данные и ключи остаются у вас, я настраиваю решение и передаю доступ.</p></div></div>
         </div>
         <div class="qa rv" style="--d:.15s">
-          <button class="qa-q" aria-expanded="false" aria-controls="qa-a-4" id="qa-b-4">Я не технарь. Справлюсь?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></button>
-          <div class="qa-a" id="qa-a-4" role="region" aria-labelledby="qa-b-4"><div class="qa-inner"><p>Да. От вас нужно описание задачи своими словами, всё остальное — на мне. Инструкцию пишу человеческим языком, без жаргона.</p></div></div>
+          <button class="qa-q" aria-expanded="false">Я не технарь. Справлюсь?<svg class="ic"><use href="#i-chev"/></svg></button>
+          <div class="qa-a"><div class="qa-inner"><p>Да. От вас нужно описание задачи обычными словами, остальное — моя работа. Инструкцию пишу человеческим языком, без жаргона.</p></div></div>
         </div>
         <div class="qa rv" style="--d:.2s">
-          <button class="qa-q" aria-expanded="false" aria-controls="qa-a-5" id="qa-b-5">А если процесс нестандартный?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></button>
-          <div class="qa-a" id="qa-a-5" role="region" aria-labelledby="qa-b-5"><div class="qa-inner"><p>Нестандартные процессы — основной случай. Сначала прототип на ваших данных: по нему сразу видно, что работает, а что нет.</p></div></div>
+          <button class="qa-q" aria-expanded="false">А если процесс нестандартный?<svg class="ic"><use href="#i-chev"/></svg></button>
+          <div class="qa-a"><div class="qa-inner"><p>Нестандартные процессы — основной случай. Сначала делаю прототип на ваших реальных данных: по нему сразу видно, что работает, а что стоит переделать.</p></div></div>
         </div>
         <div class="qa rv" style="--d:.25s">
-          <button class="qa-q" aria-expanded="false" aria-controls="qa-a-6" id="qa-b-6">А если что-то сломается?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></button>
-          <div class="qa-a" id="qa-a-6" role="region" aria-labelledby="qa-b-6"><div class="qa-inner"><p>В воркфлоу встроены повторы и алерты об ошибках. На сопровождении слежу за исполнениями и чиню до того, как вы заметите.</p></div></div>
+          <button class="qa-q" aria-expanded="false">А если что-то сломается?<svg class="ic"><use href="#i-chev"/></svg></button>
+          <div class="qa-a"><div class="qa-inner"><p>Повторы при сбоях и алерты об ошибках встроены в каждое решение. На сопровождении я замечаю проблему и чиню её до того, как вы её заметите.</p></div></div>
         </div>
         <div class="qa rv" style="--d:.3s">
-          <button class="qa-q" aria-expanded="false" aria-controls="qa-a-7" id="qa-b-7">Сколько времени займёт запуск?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></button>
-          <div class="qa-a" id="qa-a-7" role="region" aria-labelledby="qa-b-7"><div class="qa-inner"><p>Прототип на ваших данных — 3–7 дней. Боевой запуск с тестами — 1–2 недели.</p></div></div>
+          <button class="qa-q" aria-expanded="false">Сколько времени займёт запуск?<svg class="ic"><use href="#i-chev"/></svg></button>
+          <div class="qa-a"><div class="qa-inner"><p>Прототип — 3–7 дней. Боевой запуск с проверками — одна-две недели.</p></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- финальный CTA -->
-  <section class="final-cta">
+  <!-- ======== финальный призыв ======== -->
+  <section class="cta" id="contacts">
     <div class="cta-glow" aria-hidden="true"></div>
-    <div class="wrap container-narrow">
-      <h2 class="rv">Опишите рутину — вернусь с планом автоматизации за один день</h2>
-      <p class="lead rv" style="--d:.06s">Достаточно двух-трёх предложений о том, что вы делаете руками каждый день.</p>
-      <div class="rv" style="--d:.12s">
-        <a class="btn btn-primary btn-lg" href="https://t.me/bravemaggot" target="_blank" rel="noopener">Написать в Telegram<svg class="ic"><use href="#i-send"/></svg></a>
+    <div class="wrap">
+      <h2 class="rv">Опишите рутину — через день вернусь с планом автоматизации</h2>
+      <p class="lead rv" style="--d:.07s">Хватит двух-трёх предложений о том, что вы каждый день делаете руками. Дальше разберём вместе.</p>
+      <div class="rv" style="--d:.14s">
+        <a class="btn btn-primary" href="https://t.me/BraveMaggot_bot" target="_blank" rel="noopener">Описать задачу боту<svg class="ic"><use href="#i-send"/></svg></a>
       </div>
-      <p class="cta-sign rv" style="--d:.18s">Иван. Отвечаю сам — без менеджеров и скриптов.</p>
+      <p class="cta-sign rv" style="--d:.21s">Иван. Отвечаю лично — без менеджеров и скриптов.</p>
     </div>
   </section>
 
 </main>
 
-<!-- футер -->
-<footer class="footer">
+<!-- ======== футер ======== -->
+<footer>
   <div class="wrap">
     <div class="foot-grid">
       <div>
         <p class="foot-name">Иван — автоматизации на n8n и Telegram-ботах</p>
         <p class="foot-desc">Работаю удалённо с русскоязычными заказчиками. Проекты беру на одну-четыре недели, ставки гибкие.</p>
       </div>
-      <nav class="foot-nav" aria-label="Контакты и документы">
-        <a href="https://t.me/bravemaggot" target="_blank" rel="noopener"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-send"/></svg>Telegram</a>
-        <a href="https://github.com/bravemaggot" target="_blank" rel="noopener"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-github"/></svg>GitHub · bravemaggot</a>
-        <a href="/privacy.html" data-privacy><svg class="ic ic-sm" aria-hidden="true"><use href="#i-shield"/></svg>Конфиденциальность</a>
+      <nav class="foot-nav" aria-label="Ссылки">
+        <a href="https://t.me/bravemaggot" target="_blank" rel="noopener"><svg class="ic ic-sm"><use href="#i-send"/></svg>Telegram</a>
+        <a href="https://github.com/bravemaggot" target="_blank" rel="noopener"><svg class="ic ic-sm"><use href="#i-github"/></svg>GitHub · bravemaggot</a>
+        <a href="#" data-privacy><svg class="ic ic-sm"><use href="#i-shield"/></svg>Конфиденциальность</a>
       </nav>
     </div>
     <div class="foot-bottom">
@@ -481,19 +1331,773 @@
   </div>
 </footer>
 
+<!-- кнопка наверх -->
+<button id="toTop" aria-label="Наверх"><svg class="ic"><use href="#i-arrow-up"/></svg></button>
+
+<!-- тост -->
+<div id="toast" role="status" aria-live="polite"></div>
+
 <!-- модалка конфиденциальности -->
-<div class="modal-ov" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privTitle" inert>
+<div class="modal-ov" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privTitle">
   <div class="modal">
-    <button class="modal-close" id="privacyClose" aria-label="Закрыть"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-close"/></svg></button>
+    <button class="modal-close" id="privacyClose" aria-label="Закрыть"><svg class="ic ic-sm"><use href="#i-close"/></svg></button>
     <h3 id="privTitle">Конфиденциальность</h3>
     <p>Этот сайт ничего не собирает: нет аналитики, cookies и форм. Я физически не вижу, кто и зачем сюда заходил.</p>
     <p>Данные, которые проходят через автоматизации, хранятся на вашем сервере или на заранее оговорённом сервере. Ключи доступа — у вас.</p>
     <p>Переписка с ботами хранится ровно столько, сколько нужно для работы. Скажете — удалю.</p>
-    <a class="modal-more" href="/privacy.html">Полная страница конфиденциальности →</a>
     <button class="btn btn-ghost" id="privacyOk">Понятно</button>
   </div>
 </div>
 
-<script src="app.js"></script>
+<script>
+(function(){
+"use strict";
+/* ---------- окружение ---------- */
+var doc = document.documentElement;
+var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var fine = window.matchMedia('(pointer: fine)').matches;
+var qs = function(s){ return document.querySelector(s); };
+var qsa = function(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); };
+var clamp = function(v,a,b){ return Math.max(a, Math.min(b, v)); };
+function rand(a,b){ return a + Math.random()*(b-a); }
+function plural(n, forms){
+  var n10 = n % 10, n100 = n % 100;
+  if (n10 === 1 && n100 !== 11) return forms[0];
+  if (n10 >= 2 && n10 <= 4 && (n100 < 12 || n100 > 14)) return forms[1];
+  return forms[2];
+}
+function rub(v){ return String(v).replace(/\B(?=(\d{3})+(?!\d))/g, '\u2009'); }
+
+/* ---------- boot-экран ---------- */
+var boot = qs('#boot');
+if (reduced || !boot) { if (boot) boot.remove(); }
+else {
+  document.body.classList.add('lock');
+  var blines = qsa('.bline'), bi = 0, finished = false;
+  var bootFinish = function(){
+    if (finished) return; finished = true;
+    boot.classList.add('done');
+    document.body.classList.remove('lock');
+    setTimeout(function(){ if (boot.parentNode) boot.remove(); }, 600);
+  };
+  var bootStep = function(){
+    if (bi < blines.length) { blines[bi].classList.add('on'); bi++; setTimeout(bootStep, 190); }
+    else setTimeout(bootFinish, 280);
+  };
+  setTimeout(bootStep, 140);
+  setTimeout(bootFinish, 1700);
+}
+
+/* ---------- плавный скролл к цели (нативная прокрутка, без перехвата колеса) ---------- */
+function scrollToY(v){
+  v = clamp(v, 0, doc.scrollHeight - window.innerHeight);
+  window.scrollTo({ top: v, behavior: reduced ? 'auto' : 'smooth' });
+}
+/* ---------- якоря ---------- */
+qsa('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click', function(e){
+    var href = a.getAttribute('href');
+    e.preventDefault();
+    closeNav();
+    if (href.length < 2) { scrollToY(0); return; }
+    var t = qs(href);
+    if (!t) return;
+    scrollToY(t.getBoundingClientRect().top + window.scrollY - 78);
+  });
+});
+
+/* ---------- мобильное меню ---------- */
+var menuBtn = qs('#menuBtn');
+function closeNav(){
+  document.body.classList.remove('nav-open');
+  menuBtn.setAttribute('aria-expanded', 'false');
+}
+menuBtn.addEventListener('click', function(){
+  var open = document.body.classList.toggle('nav-open');
+  menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+
+/* ---------- focus-trap: Tab не выпадает из открытого оверлея ---------- */
+document.addEventListener('keydown', function(e){
+  if (e.key !== 'Tab') return;
+  var ov = qs('.modal-ov.open') ||
+           (document.body.classList.contains('nav-open') ? qs('#mnav') : null);
+  if (!ov) return;
+  var f = ov.querySelectorAll('a[href], button:not([disabled]), input:not([disabled])');
+  if (!f.length) return;
+  var first = f[0], last = f[f.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
+
+/* ---------- тост ---------- */
+var toastEl = qs('#toast'), toastT;
+function toast(msg){
+  toastEl.textContent = msg;
+  toastEl.classList.add('show');
+  clearTimeout(toastT);
+  toastT = setTimeout(function(){ toastEl.classList.remove('show'); }, 2600);
+}
+
+/* ---------- модалка конфиденциальности ---------- */
+var mOv = qs('#privacyModal'), mClose = qs('#privacyClose'), mOk = qs('#privacyOk');
+var lastFocus = null;
+function openModal(){
+  lastFocus = document.activeElement;
+  mOv.classList.add('open');
+  document.body.classList.add('modal-open');
+  mClose.focus();
+}
+function closeModal(){
+  if (!mOv.classList.contains('open')) return;
+  mOv.classList.remove('open');
+  document.body.classList.remove('modal-open');
+  if (lastFocus && lastFocus.focus) lastFocus.focus();
+}
+qsa('[data-privacy]').forEach(function(a){
+  a.addEventListener('click', function(e){ e.preventDefault(); openModal(); });
+});
+mClose.addEventListener('click', closeModal);
+mOk.addEventListener('click', closeModal);
+mOv.addEventListener('click', function(e){ if (e.target === mOv) closeModal(); });
+window.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') { closeModal(); closeNav(); }
+});
+
+/* ---------- появление блоков ---------- */
+var rvs = qsa('.rv');
+if (reduced || !('IntersectionObserver' in window)) {
+  rvs.forEach(function(el){ el.classList.add('in'); });
+} else {
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
+  rvs.forEach(function(el){ io.observe(el); });
+}
+
+/* ---------- счётчики ---------- */
+function tween(el, to, fmt){
+  if (reduced) { el.textContent = fmt(to); return; }
+  var t0 = performance.now(), dur = 1400;
+  function f(now){
+    var p = Math.min(1, (now - t0) / dur);
+    var e = 1 - Math.pow(1 - p, 4);
+    el.textContent = fmt(to * e);
+    if (p < 1) requestAnimationFrame(f);
+  }
+  requestAnimationFrame(f);
+}
+var statNums = qs('.stats-grid');
+if (statNums && 'IntersectionObserver' in window && !reduced) {
+  var ioC = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      ioC.disconnect();
+      qsa('.stats-grid [data-count]').forEach(function(el, i){
+        setTimeout(function(){
+          tween(el, +el.dataset.count, function(v){ return Math.round(v); });
+        }, i * 130);
+      });
+    });
+  }, { threshold: .4 });
+  ioC.observe(statNums);
+}
+
+/* ---------- манифест: проявление только цветом ---------- */
+var man = qs('#manifesto'), mWords = [], mLast = -1;
+var ACC = { 'сценарий,':1, 'сценарии:':1, 'n8n':1, 'Telegram-ботах':1 };
+if (man) {
+  var parts = man.textContent.trim().split(/\s+/);
+  man.textContent = '';
+  parts.forEach(function(w){
+    var s = document.createElement('span');
+    s.className = 'mword' + (ACC[w] ? ' macc' : '');
+    s.textContent = w;
+    man.appendChild(s); man.appendChild(document.createTextNode(' '));
+  });
+  mWords = qsa('#manifesto .mword');
+  if (reduced) mWords.forEach(function(w){ w.classList.add('on'); });
+}
+function updateManifesto(){
+  if (!man || reduced || !mWords.length) return;
+  var r = man.getBoundingClientRect(), vh = window.innerHeight;
+  var p = (vh * 0.88 - r.top) / (r.height + vh * 0.32);
+  p = clamp(p, 0, 1);
+  var n = Math.round(p * mWords.length);
+  if (n !== mLast) {
+    mWords.forEach(function(w, i){ w.classList.toggle('on', i < n); });
+    mLast = n;
+  }
+}
+
+/* ---------- шкала этапов ---------- */
+var track = qs('#stepsTrack'), fill = qs('#stepsFill'), steps = qsa('.step');
+if (reduced && fill) {
+  fill.style.height = '100%';
+  steps.forEach(function(s){ s.classList.add('lit'); });
+}
+function updateTrack(){
+  if (!track || reduced) return;
+  var r = track.getBoundingClientRect(), vh = window.innerHeight;
+  var p = clamp((vh * 0.6 - r.top) / r.height, 0, 1);
+  fill.style.height = (p * 100) + '%';
+  steps.forEach(function(s){
+    var sr = s.getBoundingClientRect();
+    s.classList.toggle('lit', sr.top + 14 < vh * 0.6);
+  });
+}
+
+/* ---------- курсор-кольцо ---------- */
+var cursor = qs('#cursor'), curOn = fine && !reduced;
+var cx = innerWidth/2, cy = innerHeight/2, ctx2 = cx, cty = cy, curScale = 1, curTarget = 1;
+if (curOn) {
+  window.addEventListener('mousemove', function(e){
+    ctx2 = e.clientX; cty = e.clientY;
+    cursor.classList.add('vis');
+  });
+  document.addEventListener('mouseleave', function(){ cursor.classList.remove('vis'); });
+  document.addEventListener('mouseover', function(e){
+    var hit = e.target.closest && e.target.closest('a, button, input, .chip, .task');
+    curTarget = hit ? 1.55 : 1;
+    cursor.classList.toggle('act', !!hit);
+  });
+}
+function updateCursor(dt){
+  cx += (ctx2 - cx) * (1 - Math.exp(-dt * 0.014));
+  cy += (cty - cy) * (1 - Math.exp(-dt * 0.014));
+  curScale += (curTarget - curScale) * (1 - Math.exp(-dt * 0.012));
+  cursor.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0) translate(-50%,-50%) scale(' + curScale.toFixed(3) + ')';
+}
+
+/* ================================================================
+   ЗВЁЗДНОЕ НЕБО
+   ================================================================ */
+var cv = qs('#bg'), g = cv.getContext('2d');
+var W = 0, H = 0;
+var stars = [], brights = [], meteors = [];
+var mT = { x: -9999, y: -9999 }, mE = { x: -9999, y: -9999 }, mInit = false;
+var nextMeteor = performance.now() + 2400;
+
+function bandDist(x, y){
+  var x1 = -0.1*W, y1 = 0.8*H, x2 = 1.1*W, y2 = 0.1*H;
+  var dx = x2-x1, dy = y2-y1, L2 = dx*dx + dy*dy;
+  var t = ((x-x1)*dx + (y-y1)*dy) / L2; t = clamp(0, 1);
+  var px = x1 + dx*t, py = y1 + dy*t;
+  return Math.sqrt((x-px)*(x-px) + (y-py)*(y-py));
+}
+function buildSky(){
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  W = window.innerWidth; H = window.innerHeight;
+  cv.width = W * dpr; cv.height = H * dpr;
+  g.setTransform(dpr, 0, 0, dpr, 0, 0);
+  stars = []; brights = []; meteors = [];
+  var farN = Math.round(W * H / 9000);
+  var midN = Math.round(W * H / 26000);
+  var i, x, y, bd;
+  for (i = 0; i < farN; i++) {
+    x = Math.random()*W; y = Math.random()*H;
+    bd = bandDist(x, y);
+    var inBand = bd < H*0.12 && Math.random() < 0.85;
+    var roll = Math.random();
+    stars.push({
+      x:x, y:y,
+      r: inBand ? rand(.3,.8) : rand(.4,1.1),
+      a: inBand ? rand(.12,.4) : rand(.2,.7),
+      tw: rand(.4,1.6), ph: rand(0,6.28),
+      d: rand(.02,.05),
+      c: roll < .1 ? '196,210,255' : (roll < .16 ? '255,180,120' : '255,244,228')
+    });
+  }
+  for (i = 0; i < midN; i++) {
+    x = Math.random()*W; y = Math.random()*H;
+    var roll2 = Math.random();
+    stars.push({
+      x:x, y:y, r: rand(.9,1.6), a: rand(.45,.9),
+      tw: rand(.6,2.2), ph: rand(0,6.28),
+      d: rand(.06,.11),
+      c: roll2 < .14 ? '198,212,255' : (roll2 < .2 ? '255,184,124' : '255,244,228')
+    });
+  }
+  var bn = clamp(Math.round(W/160), 6, 12);
+  for (i = 0; i < bn; i++) {
+    brights.push({
+      x: Math.random()*W, y: Math.random()*H,
+      r: rand(1.4,2.3), a: rand(.75,1),
+      tw: rand(.8,2.4), ph: rand(0,6.28),
+      d: rand(.1,.16), spike: rand(5,9),
+      c: Math.random() < .25 ? '255,196,140' : '255,248,238'
+    });
+  }
+}
+function wpos(s, mxo, myo, scroll){
+  var x = s.x + mxo*s.d*22;
+  var y = s.y + myo*s.d*14 - scroll*s.d;
+  x = ((x % W) + W) % W;
+  y = ((y % H) + H) % H;
+  return [x, y];
+}
+function spawnMeteor(){
+  var dir = Math.random() < .5 ? 1 : -1;
+  var ang = rand(.32,.6);
+  var spd = rand(380,620);
+  var vx = Math.cos(ang)*spd*dir, vy = Math.sin(ang)*spd;
+  meteors.push({
+    x: dir === 1 ? rand(-.1,.4)*W : rand(.6,1.1)*W,
+    y: rand(-.05,.3)*H,
+    vx:vx, vy:vy, ux:vx/spd, uy:vy/spd,
+    life:0, dur: rand(.7,1.1), len: rand(90,150)
+  });
+  if (meteors.length > 3) meteors.shift();
+}
+function stepMeteors(dt){
+  for (var i = meteors.length-1; i >= 0; i--) {
+    var m = meteors[i];
+    m.life += dt;
+    if (m.life >= m.dur) { meteors.splice(i,1); continue; }
+    m.hx = m.x + m.vx*m.life;
+    m.hy = m.y + m.vy*m.life;
+  }
+}
+function drawSky(t, scroll){
+  g.clearRect(0,0,W,H);
+  var i, j, s, xy, x, y, a;
+  var mxo = mE.x > -999 ? (mE.x - W/2) : 0;
+  var myo = mE.y > -999 ? (mE.y - H/2) : 0;
+  for (i = 0; i < stars.length; i++) {
+    s = stars[i];
+    a = s.a * (0.62 + 0.38*Math.sin(t*s.tw + s.ph));
+    xy = wpos(s, mxo, myo, scroll);
+    g.fillStyle = 'rgba(' + s.c + ',' + a.toFixed(3) + ')';
+    g.beginPath(); g.arc(xy[0], xy[1], s.r, 0, 6.2832); g.fill();
+  }
+  if (mE.x > -999) {
+    var near = [];
+    for (i = 0; i < stars.length; i++) {
+      s = stars[i];
+      xy = wpos(s, mxo, myo, scroll);
+      var ddx = xy[0]-mE.x, ddy = xy[1]-mE.y, dd = ddx*ddx + ddy*ddy;
+      if (dd < 14400) near.push({ x:xy[0], y:xy[1], d:Math.sqrt(dd) });
+    }
+    if (near.length > 1) {
+      g.lineWidth = 1;
+      for (i = 0; i < near.length; i++) {
+        for (j = i+1; j < near.length; j++) {
+          var dx2 = near[i].x-near[j].x, dy2 = near[i].y-near[j].y;
+          var dd2 = Math.sqrt(dx2*dx2 + dy2*dy2);
+          if (dd2 < 80) {
+            g.strokeStyle = 'rgba(255,140,70,' + ((1-dd2/80)*0.14).toFixed(3) + ')';
+            g.beginPath(); g.moveTo(near[i].x,near[i].y); g.lineTo(near[j].x,near[j].y); g.stroke();
+          }
+        }
+      }
+      for (i = 0; i < near.length; i++) {
+        var k = 1 - near[i].d/120;
+        g.fillStyle = 'rgba(255,170,100,' + (k*0.5).toFixed(3) + ')';
+        g.beginPath(); g.arc(near[i].x, near[i].y, 1.4, 0, 6.2832); g.fill();
+      }
+    }
+  }
+  for (i = 0; i < brights.length; i++) {
+    s = brights[i];
+    a = s.a * (0.6 + 0.4*Math.sin(t*s.tw + s.ph));
+    xy = wpos(s, mxo, myo, scroll);
+    x = xy[0]; y = xy[1];
+    var halo = g.createRadialGradient(x,y,0,x,y,s.r*6);
+    halo.addColorStop(0, 'rgba(' + s.c + ',' + (a*0.55).toFixed(3) + ')');
+    halo.addColorStop(1, 'rgba(' + s.c + ',0)');
+    g.fillStyle = halo;
+    g.beginPath(); g.arc(x, y, s.r*6, 0, 6.2832); g.fill();
+    var L = s.spike * (0.7 + 0.3*Math.sin(t*s.tw + s.ph));
+    g.strokeStyle = 'rgba(' + s.c + ',' + (a*0.5).toFixed(3) + ')';
+    g.lineWidth = 1;
+    g.beginPath();
+    g.moveTo(x-L, y); g.lineTo(x+L, y);
+    g.moveTo(x, y-L); g.lineTo(x, y+L);
+    g.stroke();
+    g.fillStyle = 'rgba(' + s.c + ',' + a.toFixed(3) + ')';
+    g.beginPath(); g.arc(x, y, s.r, 0, 6.2832); g.fill();
+  }
+  for (i = 0; i < meteors.length; i++) {
+    var m = meteors[i];
+    var p = m.life / m.dur;
+    var env = Math.min(1, m.life/0.12) * (1 - p);
+    var tl = m.len * (0.4 + 0.6*env);
+    var tx = m.hx - m.ux*tl, ty = m.hy - m.uy*tl;
+    var grd = g.createLinearGradient(m.hx, m.hy, tx, ty);
+    grd.addColorStop(0, 'rgba(255,235,210,' + (0.9*env).toFixed(3) + ')');
+    grd.addColorStop(0.3, 'rgba(255,160,80,' + (0.45*env).toFixed(3) + ')');
+    grd.addColorStop(1, 'rgba(255,120,50,0)');
+    g.strokeStyle = grd;
+    g.lineWidth = 1.6; g.lineCap = 'round';
+    g.beginPath(); g.moveTo(m.hx, m.hy); g.lineTo(tx, ty); g.stroke();
+    g.fillStyle = 'rgba(255,240,220,' + (0.95*env).toFixed(3) + ')';
+    g.beginPath(); g.arc(m.hx, m.hy, 1.6, 0, 6.2832); g.fill();
+  }
+  g.lineCap = 'butt';
+}
+function skyStatic(){ drawSky(0, 0); }
+buildSky();
+if (reduced) skyStatic();
+window.addEventListener('resize', function(){
+  buildSky();
+  if (reduced) skyStatic();
+});
+window.addEventListener('mousemove', function(e){
+  mT.x = e.clientX; mT.y = e.clientY;
+  if (!mInit) { mE.x = mT.x; mE.y = mT.y; mInit = true; }
+});
+document.addEventListener('mouseleave', function(){
+  mT.x = -9999; mT.y = -9999;
+});
+
+/* ---------- главный цикл ---------- */
+var progress = qs('#progress'), topbar = qs('#topbar'), toTop = qs('#toTop');
+var lastY = window.scrollY, lastT = performance.now();
+function overlayOpen(){
+  return document.body.classList.contains('modal-open') ||
+         document.body.classList.contains('nav-open');
+}
+function loop(now){
+  var dtMs = Math.min(50, now - lastT); lastT = now;
+  var dt = dtMs / 1000;
+  var y = window.scrollY;
+  var maxY = doc.scrollHeight - window.innerHeight;
+  progress.style.transform = 'scaleX(' + (maxY > 0 ? y / maxY : 0).toFixed(4) + ')';
+  if (y > lastY + 6 && y > 320 && !overlayOpen()) topbar.classList.add('hide');
+  else if (y < lastY - 6) topbar.classList.remove('hide');
+  lastY = y;
+  toTop.classList.toggle('show', y > window.innerHeight * 0.9);
+  if (!reduced) {
+    if (mT.x > -999) {
+      mE.x += (mT.x - mE.x) * (1 - Math.exp(-dt * 6));
+      mE.y += (mT.y - mE.y) * (1 - Math.exp(-dt * 6));
+    } else { mE.x = -9999; mE.y = -9999; }
+    if (!document.hidden && now > nextMeteor) {
+      if (meteors.length < 2) spawnMeteor();
+      nextMeteor = now + rand(4500, 9500);
+    }
+    stepMeteors(dt);
+    drawSky(now / 1000, y);
+  }
+  updateManifesto();
+  updateTrack();
+  if (curOn) updateCursor(dtMs);
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+toTop.addEventListener('click', function(){ scrollToY(0); });
+
+/* ---------- мини-чат в герое ---------- */
+var chatBody = qs('#chatBody');
+var MSGS = [
+  { who: 'c', text: 'Нужен бот: собирает заявки с сайта и присылает мне в Telegram.' },
+  { who: 'card' },
+  { who: 'c', text: 'А если человек напишет сумбурно, без бюджета?' },
+  { who: 'b', text: 'Спрошу недостающее уточнением и дополню бриф. Ничего не потеряется.' }
+];
+var playToken = 0;
+function sleep(ms){ return new Promise(function(r){ setTimeout(r, ms); }); }
+function bubbleEl(m){
+  var d = document.createElement('div');
+  d.className = 'bubble ' + (m.who === 'c' ? 'client' : 'bot');
+  d.textContent = m.text;
+  return d;
+}
+function cardEl(){
+  var d = document.createElement('div');
+  d.className = 'bubble bot cardmsg';
+  d.innerHTML =
+    '<div class="cardmsg-top">Заявка #8 <span class="tag">в очереди</span></div>' +
+    '<div class="crow"><span>Клиент</span><b>Тестовый Клиент (@testclient)</b></div>' +
+    '<div class="crow"><span>Задача</span><b>бот для доставки еды</b></div>' +
+    '<div class="crow"><span>Бюджет</span><b>до 50 тысяч</b></div>' +
+    '<div class="crow"><span>Срок</span><b>две недели</b></div>' +
+    '<div class="cardmsg-btns" aria-hidden="true"><span>Взять в работу</span><span>Отклонить</span></div>';
+  return d;
+}
+function typingEl(){
+  var d = document.createElement('div');
+  d.className = 'bubble bot typing';
+  d.innerHTML = '<span></span><span></span><span></span>';
+  return d;
+}
+function push(el){ chatBody.appendChild(el); requestAnimationFrame(function(){ el.classList.add('show'); }); }
+async function playChat(){
+  var token = ++playToken;
+  chatBody.innerHTML = '';
+  for (var i = 0; i < MSGS.length; i++) {
+    var m = MSGS[i];
+    if (token !== playToken) return;
+    if (m.who === 'b' || m.who === 'card') {
+      var t = typingEl(); push(t);
+      await sleep(reduced ? 0 : 950);
+      if (token !== playToken) return;
+      t.remove();
+      push(m.who === 'card' ? cardEl() : bubbleEl(m));
+    } else {
+      await sleep(reduced ? 0 : 480);
+      if (token !== playToken) return;
+      push(bubbleEl(m));
+    }
+    await sleep(reduced ? 0 : 300);
+  }
+}
+function renderAll(){
+  chatBody.innerHTML = '';
+  MSGS.forEach(function(m){ push(m.who === 'card' ? cardEl() : bubbleEl(m)); });
+}
+if (chatBody) {
+  if (reduced || !('IntersectionObserver' in window)) renderAll();
+  else {
+    var ioCh = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { playChat(); ioCh.disconnect(); }
+      });
+    }, { threshold: .35 });
+    ioCh.observe(chatBody);
+  }
+}
+var replay = qs('#chatReplay');
+if (replay) replay.addEventListener('click', function(){
+  if (reduced) renderAll(); else playChat();
+});
+
+/* ---------- консоли в демо-карточках ---------- */
+qsa('.console').forEach(function(con){
+  var lines = con.querySelectorAll('.cline');
+  if (!lines.length) return;
+  if (reduced || !('IntersectionObserver' in window)) {
+    lines.forEach(function(l){ l.classList.add('show'); });
+    return;
+  }
+  var ioK = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      ioK.disconnect();
+      var i = 0;
+      (function tick(){
+        if (i < lines.length) { lines[i].classList.add('show'); i++; setTimeout(tick, 320); }
+      })();
+    });
+  }, { threshold: .4 });
+  ioK.observe(con);
+});
+
+/* ---------- 3D-наклон + магнитные кнопки ---------- */
+if (fine && !reduced) {
+  qsa('[data-tilt]').forEach(function(card){
+    card.addEventListener('mousemove', function(e){
+      var r = card.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width;
+      var py = (e.clientY - r.top) / r.height;
+      card.style.setProperty('--ry', ((px - .5) * 7).toFixed(2) + 'deg');
+      card.style.setProperty('--rx', ((.5 - py) * 7).toFixed(2) + 'deg');
+      card.style.setProperty('--gx', (px * 100).toFixed(1) + '%');
+      card.style.setProperty('--gy', (py * 100).toFixed(1) + '%');
+    });
+    card.addEventListener('mouseleave', function(){
+      card.style.setProperty('--ry', '0deg');
+      card.style.setProperty('--rx', '0deg');
+    });
+  });
+  qsa('.btn').forEach(function(b){
+    b.addEventListener('mousemove', function(e){
+      var r = b.getBoundingClientRect();
+      var dx = e.clientX - (r.left + r.width / 2);
+      var dy = e.clientY - (r.top + r.height / 2);
+      b.style.transition = 'transform .12s ease-out';
+      b.style.transform = 'translate(' + (dx * .14).toFixed(1) + 'px,' + (dy * .2).toFixed(1) + 'px)';
+    });
+    b.addEventListener('mouseleave', function(){
+      b.style.transition = 'transform .55s cubic-bezier(.22,1,.36,1)';
+      b.style.transform = '';
+    });
+  });
+}
+
+/* ---------- калькулятор рутины ---------- */
+var chips = qsa('#chips .chip'), slider = qs('#calcRange');
+var outH = qs('#outHours'), outD = qs('#outDays'), outM = qs('#outMonths'), outVal = qs('#calcVal');
+var prev = { h: 0, d: 0, m: 0, fh: 0, fp: 0, fd: 0 };
+function fmtM(v){ return v.toFixed(1).replace('.', ','); }
+function setNum(el, to, fmt, key){
+  var from = prev[key];
+  prev[key] = to;
+  if (reduced) { el.textContent = fmt(to); return; }
+  var t0 = performance.now(), dur = 550;
+  (function f(now){
+    var p = Math.min(1, (now - t0) / dur);
+    var e = 1 - Math.pow(1 - p, 3);
+    el.textContent = fmt(from + (to - from) * e);
+    if (p < 1) requestAnimationFrame(f);
+  })(t0);
+}
+function calc(){
+  var v = +slider.value;
+  outVal.textContent = v + ' ч';
+  slider.style.setProperty('--fill', ((v - 1) / 24 * 100) + '%');
+  var yr = v * 47;
+  setNum(outH, Math.round(yr), function(x){ return Math.round(x); }, 'h');
+  setNum(outD, Math.round(yr / 8), function(x){ return Math.round(x); }, 'd');
+  setNum(outM, yr / 160, fmtM, 'm');
+}
+chips.forEach(function(ch){
+  ch.addEventListener('click', function(){
+    var on = ch.classList.toggle('on');
+    ch.setAttribute('aria-pressed', on ? 'true' : 'false');
+    var sum = 0;
+    chips.forEach(function(c){ if (c.classList.contains('on')) sum += +c.dataset.h; });
+    slider.value = clamp(sum, 1, 25);
+    calc();
+  });
+});
+slider.addEventListener('input', calc);
+calc();
+
+/* ================================================================
+   КОНСТРУКТОР СЦЕНАРИЯ
+   шаг 1: карточки задач → шаг 2: конвейер + метрики → шаг 3: черновик
+   ================================================================ */
+/* ВНИМАНИЕ: price — заглушки, синхронизировать с прайсом перед публикацией */
+var TASKS = {
+  leads:  { name:'Приём заявок',       icon:'i-inbox', h:4, days:10,
+            out:'заявки — карточками в очередь' },
+  digest: { name:'Дайджест каналов',   icon:'i-rss',   h:4, days:6,
+            out:'сжатая выжимка постов каждое утро' },
+  reports:{ name:'Отчёты и сводки',    icon:'i-doc',   h:3, days:5,
+            out:'готовые отчёты по расписанию' },
+  parse:  { name:'Парсинг и слежение', icon:'i-eye',   h:2, days:4,
+            out:'сигнал сразу, как что-то меняется' },
+  mails:  { name:'Рассылки',           icon:'i-mail',  h:2, days:5,
+            out:'письма клиентам уходят сами' },
+  tables: { name:'Перенос данных',     icon:'i-grid',  h:3, days:4,
+            out:'данные между сервисами синхронны' },
+  remind: { name:'Напоминания',        icon:'i-bell',  h:1, days:4,
+            out:'пинок в Telegram ровно вовремя' }
+};
+/* тарифная лестница: 1 задача — 15 000 ₽, 2 — 25 000, 3 — 40 000, 4 — 50 000 (бот целиком) */
+var TIER = [0, 0, 10000, 25000, 35000];
+var ORDER = ['leads','digest','reports','parse','mails','tables','remind'];
+var picked = ['leads','digest'];
+var taskBtns = qsa('#taskGrid .task');
+var bCounter = qs('#bCounter');
+var pipeSrc = qs('#pipeSrc'), pipeOut = qs('#pipeOut');
+var ffH = qs('#ffH'), ffP = qs('#ffP'), ffD = qs('#ffD');
+var draftText = qs('#draftText'), draftCount = qs('#draftCount'), draftTime = qs('#draftTime');
+var copyBtn = qs('#copyMsg');
+
+function iconUse(id){
+  return '<svg class="ic ic-sm" aria-hidden="true"><use href="#' + id + '"/></svg>';
+}
+function esc(s){
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function render(){
+  var rows = picked.map(function(id){ return TASKS[id]; });
+  var n = rows.length;
+
+  bCounter.textContent = n
+    ? 'выбрано ' + n + ' ' + plural(n, ['задача','задачи','задач'])
+    : 'ничего не выбрано';
+
+  /* шаг 2: источники */
+  pipeSrc.innerHTML = n
+    ? rows.map(function(t){
+        return '<li class="p-pill">' + iconUse(t.icon) + esc(t.name) + '</li>';
+      }).join('')
+    : '<li class="p-empty">Отметьте задачи на шаге 1</li>';
+
+  /* шаг 2: результат */
+  pipeOut.innerHTML = n
+    ? rows.map(function(t){
+        return '<li class="p-out-item">' + iconUse('i-arrow-ur') + esc(t.out) + '</li>';
+      }).join('')
+    : '<li class="p-empty">Здесь появится то, что вы будете получать</li>';
+
+  /* метрики — бюджет считается по нашим тарифам:
+     1 задача — 15 000 ₽ (точечный сценарий), 4 задачи — 50 000 ₽ (бот целиком) */
+  if (!n) {
+    ffH.textContent = '—'; ffP.textContent = '—'; ffD.textContent = '—';
+    prev.fh = 0; prev.fp = 0; prev.fd = 0;
+  } else {
+    var hours = rows.reduce(function(a,t){ return a + t.h; }, 0);
+    var price = Math.min(50000, 15000 + (TIER[n] || 0));
+    var maxDays = rows.reduce(function(a,t){ return Math.max(a, t.days); }, 0);
+    var days = Math.min(14, maxDays + 2*(n-1));
+    setNum(ffH, hours, function(x){ return '≈' + Math.round(x) + ' ч'; }, 'fh');
+    setNum(ffP, price, function(x){ return 'от ' + rub(Math.round(x)) + ' ₽'; }, 'fp');
+    setNum(ffD, days, function(x){ return 'до ' + Math.round(x) + ' дн'; }, 'fd');
+  }
+
+  /* шаг 3: черновик */
+  if (!n) {
+    draftText.textContent = 'Отметьте задачи на шаге 1 — здесь соберётся готовое сообщение. Скопируете, пришлёте в Telegram, с этого и начнём.';
+    draftCount.textContent = '';
+    draftTime.textContent = '';
+    return;
+  }
+  var L = ['Привет, Иван!', '', 'Рутина, которую хочу отдать ботам:'];
+  rows.forEach(function(t){ L.push('— ' + t.name.toLowerCase()); });
+  L.push('', 'Уходит на неё примерно ' + hours + ' ' + plural(hours, ['час','часа','часов']) + ' в неделю.');
+  L.push('', 'На выходе жду:');
+  rows.forEach(function(t){ L.push('— ' + t.out); });
+  L.push('', 'С чего начнём?');
+  var txt = L.join('\n');
+  draftText.textContent = txt;
+  draftCount.textContent = txt.length + ' символов';
+  draftTime.textContent = new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+}
+taskBtns.forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var id = btn.dataset.task;
+    var idx = picked.indexOf(id);
+    if (idx === -1) {
+      if (picked.length >= 4) {
+        toast('Больше четырёх за раз не соберу — начнём с главного');
+        return;
+      }
+      picked.push(id);
+      btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
+    } else {
+      picked.splice(idx, 1);
+      btn.classList.remove('on'); btn.setAttribute('aria-pressed', 'false');
+    }
+    picked.sort(function(a,b){ return ORDER.indexOf(a) - ORDER.indexOf(b); });
+    render();
+  });
+});
+function copyText(txt){
+  var done = function(){ toast('Скопировал. Вставьте в Telegram — и готово'); };
+  var fail = function(){
+    var ta = document.createElement('textarea');
+    ta.value = txt;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done(); }
+    catch(e){ toast('Не вышло — выделите текст и скопируйте вручную'); }
+    document.body.removeChild(ta);
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(txt).then(done, fail);
+  } else fail();
+}
+copyBtn.addEventListener('click', function(){
+  if (!picked.length) { toast('Сначала выберите задачи'); return; }
+  copyText(draftText.textContent);
+});
+render();
+
+/* ---------- аккордеон FAQ ---------- */
+qsa('.qa-q').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var item = btn.closest('.qa');
+    var open = item.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+});
+})();
+</script>
 </body>
 </html>
