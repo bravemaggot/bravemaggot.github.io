@@ -648,6 +648,9 @@ footer{border-top:1px solid var(--line);padding:64px 0 46px;position:relative;z-
   .price-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto 60px}
 }
 @media (max-width:640px){
+  /* кикер героя не должен рваться по дефису в «Telegram-боты» */
+  .kicker{font-size:.64rem;letter-spacing:.1em;gap:10px}
+  .kicker::before{width:18px}
   /* тап-таргеты не меньше 44px (WCAG 2.5.5) */
   .chip{min-height:44px;display:inline-flex;align-items:center}
   .task{min-height:44px}

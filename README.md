@@ -46,29 +46,59 @@
 ## n8n-сервисы (локальный n8n 2.43.4, Tailscale)
 | Сервис | Workflow id | Статус | Что делает |
 |---|---|---|---|
-| Парсер TG-каналов | d4kkVX59SOUCfWYl | 🟢 активен, свой бот @ProTGParserBot, exec 411 | Подписки на публичные каналы (/add /list /now /remove), AI-дайджест новых постов по расписанию (t.me/s парсинг + OpenRouter) |
-| Приёмная заказов | pINzXMMWsysTHGKa | 🟢 активен, свой бот @BraveMaggot_Bot, exec 401 | Клиенты пишут боту → AI структурирует бриф → карточка владельцу, очередь /orders /take /done /reject |
+| Парсер TG-каналов | d4kkVX59SOUCfWYl | 🟢 активен, свой бот @ProTGParserBot, последний exec 427/success | Подписки на публичные каналы (/add /list /now /remove), AI-дайджест новых постов по расписанию (t.me/s парсинг + OpenRouter) |
+| Приёмная заказов | pINzXMMWsysTHGKa | 🟢 активен, свой бот @BraveMaggot_Bot, последний exec 420/success | Клиенты пишут боту → AI структурирует бриф → карточка владельцу, очередь /orders /take /done /reject |
 
 Артефакты: `~/Work/workflows/v3/` (build_parser.py, parser.json, build_orders.py, orders.json).
 Дата-таблицы: tg_channels (7ASD9juyPenGn95T), orders (rw3UAeFRH7LT7Yv0), orders_config (t3mKcx8ojGwi72Nx).
 
 ## Код-боты (grammY + OpenRouter, локальный systemd)
-Оба переписаны с нуля 22.10, работают под systemd (`Restart=always`, автозапуск через `default.target`), состояние в `node:sqlite`, модель — цепочка из трёх бесплатных через OpenRouter.
+Оба переписаны с нуля 22.10, работают под systemd (`Restart=always`, автозапуск через `default.target`), состояние в `node:sqlite`, модель — цепочка из **пяти** бесплатных через OpenRouter.
 
-| Бот | Папка | Юнинит | Статус | Что делает |
+Цепочка на 22.10.2026 (проверена живыми запросами, все отдают JSON с `finish_reason: stop`):
+`nvidia/nemotron-3-ultra-550b-a55b:free` → `nvidia/nemotron-3.5-super-vl:free` → `dots-studio/dots-3-note-preview:free` → `poolside/laguna-s-2.1:free` → `cohere/north-mini-code:free`. Задаётся в `OPENROUTER_MODELS` (`.env`) с дефолтом в `src/config.js`.
+
+> **22.10.2026 — ротация моделей.** OpenRouter закрыл бесплатный период MiniMax M3.1 Flash ровно в эту дату, `gemma-4-26b` отдавала `Provider returned error`, `flint-v1.0` возвращал пустой `content` с `finish_reason: length`. Бот получал «Модель вернула пустой ответ». Цепочка заменена на пять проверенных. Проверка новых моделей — по 17 бесплатным из `GET /api/v1/models` одним запросом каждая.
+
+| Бот | Папка | Юнит | Статус | Что делает |
 |---|---|---|---|---|
-| Адвокат дьявола | ~/Work/bot-devils-advocate | `tgbot-devils-advocate` | 🟡 поднят, ждёт `/start` от пользователя | Критик коммерческих текстов (КП, скрипт, договор, пост): 5 возражений клиента, слабые места, чего не хватает, переписанный вариант. Кнопки «Ещё жёстче», «Как отвечать», «Переписать», «Кто мой клиент». |
+| Адвокат дьявола | ~/Work/bot-devils-advocate | `tgbot-devils-advocate` | 🟢 живой, отвечает (8 разборов в транскрипте) | Критик коммерческих текстов (КП, скрипт, договор, пост): 5 возражений клиента, слабые места, чего не хватает, переписанный вариант. Кнопки «Ещё жёстче», «Как отвечать», «Переписать», «Кто мой клиент». |
 | Поиск работы | ~/Work/bot-jobradar | `tgbot-jobradar` | 🟢 живой, отвечает | Ищет вакансии в 7 открытых источниках (hh.ru, RemoteOK, Arbeitnow, Jobicy, Himalayas, WWR, Telegram-каналы), разбирает профиль, честно пишет, что нашёл и какие источники недоступны. Сводка валидируется: выдуманная ссылка или число → детерминированный ответ. |
 
 - Юзернейм второго бота пока старый (`@Interviewfastbot_bot`) — переименование только через BotFather, это действие пользователя.
 - Старый бот «Собеседатель» (`~/Work/bot-interviewer`) вытеснен новым, папка осталась как архив.
-- **Живое доказательство**: selftest через настоящий `bot.handleUpdate()` → реальный вызов OpenRouter (`minimax/minimax-m3.1-flash:free`) и реальная доставка в Telegram (HTTP 200, ok=true). Логи: `data/transcript.jsonl` в каждой папке.
+- **Живое доказательство**: selftest через настоящий `bot.handleUpdate()` → реальный вызов OpenRouter (`nvidia/nemotron-3-ultra-550b-a55b:free`) и реальная доставка в Telegram (HTTP 200, ok=true). Логи: `data/transcript.jsonl` в каждой папке.
+
+## Скриншоты
+
+**Лендинг, 1440px — первый экран**
+
+![Лендинг, первый экран](screens/landing-hero-1440.webp)
+
+**Лендинг, 1440px — секция «живые демо»**
+
+![Лендинг, живые демо](screens/landing-demos-1440.webp)
+
+**Лендинг, 390px**
+
+<img src="screens/landing-mobile-390.webp" alt="Лендинг на телефоне" width="390">
+
+**Адвокат дьявола — реальный разбор коммерческого письма**
+
+<img src="screens/chat-devils-advocate.webp" alt="Ответ бота Адвокат дьявола" width="620">
+
+**Поиск работы — реальная сводка вакансий с честным списком источников**
+
+<img src="screens/chat-jobradar.webp" alt="Ответ бота Поиск работы" width="620">
+
+Лендинг — настоящие скриншоты живого сайта. Карточки ботов — **реальные ответы из `data/transcript.jsonl`, отрендеренные в макет чата** (не скриншоты Telegram: клиента на этой машине нет). Текст ответов не редактировался.
 
 ## Удалено по решению пользователя
 - Воркфлоу «Игра» (RPG-бот) — бэкап: ~/Work/workflows/backup-game-2026-10-21.json
 
 ## Ждёт от пользователя
-1. Нажать `/start` в `@DiaboloLawyerBot` — без этого Telegram не даёт боту писать первым (`chat not found`). Ссылка: https://t.me/DiaboloLawyerBot
-2. Переименовать `@Interviewfastbot_bot` через BotFather под новую концепцию («Поиск работы») и обновить ссылку в `index.html` лендинга.
-3. Живой тест парсера: @ProTGParserBot → /start, /list, /now durov.
-4. Решить, чем заменить старый «Собеседатор» в архиве `~/Work/bot-interviewer` (удалить или оставить).
+1. Переименовать `@Interviewfastbot_bot` через BotFather под новую концепцию («Поиск работы») и обновить ссылку в `index.html` лендинга.
+2. Перевести парсер на `@Proparser_bot` — нужен токен нового бота (сейчас работает `@ProTGParserBot`).
+3. Решить, чем заменить старый «Собеседатор» в архиве `~/Work/bot-interviewer` (удалить или оставить).
+
+~~Нажать `/start` в `@DiaboloLawyerBot`~~ — сделано, бот отвечает.
