@@ -64,7 +64,7 @@
   --line-soft:rgba(255,244,230,.06);
   --text:#f1ede6;
   --muted:#a8a196;
-  --dim:#7e766b;
+  --dim:#8f877b;
   --orange:#ff5a1f;
   --orange-text:#ff8352;
   --orange-soft:rgba(255,90,31,.1);
@@ -226,7 +226,7 @@ body.nav-open .mnav .btn{opacity:1;transform:none}
   display:flex;align-items:center;gap:12px}
 .kicker::before{content:"";width:26px;height:2px;background:var(--orange);flex-shrink:0;
   box-shadow:0 0 8px rgba(255,90,31,.6)}
-.hero h1{font-family:var(--f-disp);font-weight:700;
+.hero h1{text-wrap:balance;font-family:var(--f-disp);font-weight:700;
   font-size:clamp(1.9rem,4.6vw,3.55rem);line-height:1.14;letter-spacing:-.01em;
   background:linear-gradient(94deg,#ffffff 0%,#f3efe8 45%,#8f877b 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:26px}
@@ -333,6 +333,7 @@ body.nav-open .mnav .btn{opacity:1;transform:none}
 input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:3px;border-radius:3px;
   background:linear-gradient(to right,var(--orange) var(--fill,30%),rgba(255,244,230,.15) var(--fill,30%));
   outline:none;cursor:pointer}
+input[type=range]:focus-visible{outline:2px solid var(--orange);outline-offset:8px}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;
   background:var(--orange);border:4px solid var(--bg);box-shadow:0 0 0 1.5px var(--orange-line),0 0 14px rgba(255,90,31,.4);cursor:grab}
 input[type=range]:active::-webkit-slider-thumb{cursor:grabbing}
@@ -788,7 +789,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 46px;position:relative;z-
     <div class="wrap hero-grid">
       <div>
         <p class="kicker rv">Иван · n8n-сценарии и Telegram-боты</p>
-        <h1 class="rv" style="--d:.07s">Рутина переезжает к ботам — <span class="h1-acc">за одну-две недели</span></h1>
+        <h1 class="rv" style="--d:.07s">Боты забирают <span class="h1-acc">вашу рутину</span></h1>
         <p class="lead rv" style="--d:.14s">Собираю то, что вы каждый день делаете руками: приём заявок, дайджесты из каналов, парсинг, отчёты и уведомления. Каждый бот на этой странице живой — откройте и убедитесь сами.</p>
         <div class="btn-row rv" style="--d:.21s">
           <a class="btn btn-primary" href="https://t.me/BraveMaggot_bot" target="_blank" rel="noopener">
@@ -1166,7 +1167,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 46px;position:relative;z-
         </article>
       </div>
 
-      <p class="demo-foot rv">Честно о статусе: все четыре бота живые и отвечают прямо сейчас. Дайджест и приёмная крутятся на рабочем сервере n8n, два код-бота — на systemd с автозапуском. Ни один из приведённых ответов не выдуман: это реальные выводы из живых запусков.</p>
+      <p class="demo-foot rv">Честно о статусе: все четыре бота — мои собственные проекты, а не заказные. Поэтому их можно мучить: они живые и отвечают прямо сейчас. Дайджест и приёмная крутятся на рабочем сервере n8n, два код-бота — на systemd с автозапуском. Ни один из приведённых ответов не выдуман: это реальные выводы из живых запусков.</p>
     </div>
   </section>
 
@@ -1211,7 +1212,6 @@ footer{border-top:1px solid var(--line);padding:64px 0 46px;position:relative;z-
         <p class="lead rv" style="--d:.1s">Демо и процесс — до цен, потому что сначала важно понять, что именно автоматизируем.</p>
       </div>
 
-      <!-- ВНИМАНИЕ: все три цены — заглушки из брифа, подтвердить или изменить до публикации -->
       <div class="price-grid">
         <div class="card price-card rv" data-tilt>
           <p class="price-name">Точечный сценарий</p>
@@ -1225,7 +1225,6 @@ footer{border-top:1px solid var(--line);padding:64px 0 46px;position:relative;z-
         </div>
 
         <div class="card price-card featured rv" style="--d:.08s" data-tilt>
-          <span class="badge">чаще всего берут</span>
           <p class="price-name">Бот целиком</p>
           <p class="price-value"><small>от</small> 50 000 ₽</p>
           <p class="price-desc">Telegram-бот со сценариями и AI: приём заявок, дайджесты, живые диалоги.</p>
@@ -1250,7 +1249,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 46px;position:relative;z-
         </div>
       </div>
 
-      <p class="price-note rv">Точную цену назову после короткого разговора о задаче — обычно хватает 15 минут. Оплата по этапам: прототип, потом запуск.</p>
+      <p class="price-note rv">Точную цену назову после короткого разговора о задаче — обычно хватает 15 минут. Оплата по этапам: прототип, потом запуск — предоплата всей суммы не нужна. Если для оплаты нужен договор или счёт, скажите в первом сообщении: обсудим формат до старта.</p>
       <div class="price-cta rv">
         <a class="btn btn-primary" href="https://t.me/BraveMaggot_bot" target="_blank" rel="noopener">Описать задачу боту<svg class="ic"><use href="#i-send"/></svg></a>
       </div>
@@ -1813,9 +1812,9 @@ function cardEl(){
   d.className = 'bubble bot cardmsg';
   d.innerHTML =
     '<div class="cardmsg-top">Заявка #8 <span class="tag">в очереди</span></div>' +
-    '<div class="crow"><span>Клиент</span><b>Тестовый Клиент (@testclient)</b></div>' +
+    '<div class="crow"><span>Клиент</span><b>Клиент (имя скрыто)</b></div>' +
     '<div class="crow"><span>Задача</span><b>бот для доставки еды</b></div>' +
-    '<div class="crow"><span>Бюджет</span><b>до 50 тысяч</b></div>' +
+    '<div class="crow"><span>Бюджет</span><b>до 120 тысяч</b></div>' +
     '<div class="crow"><span>Срок</span><b>две недели</b></div>' +
     '<div class="cardmsg-btns" aria-hidden="true"><span>Взять в работу</span><span>Отклонить</span></div>';
   return d;
@@ -1963,7 +1962,6 @@ calc();
    КОНСТРУКТОР СЦЕНАРИЯ
    шаг 1: карточки задач → шаг 2: конвейер + метрики → шаг 3: черновик
    ================================================================ */
-/* ВНИМАНИЕ: price — заглушки, синхронизировать с прайсом перед публикацией */
 var TASKS = {
   leads:  { name:'Приём заявок',       icon:'i-inbox', h:4, days:10,
             out:'заявки — карточками в очередь' },
