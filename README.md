@@ -67,8 +67,8 @@ Lighthouse (мобильный профиль): **Performance 99 · Accessibilit
 ## n8n-сервисы (локальный n8n 2.43.4, Tailscale)
 | Сервис | Workflow id | Статус | Что делает |
 |---|---|---|---|
-| Парсер TG-каналов | d4kkVX59SOUCfWYl | 🟢 активен, exec 398 сегодня 10:00 без ошибок | Подписки на публичные каналы (/add /list /now /remove), AI-дайджест новых постов по расписанию (t.me/s парсинг + OpenRouter) |
-| Приёмная заказов | pINzXMMWsysTHGKa | 🟢 активен, отработал (exec 394) | Клиенты пишут боту → AI структурирует бриф → карточка владельцу, очередь /orders /take /done /reject |
+| Парсер TG-каналов | d4kkVX59SOUCfWYl | 🟢 активен, свой бот @ProTGParserBot, exec 411 | Подписки на публичные каналы (/add /list /now /remove), AI-дайджест новых постов по расписанию (t.me/s парсинг + OpenRouter) |
+| Приёмная заказов | pINzXMMWsysTHGKa | 🟢 активен, свой бот @BraveMaggot_Bot, exec 401 | Клиенты пишут боту → AI структурирует бриф → карточка владельцу, очередь /orders /take /done /reject |
 
 Артефакты: `~/Work/workflows/v3/` (build_parser.py, parser.json, build_orders.py, orders.json).
 Дата-таблицы: tg_channels (7ASD9juyPenGn95T), orders (rw3UAeFRH7LT7Yv0), orders_config (t3mKcx8ojGwi72Nx).
